@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<prioritys>
+	<priority id="0" name="Critical"/>
+	<priority id="1" name="Major"/>
+	<priority id="2" name="Important"/>
+	<priority id="3" name="Minor"/>
+</prioritys>
+

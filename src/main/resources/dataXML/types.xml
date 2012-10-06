@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<types>
+	<type id="0" name="Cosmetic"/>
+	<type id="1" name="Bug"/>
+	<type id="2" name="Feature"/>
+	<type id="3"  name="Performance"/>
+</types>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<statuses>
+	<status id="0" name="New"/>
+	<status id="1" name="Assigned"/>
+	<status id="2" name="Progress"/>
+	<status id="3" name="Resolved"/>
+	<status id="4" name="Closed"/>
+	<status id="5" name="Reopend"/>
+</statuses>

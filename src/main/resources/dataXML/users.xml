@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+	<user  id="0"
+		   firstName="Tom"
+		   lastName="Smith"
+		   role="USER"
+		   emailAddress="Tom.Smith@gmail.com"
+		   password="1234567"
+	/>
+	<user  d="1"
+		   firstName="Linus"
+		   lastName="Torvalds"
+		   role="ADMINISTRATOR"
+		   emailAddress="torvalds@klaava.Helsinki.Fi"
+		   password="1234567"
+	/>
+</users>

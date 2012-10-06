@@ -13,7 +13,6 @@ public class Build extends AbstractEntity{
 	 */
 	public Build(long id) {
 		super(id);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**

@@ -37,7 +37,6 @@ public class SampleServlet implements Servlet {
 	@Override
 	public void service(ServletRequest request, ServletResponse response)
 			throws ServletException, IOException {
-
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");
