@@ -4,14 +4,14 @@ package org.training.kparfiankou.issuetracker.beans;
  * @author Kiryl_Parfiankou
  *
  */
-public class Resoplution extends AbstractEntity{
+public class Resolution extends AbstractEntity{
 	
 	private String name;
 	
 	/**
 	 * @param id
 	 */
-	public Resoplution(long id) {
+	public Resolution(long id) {
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
@@ -20,7 +20,7 @@ public class Resoplution extends AbstractEntity{
 	 * @param id
 	 * @param name
 	 */
-	public Resoplution(long id, String name) {
+	public Resolution(long id, String name) {
 		super(id);
 		this.name = name;
 	}

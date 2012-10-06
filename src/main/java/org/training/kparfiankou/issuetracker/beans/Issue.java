@@ -21,7 +21,7 @@ public class Issue extends AbstractEntity{
 	private User creater;
 	private Date modifyDate;
 	private User lastModifier;
-	private Resoplution resolution;
+	private Resolution resolution;
 	private List<Comment> comments;
 	
 	/**
@@ -180,13 +180,13 @@ public class Issue extends AbstractEntity{
 	/**
 	 * @return the resolution
 	 */
-	public Resoplution getResolution() {
+	public Resolution getResolution() {
 		return resolution;
 	}
 	/**
 	 * @param resolution the resolution to set
 	 */
-	public void setResolution(Resoplution resolution) {
+	public void setResolution(Resolution resolution) {
 		this.resolution = resolution;
 	}
 	/**
