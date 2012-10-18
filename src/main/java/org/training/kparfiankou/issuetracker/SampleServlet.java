@@ -57,7 +57,7 @@ public class SampleServlet implements Servlet {
 		for(Type type: types){
 			out.println(type.getName());
 		}
-		
+
 		out.println("</body>");
 		out.println("</html>");
 		out.close();
