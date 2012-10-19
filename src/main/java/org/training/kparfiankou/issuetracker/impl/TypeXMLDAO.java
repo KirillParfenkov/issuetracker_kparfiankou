@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.training.kparfiankou.issuetracker.impl;
 
 import java.io.IOException;
@@ -14,7 +11,7 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
- * @author theparf
+ * @author parf
  *
  */
 public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO{
@@ -57,7 +54,7 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO{
 			}
 		}
 		
-		return null; // think here
+		return null; // think here and there
 	}
 
 }
