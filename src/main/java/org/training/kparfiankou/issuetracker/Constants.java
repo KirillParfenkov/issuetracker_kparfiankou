@@ -8,6 +8,6 @@ public class Constants {
 	
 	public static String JUMP_LOGIN_CONTROLLER = "LoginController";
 	public static String JUMP_LOGOUT_CONTROLLER = "LogoutController";
-	public static String JUMO_MAIN_CONTROLLER = "/*";
+	public static String JUMO_MAIN_CONTROLLER = "/";
 }
 

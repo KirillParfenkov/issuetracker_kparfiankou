@@ -38,7 +38,6 @@ public class LoginController extends AbstractController {
 		
 		if (user == null){
 			request.setAttribute(Constants.KEY_ERROR_MESAGE,new String("Logon failure"));
-			System.out.print("\nLogon failure\n");
 		}
 		else{
 			session.setAttribute(Constants.KEY_USER, user);

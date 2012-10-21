@@ -28,6 +28,10 @@ public class Type extends AbstractEntity{
 	}
 
 	
+	public String toString() {
+		return name;
+	}
+
 	/**
 	 * @return the name
 	 */

@@ -15,6 +15,11 @@ public class Status extends AbstractEntity{
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public String toString() {
+		return name;
+	}
 
 	/**
 	 * @param id

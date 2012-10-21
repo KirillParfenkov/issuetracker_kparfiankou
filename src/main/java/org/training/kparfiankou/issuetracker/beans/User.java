@@ -17,9 +17,14 @@ public class User extends AbstractEntity{
 	 */
 	public User(long id) {
 		super(id);
-		// TODO Auto-generated constructor stub
 	}
 	
+	
+	public String toString() {
+		return firstName + " " + lastName;
+	}
+
+
 	/**
 	 * @param id
 	 * @param firstName

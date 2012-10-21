@@ -1,6 +1,5 @@
 package org.training.kparfiankou.issuetracker.controllers;
 
-import java.io.Console;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -34,7 +33,7 @@ public class MainController extends AbstractController {
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		final int COUTN_RECORD = 10;  
+		int MAX_COUTN_RECORD = 10;  
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		String errorMesage = (String)request.getAttribute(Constants.KEY_ERROR_MESAGE);
@@ -42,6 +41,14 @@ public class MainController extends AbstractController {
 		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
 		List<Issue> issues = issueDAO.getListIssue();
 		
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>");
+		printCssStyle(out);
+		
+		out.println("</head>");
+		
+		out.println("<body>");
 		printHeader(session, out);
 		
 		if (errorMesage != null){			
@@ -51,15 +58,32 @@ public class MainController extends AbstractController {
 		out.println("<div id=main>");
 		out.println("<table>");
 		
-		for (int i = 0; i < COUTN_RECORD; i++){
+		int coutnRecord = (issues.size() > MAX_COUTN_RECORD)?MAX_COUTN_RECORD:issues.size();
+		
+		out.println("<tr class=head>");
+		out.println("<td>" + "Id" + "</td>");
+		out.println("<td>" + "Priority" + "</td>");
+		out.println("<td>" + "Assignee" + "</td>");
+		out.println("<td>" + "Type" + "</td>");
+		out.println("<td>" + "Status" + "</td>");
+		out.println("<td>" + "Summary" + "</td>");
+		out.println("</tr>");
+		
+		for (int i = 0; i < coutnRecord; i++){
 			out.println("<tr>");
 			out.println("<td>" + issues.get(i).getId() + "</td>");
+			out.println("<td>" + issues.get(i).getPriority() + "</td>");
+			out.println("<td>" + issues.get(i).getAssignee() + "</td>");
+			out.println("<td>" + issues.get(i).getType() + "</td>");
+			out.println("<td>" + issues.get(i).getStatus() + "</td>");
 			out.println("<td>" + issues.get(i).getSummary() + "</td>");
 			out.println("</tr>");
 		}
 		
 		out.println("</table>");
 		out.println("</div>");
+		out.println("</body>");
+		out.println("</html>");
 		
 		request.removeAttribute(Constants.KEY_ERROR_MESAGE);	
 	}
@@ -72,7 +96,9 @@ public class MainController extends AbstractController {
 				    "action="+ Constants.JUMP_LOGIN_CONTROLLER + " >");
 
 		if (user == null){
+			out.println("<span>Email </span>");
 			out.println("<input class=hElem type=text name="+ Constants.KEY_INPUT_EMAIL +" value=\"\">");
+			out.println("<span>Password </span>");
 			out.println("<input class=hElem type=password name="+ Constants.KEY_INPUT_PASSWORD +" value=\"\">");
 			out.println("<input class=hElem type=submit value=\"sign in\">");
 		}
@@ -82,5 +108,29 @@ public class MainController extends AbstractController {
 		}
 		out.println("</form>");
 		out.println("</div>");
+	}
+	
+	private void printCssStyle(PrintWriter out){
+		
+		out.println("<style type=text/css>");
+		out.println("#main{ position: absolute; " +
+				            "top: 15%; " +
+				            "left: 25%; " +
+				            "width: 50%; " +
+				            "height: 70%; " +
+				            "overflow: auto;}");
+		out.println("#header{ position: absolute; " +
+							 "top: 5%; " +
+							 "width: 90%; " +
+							 "height: 6%; " +
+							 "left: 5%; " +
+							 "right: 5%; " +
+							 "text-align: center;}");
+		out.println(".hElem{margin-right: 15pt; width:10em;}");
+		out.println("span{margin-right: 5pt;}");
+		out.println(".error{ color: red; text-align: center;}");
+		out.println(".head{background: gray;}");
+		out.println("td{border-bottom: 1pt dotted black}");
+		out.println("</style>");
 	}
 }

@@ -17,7 +17,10 @@ public class Priority extends AbstractEntity{
 		this.name = name;
 	}
 
-	
+	public String toString() {
+		return name;
+	}
+
 	/**
 	 * @return the name
 	 */
