@@ -20,4 +20,6 @@ public interface IUserDAO {
 	 * @return Object of class User.
 	 */
 	public User getUser(int id);
+	
+	public User authenticate(String emailAddres, String password);
 }

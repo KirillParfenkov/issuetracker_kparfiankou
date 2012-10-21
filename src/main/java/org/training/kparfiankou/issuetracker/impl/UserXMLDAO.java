@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.training.kparfiankou.issuetracker.beans.User;
+import org.training.kparfiankou.issuetracker.impl.xmlhandlers.UserPasswordXMLHandler;
 import org.training.kparfiankou.issuetracker.impl.xmlhandlers.UserXMLHandler;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 import org.xml.sax.SAXException;
@@ -12,24 +13,25 @@ import org.xml.sax.helpers.XMLReaderFactory;
 
 public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO{
 	
-	private UserXMLHandler handler;
+	private UserXMLHandler userHandler;
 	private List<User> users;
 	private final static String TYPE_XML_FILE_NAME = "users.xml";
+	private String realPath;
 	
 	
 	public UserXMLDAO(){
 		
 		try {
 			
-			String realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
+			realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
 			
 			XMLReader reader = XMLReaderFactory.createXMLReader();
-			handler = new UserXMLHandler();
+			userHandler = new UserXMLHandler();
 			
-			reader.setContentHandler(handler);
+			reader.setContentHandler(userHandler);
 			reader.parse(realPath);
 			
-			users = handler.getUsers();
+			users = userHandler.getUsers();
 			
 		} catch (SAXException e) {
 			e.printStackTrace();
@@ -42,7 +44,6 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO{
 		
 		return users;
 	}
-
 	
 	public User getUser(int id) {
 		
@@ -54,5 +55,24 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO{
 		
 		return null; // think here
 	}
-
+	
+	public User authenticate(String emailAddres, String password){
+		
+		UserPasswordXMLHandler passwordHandler =
+			new  UserPasswordXMLHandler(emailAddres,password);
+		
+		try {
+			
+			XMLReader reader = XMLReaderFactory.createXMLReader();
+			reader.setContentHandler(passwordHandler);
+			reader.parse(realPath);
+			
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return passwordHandler.getUser();
+	}
 }

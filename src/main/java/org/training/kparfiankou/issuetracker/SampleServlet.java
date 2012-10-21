@@ -130,6 +130,13 @@ public class SampleServlet implements Servlet {
 			out.println(issue.getId() + " | " + issue.getSummary() + "<br>");
 		}
 		
+		User currentUser = userDAO.authenticate("torvalds@klaava.Helsinki.Fi", "1234567");
+		
+		out.println("<b>Hi," + currentUser.getLastName() + " "
+				     + currentUser.getFirstName() + "</b>");
+		
+		
+		
 		out.println("</body>");
 		out.println("</html>");
 		out.close();
