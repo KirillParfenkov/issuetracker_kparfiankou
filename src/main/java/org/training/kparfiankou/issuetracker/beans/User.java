@@ -1,6 +1,5 @@
 package org.training.kparfiankou.issuetracker.beans;
 
-import javax.management.relation.Role;
 
 /**
  * @author Kiryl_Parfiankou

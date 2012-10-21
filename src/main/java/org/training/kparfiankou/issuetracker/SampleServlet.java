@@ -10,19 +10,28 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.beans.Priority;
+import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.beans.Resolution;
 import org.training.kparfiankou.issuetracker.beans.Status;
 import org.training.kparfiankou.issuetracker.beans.Type;
+import org.training.kparfiankou.issuetracker.beans.User;
+import org.training.kparfiankou.issuetracker.factories.IssueDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.PriorityDAOFactory;
+import org.training.kparfiankou.issuetracker.factories.ProjectDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.ResolutionDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.StatusDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.TypeDAOFactory;
+import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
 import org.training.kparfiankou.issuetracker.impl.TypeXMLDAO;
+import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IPriorityDAO;
+import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IStatusDAO;
 import org.training.kparfiankou.issuetracker.interfaces.ITypeDAO;
+import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 
 /**
  * Sample Servlet interface implementation.
@@ -63,7 +72,7 @@ public class SampleServlet implements Servlet {
 		out.println("<body>");
 		
 		
-		out.println("Types: <br>");
+		out.println("<b>Types:</b> <br>");
 		ITypeDAO typeDAO = TypeDAOFactory.getClassFromFactory(); 
 		List<Type> types = typeDAO.getListType();
 		
@@ -79,7 +88,7 @@ public class SampleServlet implements Servlet {
 			out.println(status.getName() + "<br>");
 		}
 		
-		out.println("Prioritys: <br>");
+		out.println("<b>Prioritys:</b> <br>");
 		IPriorityDAO priorityDAO = PriorityDAOFactory.getClassFromFactory();
 		List<Priority> prioritys = priorityDAO.getListPriority();
 		
@@ -87,12 +96,38 @@ public class SampleServlet implements Servlet {
 			out.println(priority.getName() + "<br>");
 		}
 		
-		out.println("Resolutions: <br>");
+		out.println("<b>Resolutions:</b> <br>");
 		IResolutionDAO resolutionDAO = ResolutionDAOFactory.getClassFromFactory();
 		List<Resolution> resolutions = resolutionDAO.getListResolution();
 		
 		for(Resolution resolution: resolutions){
 			out.println(resolution.getName() + "<br>");
+		}
+		
+		out.println("<b>Users:</b> <br>");
+		IUserDAO userDAO = UserDAOFactory.getClassFromFactory();
+		List<User> users = userDAO.getListUser();
+		
+		for(User user: users){
+			out.println(user.getFirstName() + " " + user.getLastName() + "<br>");
+		}
+		
+		out.println("<b>Projects:</b> <br>");
+		IProjectDAO projectDAO = ProjectDAOFactory.getClassFromFacroty();
+		List<Project> projects = projectDAO.getListProject();
+		
+		for(Project project: projects){
+			out.println(project.getName() + "<br>");
+		}
+		
+		out.println("<b>Issues:</b> <br>");
+		
+		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
+		List<Issue> issues = issueDAO.getListIssue();
+		out.println("sise: " + issues.size() + "<br>");
+		
+		for(Issue issue: issues){
+			out.println(issue.getId() + " | " + issue.getSummary() + "<br>");
 		}
 		
 		out.println("</body>");

@@ -1,5 +1,6 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class Project extends AbstractEntity{
 	 */
 	public Project(int id) {
 		super(id);
+		builds = new ArrayList<Build>();
 	}
 	
 	/**
@@ -27,14 +29,33 @@ public class Project extends AbstractEntity{
 	 * @param builds
 	 * @param manager
 	 */
-	public Project(int id, String name, String description, List<Build> builds,
+	public Project(int id, String name,
 			User manager) {
 		super(id);
+		builds = new ArrayList<Build>();
+		
 		this.name = name;
-		this.description = description;
-		this.builds = builds;
 		this.manager = manager;
+		
 	}
+
+	/**
+	 * @param build the build to set
+	 */
+	public void addBuild(Build build){
+		builds.add(build);
+	}
+	
+	public Build getBuild(int id){
+		
+		for(Build build: builds){
+			if (build.getId() == id){
+				return build;
+			}
+		}
+		return null;
+	}
+	
 
 	/**
 	 * @return the name

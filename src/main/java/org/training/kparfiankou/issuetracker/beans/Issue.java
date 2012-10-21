@@ -1,5 +1,6 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Issue extends AbstractEntity{
 	private Project project;
 	private Build build;
 	private User assignee;
-	private Date creatdate;
+	private Date createDate;
 	private User creater;
 	private Date modifyDate;
 	private User lastModifier;
@@ -29,9 +30,16 @@ public class Issue extends AbstractEntity{
 	 */
 	public Issue(long id) {
 		super(id);
-		// TODO Auto-generated constructor stub
+		comments = new ArrayList<Comment>();
+		
 	}
 	
+	/**
+	 * @param comment
+	 */
+	public void addCommet(Comment comment){
+		comments.add(comment);
+	}
 	
 	/**
 	 * @return the summary
@@ -130,16 +138,16 @@ public class Issue extends AbstractEntity{
 		this.assignee = assignee;
 	}
 	/**
-	 * @return the creatdate
+	 * @return the createDate
 	 */
-	public Date getCreatdate() {
-		return creatdate;
+	public Date getCreateDate() {
+		return createDate;
 	}
 	/**
-	 * @param creatdate the creatdate to set
+	 * @param creatdate the createDate to set
 	 */
-	public void setCreatdate(Date creatdate) {
-		this.creatdate = creatdate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	/**
 	 * @return the creater
