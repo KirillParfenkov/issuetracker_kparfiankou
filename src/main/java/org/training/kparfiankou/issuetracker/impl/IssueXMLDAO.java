@@ -21,11 +21,11 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO{
 	public IssueXMLDAO(){
 		
 		realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
-		updateData();	
+		loadData();	
 	}
 	
 	
-	public void updateData(){
+	private void loadData(){
 		
 		try {
 			
@@ -59,7 +59,7 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO{
 			}
 		}
 		
-		return null; // think here
+		return null; // think
 	}
 
 }
