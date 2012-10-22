@@ -4,11 +4,11 @@ package org.training.kparfiankou.issuetracker.beans;
  * @author Kiryl_Parfiankou
  *
  */
-abstract public class AbstractEntity {
+public abstract class AbstractEntity {
 	private long id;
-	
+
 	/**
-	 * @param id
+	 * @param id The id to set
 	 */
 	public AbstractEntity(long id) {
 		super();

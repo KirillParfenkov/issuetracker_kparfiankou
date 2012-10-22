@@ -10,14 +10,14 @@ import org.training.kparfiankou.issuetracker.beans.Type;
  */
 public interface ITypeDAO {
 	/**
-	 * 
+	 *
 	 * @return List of types.
 	 */
-	public List<Type> getListType();
+	List<Type> getListType();
 	/**
-	 * 
+	 *
 	 * @param id Unique object identifier.
 	 * @return Object of class Type.
 	 */
-	public Type getType(int id);
+	Type getType(int id);
 }

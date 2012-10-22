@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.training.kparfiankou.issuetracker.interfaces;
 
 import java.util.List;
@@ -13,14 +10,14 @@ import org.training.kparfiankou.issuetracker.beans.Project;
  */
 public interface IProjectDAO {
 	/**
-	 * 
-	 * @return List of existing
+	 *
+	 * @return List of existing.
 	 */
-	public List<Project> getListProject();
+	List<Project> getListProject();
 	/**
-	 * 
+	 *
 	 * @param id Unique object identifier.
 	 * @return Object if class Project.
 	 */
-	public Project getProject(int id);
+	Project getProject(int id);
 }

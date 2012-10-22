@@ -14,32 +14,35 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * @author parf
  *
  */
-public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO{
-	
-	private StatusXMLHandler handler;
-	private String TYPE_XML_FILE_NAME = "statuses.xml";
-	private List<Status> statuses; 
+public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO {
 
-	public StatusXMLDAO(){
+	private static final String TYPE_XML_FILE_NAME = "statuses.xml";
+	private StatusXMLHandler handler;
+	private List<Status> statuses;
+
+	/**
+	 * Default constructor.
+	 */
+	public StatusXMLDAO() {
 		try {
-			
+
 			String realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
-			
+
 			XMLReader reader = XMLReaderFactory.createXMLReader();
 			handler = new StatusXMLHandler();
-			
+
 			reader.setContentHandler(handler);
 			reader.parse(realPath);
-			
+
 			statuses = handler.getStatuses();
-			
+
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public List<Status> getListStatus() {
 		return statuses;
@@ -47,13 +50,13 @@ public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO{
 
 	@Override
 	public Status getStatus(int id) {
-		
-		for(Status status: statuses){
-			if (status.getId() ==  id){
+
+		for (Status status: statuses) {
+			if (status.getId() ==  id) {
 				return status;
 			}
 		}
-		
+
 		return null; // think here and there.
 	}
 }

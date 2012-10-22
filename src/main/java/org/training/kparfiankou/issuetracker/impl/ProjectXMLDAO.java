@@ -10,27 +10,27 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO{
-	
+public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO {
+
+	private static final String TYPE_XML_FILE_NAME = "projects.xml";
 	private List<Project> projects;
 	ProjectXMLHandler handler;
-	private final static String TYPE_XML_FILE_NAME = "projects.xml";
-	
-	
-	public ProjectXMLDAO(){
-		
+
+
+	public ProjectXMLDAO() {
+
 		try {
-			
+
 			String realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
-			
+
 			XMLReader reader = XMLReaderFactory.createXMLReader();
 			handler = new ProjectXMLHandler();
-			
+
 			reader.setContentHandler(handler);
 			reader.parse(realPath);
-			
+
 			projects = handler.getProjects();
-			
+
 		} catch (SAXException e) {	
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -43,15 +43,15 @@ public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO{
 		return projects;
 	}
 
-	
+
 	public Project getProject(int id) {
-	
-		for (Project project: projects){
-			if (project.getId() == id){
+
+		for (Project project: projects) {
+			if (project.getId() == id) {
 				return project;
 			}
 		}
-		
+
 		return null;
 	}
 }

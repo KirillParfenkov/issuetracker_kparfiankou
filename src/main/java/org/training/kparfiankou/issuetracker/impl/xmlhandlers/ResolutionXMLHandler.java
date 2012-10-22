@@ -8,29 +8,29 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class ResolutionXMLHandler extends DefaultHandler{
-	
+public class ResolutionXMLHandler extends DefaultHandler {
+
 	private static final String  KEY_RESOLUTION = "resolution"; 
 	private static final int  ID = 0;
 	private static final int  NAME = 1;
-	
+
 	private List<Resolution> resolutions;
-	
+
 	public ResolutionXMLHandler(){
 		resolutions = new ArrayList<Resolution>();
 	}
-	
-	public List<Resolution> getResolutions(){
+
+	public List<Resolution> getResolutions() {
 		return resolutions;
 	}
-	
+
 	public void startElement(String uri, String localName,
-							  String qName, Attributes attrs) throws SAXException{
+							  String qName, Attributes attrs) throws SAXException {
 		
 		if (KEY_RESOLUTION.equals(localName)){
 			resolutions.add(new Resolution(Integer.valueOf(attrs.getValue(ID)),
 						   attrs.getValue(NAME)));
 		}
-		
+
 	}
 }

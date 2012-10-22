@@ -8,8 +8,8 @@ import java.util.List;
  * @author Kiryl_Parfiankou
  *
  */
-public class Issue extends AbstractEntity{
-	
+public class Issue extends AbstractEntity {
+
 	private String summary;
 	private String description;
 	private Status status;
@@ -24,23 +24,23 @@ public class Issue extends AbstractEntity{
 	private User lastModifier;
 	private Resolution resolution;
 	private List<Comment> comments;
-	
+
 	/**
-	 * @param id
+	 * @param id the id of issue
 	 */
 	public Issue(long id) {
 		super(id);
 		comments = new ArrayList<Comment>();
-		
+
 	}
-	
+
 	/**
-	 * @param comment
+	 * @param comment add the comment
 	 */
-	public void addCommet(Comment comment){
+	public void addCommet(Comment comment) {
 		comments.add(comment);
 	}
-	
+
 	/**
 	 * @return the summary
 	 */
@@ -144,7 +144,7 @@ public class Issue extends AbstractEntity{
 		return createDate;
 	}
 	/**
-	 * @param creatdate the createDate to set
+	 * @param createDate the create date to set
 	 */
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;

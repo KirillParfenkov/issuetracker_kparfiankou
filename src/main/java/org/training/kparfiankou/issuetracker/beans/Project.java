@@ -7,55 +7,54 @@ import java.util.List;
  * @author Kiryl_Parfiankou
  *
  */
-public class Project extends AbstractEntity{
-	
+public class Project extends AbstractEntity {
+
 	private String name;
 	private String description;
 	private List<Build> builds;
 	private User manager;
-	
 
 	/**
-	 * @param id
+	 * @param id the id to set
 	 */
 	public Project(int id) {
 		super(id);
 		builds = new ArrayList<Build>();
 	}
-	
+
 	/**
-	 * @param name
-	 * @param description
-	 * @param builds
-	 * @param manager
+	 * @param id the id to set
+	 * @param name the name to set
+	 * @param manager the manager to set
 	 */
 	public Project(int id, String name,
 			User manager) {
 		super(id);
 		builds = new ArrayList<Build>();
-		
+
 		this.name = name;
 		this.manager = manager;
-		
 	}
 
 	/**
 	 * @param build the build to set
 	 */
-	public void addBuild(Build build){
+	public void addBuild(Build build) {
 		builds.add(build);
 	}
-	
-	public Build getBuild(int id){
-		
-		for(Build build: builds){
-			if (build.getId() == id){
+	/**
+	 * @return the build
+	 * @param id the id of build
+	 */
+	public Build getBuild(int id) {
+
+		for (Build build: builds) {
+			if (build.getId() == id) {
 				return build;
 			}
 		}
 		return null;
 	}
-	
 
 	/**
 	 * @return the name

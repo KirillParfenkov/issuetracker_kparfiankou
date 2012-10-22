@@ -14,32 +14,35 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * @author parf
  *
  */
-public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO{
-	
-	private TypeXMLHandler handler;
-	private String TYPE_XML_FILE_NAME = "types.xml";
-	private List<Type> types; 
+public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 
-	public TypeXMLDAO(){
+	private static final String TYPE_XML_FILE_NAME = "types.xml";
+	private TypeXMLHandler handler;
+	private List<Type> types;
+
+	/**
+	 * Default constructor.
+	 */
+	public TypeXMLDAO() {
 		try {
-			
+
 			String realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
-			
+
 			XMLReader reader = XMLReaderFactory.createXMLReader();
 			handler = new TypeXMLHandler();
-			
+
 			reader.setContentHandler(handler);
 			reader.parse(realPath);
-			
+
 			types = handler.getTypes();
-			
+
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public List<Type> getListType() {
 		return types;
@@ -47,14 +50,13 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO{
 
 	@Override
 	public Type getType(int id) {
-		
-		for(Type type: types){
-			if (type.getId() ==  id){
+
+		for (Type type: types) {
+			if (type.getId() ==  id) {
 				return type;
 			}
 		}
-		
+
 		return null; // think here and there
 	}
-
 }

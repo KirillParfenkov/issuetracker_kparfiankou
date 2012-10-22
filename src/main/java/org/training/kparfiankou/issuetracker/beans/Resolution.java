@@ -4,27 +4,25 @@ package org.training.kparfiankou.issuetracker.beans;
  * @author Kiryl_Parfiankou
  *
  */
-public class Resolution extends AbstractEntity{
-	
+public class Resolution extends AbstractEntity {
+
 	private String name;
-	
+
 	/**
-	 * @param id
+	 * @param id The id to set
 	 */
 	public Resolution(long id) {
 		super(id);
-		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
-	 * @param id
-	 * @param name
+	 * @param id The id to set
+	 * @param name The name to set
 	 */
 	public Resolution(long id, String name) {
 		super(id);
 		this.name = name;
 	}
-
 
 	/**
 	 * @return the name

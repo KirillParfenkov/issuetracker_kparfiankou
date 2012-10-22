@@ -10,34 +10,35 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO{
-	
+public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
+
+	private static final String TYPE_XML_FILE_NAME = "issues.xml";
 	private List<Issue> issues;
 	private IssueXMLHandler handler;
-	private static final String TYPE_XML_FILE_NAME = "issues.xml";
 	private String realPath;
-	
-	
-	public IssueXMLDAO(){
-		
+
+	public IssueXMLDAO() {
+
 		realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
 		loadData();	
 	}
-	
-	
-	private void loadData(){
-		
+
+	/**
+	 * load data.
+	 */
+	private void loadData() {
+
 		try {
-			
+
 			XMLReader reader = XMLReaderFactory.createXMLReader();
 			handler = new IssueXMLHandler();
-			
+
 			reader.setContentHandler(handler);
 			reader.parse(realPath);
-			
+
 			issues = handler.getIsssues();
-			
-			
+
+
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -46,20 +47,19 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO{
 	}
 
 	public List<Issue> getListIssue() {
-		
+
 		return issues;
 	}
 
-	
+
 	public Issue getIssue(int id) {
-		
-		for (Issue issue: issues){
-			if(issue.getId() == id){
+
+		for (Issue issue: issues) {
+			if(issue.getId() == id) {
 				return issue;
 			}
 		}
-		
+
 		return null; // think
 	}
-
 }

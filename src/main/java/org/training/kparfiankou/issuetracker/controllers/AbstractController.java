@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 abstract public class AbstractController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,10 +35,10 @@ abstract public class AbstractController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		performTask(request,response);
 	}
-	
+
 	abstract protected void performTask(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
-	
-	protected void jump(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+	protected void jump(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 	    rd.forward(request, response);
 	}

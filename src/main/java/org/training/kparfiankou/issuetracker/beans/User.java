@@ -5,32 +5,26 @@ package org.training.kparfiankou.issuetracker.beans;
  * @author Kiryl_Parfiankou
  *
  */
-public class User extends AbstractEntity{
-	
+public class User extends AbstractEntity {
+
 	private String firstName;
 	private String lastName;
 	private String emailAddress;
 	private Role role;
-	
-	/** 
-	 * @param id
+
+	/**
+	 * @param id the id to set
 	 */
 	public User(long id) {
 		super(id);
 	}
-	
-	
-	public String toString() {
-		return firstName + " " + lastName;
-	}
-
 
 	/**
-	 * @param id
-	 * @param firstName
-	 * @param lastName
-	 * @param emailAddress
-	 * @param role
+	 * @param id the id to set
+	 * @param firstName the first name to set
+	 * @param lastName the last name to set
+	 * @param emailAddress the email address to set
+	 * @param role the role to set
 	 */
 	public User(long id, String firstName, String lastName,
 			String emailAddress, Role role) {
@@ -41,6 +35,13 @@ public class User extends AbstractEntity{
 		this.role = role;
 	}
 
+
+	/**
+	 * @return String
+	 */
+	public String toString() {
+		return firstName + " " + lastName;
+	}
 
 	/**
 	 * @return the firstName

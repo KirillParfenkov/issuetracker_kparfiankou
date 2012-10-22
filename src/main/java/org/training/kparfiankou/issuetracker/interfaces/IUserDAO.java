@@ -10,16 +10,22 @@ import org.training.kparfiankou.issuetracker.beans.User;
  */
 public interface IUserDAO {
 	/**
-	 * 
+	 *
 	 * @return List of existing users.
 	 */
-	public List<User> getListUser();
+	List<User> getListUser();
 	/**
-	 * 
+	 *
 	 * @param id Unique object identifier.
 	 * @return Object of class User.
 	 */
-	public User getUser(int id);
-	
-	public User authenticate(String emailAddres, String password);
+	User getUser(int id);
+
+	/**
+	 *
+	 * @param emailAddres email address of user.
+	 * @param password password of user.
+	 * @return Object of class of class User.
+	 */
+	User authenticate(String emailAddres, String password);
 }

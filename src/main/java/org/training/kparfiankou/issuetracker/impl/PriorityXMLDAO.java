@@ -14,46 +14,46 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * @author parf
  *
  */
-public class PriorityXMLDAO extends AbstractXMLDAO implements IPriorityDAO{
-	
-	private PriorityXMLHandler handler;
-	private String TYPE_XML_FILE_NAME = "prioritys.xml";
-	private List<Priority> prioritys; 
+public class PriorityXMLDAO extends AbstractXMLDAO implements IPriorityDAO {
 
-	public PriorityXMLDAO(){
+	private static final String TYPE_XML_FILE_NAME = "prioritys.xml";
+	private PriorityXMLHandler handler;
+	private List<Priority> prioritys;
+
+	public PriorityXMLDAO() {
 		try {
-			
+
 			String realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
-			
+
 			XMLReader reader = XMLReaderFactory.createXMLReader();
 			handler = new PriorityXMLHandler();
-			
+
 			reader.setContentHandler(handler);
 			reader.parse(realPath);
-			
+
 			prioritys = handler.getPrioritys();
-			
+
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 
 	public List<Priority> getListPriority() {
 		return prioritys;
 	}
-	
-	
+
+
 	public Priority getPriority(int id) {
-		
-		for(Priority priority: prioritys){
-			if (priority.getId() ==  id){
+
+		for(Priority priority: prioritys) {
+			if (priority.getId() ==  id) {
 				return priority;
 			}
 		}
-		
+
 		return null; // think here and there
 	}
 }

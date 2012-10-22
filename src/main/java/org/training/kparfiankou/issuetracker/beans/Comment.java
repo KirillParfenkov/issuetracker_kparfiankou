@@ -6,43 +6,43 @@ import java.util.Date;
  * @author Kiryl_Parfiankou
  *
  */
-public class Comment extends AbstractEntity{
-	
-	private User Autor;
+public class Comment extends AbstractEntity {
+
+	private User autor;
 	private Date addDate;
 	private String content;
-	
+
 	/**
-	 * @param id
+	 * @param id The id to set
 	 */
 	public Comment(long id) {
 		super(id);
 	}
-	
+
 	/**
-	 * @param id
-	 * @param autor
-	 * @param addDate
-	 * @param content
+	 * @param id The id to set
+	 * @param autor The autor to set
+	 * @param addDate The addDate to set
+	 * @param content The content to set
 	 */
 	public Comment(long id, User autor, Date addDate, String content) {
 		super(id);
-		Autor = autor;
+		this.autor = autor;
 		this.addDate = addDate;
 		this.content = content;
 	}
-	
+
 	/**
 	 * @return the autor
 	 */
 	public User getAutor() {
-		return Autor;
+		return autor;
 	}
 	/**
 	 * @param autor the autor to set
 	 */
 	public void setAutor(User autor) {
-		Autor = autor;
+		this.autor = autor;
 	}
 	/**
 	 * @return the addDate

@@ -9,29 +9,28 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class PriorityXMLHandler extends DefaultHandler{
-	
+public class PriorityXMLHandler extends DefaultHandler {
+
 	private static final String KEY_PRIORITY = "priority";
 	private static final int ID = 0;
 	private static final int NAME = 1;
-	
+
 	private List<Priority> prioritys;
-	
-	public PriorityXMLHandler(){
+
+	public PriorityXMLHandler() {
 		prioritys = new ArrayList<Priority>();
 	}
-	
-	public List<Priority> getPrioritys(){
+
+	public List<Priority> getPrioritys() {
 		return prioritys;
 	}
-	
+
 	public void startElement(String uri, String localName,
 							 String qName,Attributes attrs) throws SAXException {
-		
-		if (KEY_PRIORITY.equals(localName)){
+
+		if (KEY_PRIORITY.equals(localName)) {
 			prioritys.add(new Priority(Integer.valueOf(attrs.getValue(ID)),
 								attrs.getValue(NAME)));
 		}
-	
 	}
 }

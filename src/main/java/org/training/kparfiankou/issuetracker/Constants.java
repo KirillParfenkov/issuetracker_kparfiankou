@@ -1,13 +1,37 @@
 package org.training.kparfiankou.issuetracker;
 
+/**
+ *
+ * @author parf
+ *
+ */
 public class Constants {
-	public static String KEY_USER = "user";
-	public static String KEY_INPUT_EMAIL = "emal";
-	public static String KEY_INPUT_PASSWORD = "password";
-	public static String KEY_ERROR_MESAGE = "errorMesage";
-	
-	public static String JUMP_LOGIN_CONTROLLER = "LoginController";
-	public static String JUMP_LOGOUT_CONTROLLER = "LogoutController";
-	public static String JUMO_MAIN_CONTROLLER = "/";
+	/**
+	 * constant key of user.
+	 */
+	public static final String KEY_USER = "user";
+	/**
+	 * constant key of email.
+	 */
+	public static final String KEY_INPUT_EMAIL = "emal";
+	/**
+	 * constant key of password.
+	 */
+	public static final String KEY_INPUT_PASSWORD = "password";
+	/**
+	 * constant key of error mesage.
+	 */
+	public static final String KEY_ERROR_MESAGE = "errorMesage";
+	/**
+	 * constant link to the controller LoginController.
+	 */
+	public static final String JUMP_LOGIN_CONTROLLER = "LoginController";
+	/**
+	 * constant link to the controller LogoutController.
+	 */
+	public static final String JUMP_LOGOUT_CONTROLLER = "LogoutController";
+	/**
+	 * constant link to the controller MainController.
+	 */
+	public static final String JUMO_MAIN_CONTROLLER = "/";
 }
-

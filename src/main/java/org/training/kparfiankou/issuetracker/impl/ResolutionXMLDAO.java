@@ -14,44 +14,44 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * @author parf
  *
  */
-public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO{
-	
-	private ResolutionXMLHandler handler;
-	private String TYPE_XML_FILE_NAME = "resolutions.xml";
-	private List<Resolution> resolutions; 
+public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 
-	public ResolutionXMLDAO(){
+	private static final String TYPE_XML_FILE_NAME = "resolutions.xml";
+	private ResolutionXMLHandler handler;
+	private List<Resolution> resolutions;
+
+	public ResolutionXMLDAO() {
 		try {
-			
+
 			String realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
-			
+
 			XMLReader reader = XMLReaderFactory.createXMLReader();
 			handler = new ResolutionXMLHandler();
-			
+
 			reader.setContentHandler(handler);
 			reader.parse(realPath);
-			
+
 			resolutions = handler.getResolutions();
-			
+
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-		
+
 	public List<Resolution> getListResolution() {
 		return resolutions;
 	}
 
 	public Resolution getResolution(int id) {
-		
-		for(Resolution resolution: resolutions){
-			if (resolution.getId() ==  id){
+
+		for (Resolution resolution: resolutions) {
+			if (resolution.getId() ==  id) {
 				return resolution;
 			}
 		}
-		
+
 		return null; // think here and there.
 	}	
 }
