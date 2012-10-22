@@ -8,9 +8,13 @@ import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
  * @author parf
  *
  */
-public class UserDAOFactory {
+public final class UserDAOFactory {
 
 	private static IUserDAO userDAO;
+
+	private UserDAOFactory() {
+		// Prevent instantiation
+	}
 
 	/**
 	 *

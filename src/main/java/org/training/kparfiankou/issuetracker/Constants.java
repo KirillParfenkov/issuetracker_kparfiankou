@@ -5,7 +5,7 @@ package org.training.kparfiankou.issuetracker;
  * @author parf
  *
  */
-public class Constants {
+public final class Constants {
 	/**
 	 * constant key of user.
 	 */
@@ -39,4 +39,8 @@ public class Constants {
 	 * constant date pattern.
 	 */
 	public static final String  DATE_PATTERN = "dd.MM.yyyy";
+
+	private Constants() {
+		 // Prevent instantiation
+	}
 }

@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,10 +17,12 @@ import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
 
 
 /**
- * Servlet implementation class MainController
+ * Servlet implementation class MainController.
  */
 public class MainController extends AbstractController {
 	private static final long serialVersionUID = 1L;
+
+	private static final int MAX_COUTN_RECORD = 10;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -30,13 +31,14 @@ public class MainController extends AbstractController {
         super();
     }
 
+    @Override
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		final int MAX_COUTN_RECORD = 10;
+
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String errorMesage = (String)request.getAttribute(Constants.KEY_ERROR_MESAGE);
+		String errorMesage = (String) request.getAttribute(Constants.KEY_ERROR_MESAGE);
 
 		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
 		List<Issue> issues = issueDAO.getListIssue();
@@ -85,7 +87,7 @@ public class MainController extends AbstractController {
 		out.println("</body>");
 		out.println("</html>");
 
-		request.removeAttribute(Constants.KEY_ERROR_MESAGE);	
+		request.removeAttribute(Constants.KEY_ERROR_MESAGE);
 	}
 
 	private void printHeader(HttpSession session, PrintWriter out) {
@@ -94,7 +96,7 @@ public class MainController extends AbstractController {
 		out.println("<div id=header>");
 		out.println("<form name=headerForm method=POST "
 				    + "action=" + Constants.JUMP_LOGIN_CONTROLLER + " >");
-		
+
 		if (user == null) {
 			out.println("<span>Email </span>");
 			out.println("<input class=hElem type=text name=" + Constants.KEY_INPUT_EMAIL + " value=\"\">");

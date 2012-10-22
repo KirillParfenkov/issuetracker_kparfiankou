@@ -7,9 +7,13 @@ import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
  * @author parf
  *
  */
-public class ProjectDAOFactory {
+public final class ProjectDAOFactory {
 
 	private static IProjectDAO projectDAO;
+
+	private ProjectDAOFactory() {
+		// Prevent instantiation
+	}
 
 	/**
 	 *

@@ -8,9 +8,13 @@ import org.training.kparfiankou.issuetracker.interfaces.ITypeDAO;
  * @author parf
  *
  */
-public class TypeDAOFactory {
+public final class TypeDAOFactory {
 
 	private static ITypeDAO typeDAO = null;
+
+	private TypeDAOFactory() {
+		// Prevent instantiation
+	}
 
 	/**
 	 *

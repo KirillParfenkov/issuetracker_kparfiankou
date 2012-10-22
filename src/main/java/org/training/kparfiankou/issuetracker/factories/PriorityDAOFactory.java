@@ -7,9 +7,14 @@ import org.training.kparfiankou.issuetracker.interfaces.IPriorityDAO;
  * @author parf
  *
  */
-public class PriorityDAOFactory {
+public final class PriorityDAOFactory {
 
 	private static IPriorityDAO priorityDAO;
+
+	private PriorityDAOFactory() {
+		// Prevent instantiation
+	}
+
 	/**
 	 *
 	 * @return IPriorityDAO
@@ -22,5 +27,4 @@ public class PriorityDAOFactory {
 
 		return priorityDAO;
 	}
-
 }

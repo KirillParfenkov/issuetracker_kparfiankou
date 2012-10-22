@@ -8,9 +8,13 @@ import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
  * @author parf
  *
  */
-public class ResolutionDAOFactory {
+public final class ResolutionDAOFactory {
 
 	private static IResolutionDAO resolutionDAO;
+
+	private ResolutionDAOFactory() {
+		// Prevent instantiation
+	}
 
 	/**
 	 *

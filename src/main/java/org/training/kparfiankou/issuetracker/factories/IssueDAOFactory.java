@@ -8,7 +8,12 @@ import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
  * @author parf
  *
  */
-public class IssueDAOFactory {
+public final class IssueDAOFactory {
+
+	private IssueDAOFactory() {
+		// Prevent instantiation
+	}
+
 	/**
 	 *
 	 * @return IIssueDAO

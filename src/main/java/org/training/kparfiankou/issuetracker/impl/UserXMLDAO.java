@@ -18,7 +18,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
  */
 public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 
-	private static final String TYPE_XML_FILE_NAME = "resolutions.xml";
+	private static final String TYPE_XML_FILE_NAME = "users.xml";
 	private UserXMLHandler userHandler;
 	private List<User> users;
 	private String realPath;
@@ -29,7 +29,6 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 	public UserXMLDAO() {
 
 		try {
-
 			realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
 
 			XMLReader reader = XMLReaderFactory.createXMLReader();

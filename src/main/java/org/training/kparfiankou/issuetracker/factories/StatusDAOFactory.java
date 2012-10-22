@@ -7,9 +7,13 @@ import org.training.kparfiankou.issuetracker.interfaces.IStatusDAO;
  * @author parf
  *
  */
-public class StatusDAOFactory {
+public final class StatusDAOFactory {
 
 	private static IStatusDAO statusDAO;
+
+	private StatusDAOFactory() {
+		// Prevent instantiation
+	}
 
 	/**
 	 *
