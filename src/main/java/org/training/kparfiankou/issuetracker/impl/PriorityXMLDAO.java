@@ -20,6 +20,9 @@ public class PriorityXMLDAO extends AbstractXMLDAO implements IPriorityDAO {
 	private PriorityXMLHandler handler;
 	private List<Priority> prioritys;
 
+	/**
+	 * Default constructor.
+	 */
 	public PriorityXMLDAO() {
 		try {
 
@@ -40,15 +43,15 @@ public class PriorityXMLDAO extends AbstractXMLDAO implements IPriorityDAO {
 		}
 	}
 
-
+	@Override
 	public List<Priority> getListPriority() {
 		return prioritys;
 	}
 
-
+	@Override
 	public Priority getPriority(int id) {
 
-		for(Priority priority: prioritys) {
+		for (Priority priority: prioritys) {
 			if (priority.getId() ==  id) {
 				return priority;
 			}

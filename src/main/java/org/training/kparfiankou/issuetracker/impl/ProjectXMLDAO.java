@@ -10,13 +10,20 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+/**
+ *
+ * @author Kiryl_Parfiankou
+ *
+ */
 public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO {
 
 	private static final String TYPE_XML_FILE_NAME = "projects.xml";
 	private List<Project> projects;
-	ProjectXMLHandler handler;
+	private ProjectXMLHandler handler;
 
-
+	/**
+	 * Default constructor.
+	 */
 	public ProjectXMLDAO() {
 
 		try {
@@ -31,19 +38,20 @@ public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO {
 
 			projects = handler.getProjects();
 
-		} catch (SAXException e) {	
+		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	@Override
 	public List<Project> getListProject() {
 
 		return projects;
 	}
 
-
+	@Override
 	public Project getProject(int id) {
 
 		for (Project project: projects) {

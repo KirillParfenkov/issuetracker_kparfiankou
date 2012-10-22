@@ -32,20 +32,25 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ *
+ * @author Kiryl_Parfiankou
+ *
+ */
 public class IssueXMLHandler extends DefaultHandler {
 
-	private final static int ID = 0;
-	private final static int STATUS = 1;
-	private final static int TYPE = 2;
-	private final static int PRIORITY = 3;
-	private final static int PROJECT = 4;
-	private final static int BUILD = 5;
-	private final static int ASSIGNEE = 6;
-	private final static int CREATE_DATA = 7;
-	private final static int CREATER = 8;
-	private final static int MODIFY_DATE = 9;
-	private final static int LAST_MODIFIER = 10;
-	private final static int RESOLUTION = 11;
+	private static final int ID = 0;
+	private static final int STATUS = 1;
+	private static final int TYPE = 2;
+	private static final int PRIORITY = 3;
+	private static final int PROJECT = 4;
+	private static final int BUILD = 5;
+	private static final int ASSIGNEE = 6;
+	private static final int CREATE_DATA = 7;
+	private static final int CREATER = 8;
+	private static final int MODIFY_DATE = 9;
+	private static final int LAST_MODIFIER = 10;
+	private static final int RESOLUTION = 11;
 
 	private enum Node {
 		ISSUES,
@@ -66,10 +71,13 @@ public class IssueXMLHandler extends DefaultHandler {
 	private ITypeDAO typeDAO;
 	private IPriorityDAO priorityDAO;
 	private IProjectDAO projectDAO;
-	private IUserDAO userDAO; 
+	private IUserDAO userDAO;
 	private IResolutionDAO resolutionDAO;
 	private DateFormat dateFormat;
 
+	/**
+	 * Default constructor.
+	 */
 	public IssueXMLHandler() {
 
 		issues = new ArrayList<Issue>();
@@ -80,20 +88,23 @@ public class IssueXMLHandler extends DefaultHandler {
 		userDAO = UserDAOFactory.getClassFromFactory();
 		resolutionDAO = ResolutionDAOFactory.getClassFromFactory();
 		dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-
 	}
 
+	/**
+	 *
+	 * @return list\<Issue\>
+	 */
 	public List<Issue>getIsssues() {
 		return issues;
 	}
 
-
+	@Override
 	public void startElement(String uri, String localName,
 			  String qName, Attributes attrs) throws SAXException {
-		
+
 		currentNode = Node.valueOf(localName.toUpperCase());
-		
-		if(currentNode.equals(Node.ISSUE)) {
+
+		if (currentNode.equals(Node.ISSUE)) {
 			try {
 
 				int id = Integer.valueOf(attrs.getValue(ID));
@@ -107,7 +118,7 @@ public class IssueXMLHandler extends DefaultHandler {
 				User creater = userDAO.getUser(Integer.valueOf(attrs.getValue(CREATER)));
 				Date modifyDate = dateFormat.parse(attrs.getValue(MODIFY_DATE));
 				User lastModifier = userDAO.getUser(Integer.valueOf(attrs.getValue(LAST_MODIFIER)));
-				Resolution resolution = resolutionDAO.getResolution( Integer.valueOf(attrs.getValue(RESOLUTION)));
+				Resolution resolution = resolutionDAO.getResolution(Integer.valueOf(attrs.getValue(RESOLUTION)));
 
 				currentIssue = new Issue(id);
 				currentIssue.setStatus(status);
@@ -127,49 +138,51 @@ public class IssueXMLHandler extends DefaultHandler {
 			}
 		}
 
-		if(currentNode.equals(Node.COMMENT)) {
+		if (currentNode.equals(Node.COMMENT)) {
 
 			currentCommet = new Comment(Integer.valueOf(attrs.getValue(ID)));
 			strBuffer = new StringBuffer();
 		}
 
-		if(currentNode.equals(Node.DESCRIPTION) || 
-		   currentNode.equals(Node.SUMMARY)){
+		if (currentNode.equals(Node.DESCRIPTION)
+		 || currentNode.equals(Node.SUMMARY)) {
 
 			strBuffer = new StringBuffer();
 		}
 
 	}
 
-	public void characters(char[] ch, int start,int length) {
+	@Override
+	public void characters(char[] ch, int start, int length) {
 
-		if (currentNode.equals(Node.DESCRIPTION) ||
-			currentNode.equals(Node.SUMMARY) ||
-			currentNode.equals(Node.COMMENT)) {
+		if (currentNode.equals(Node.DESCRIPTION)
+		 || currentNode.equals(Node.SUMMARY)
+		 || currentNode.equals(Node.COMMENT)) {
 
-			strBuffer.append(ch,start,length);
+			strBuffer.append(ch, start, length);
 		}
 	}
 
+	@Override
 	public void endElement(String uri, String localName, String qName) {
 
 		Node node = Node.valueOf(localName.toUpperCase());
 
-		if(node.equals(Node.ISSUE)) {
+		if (node.equals(Node.ISSUE)) {
 			issues.add(currentIssue);
 		}
 
-		if(node.equals(Node.COMMENT)) {
+		if (node.equals(Node.COMMENT)) {
 			currentCommet.setContent(strBuffer.toString());
 			currentIssue.addCommet(currentCommet);
 		}
 
-		if(node.equals(Node.DESCRIPTION)) {
+		if (node.equals(Node.DESCRIPTION)) {
 			currentIssue.setDescription(strBuffer.toString());
 		}
 
-		if(node.equals(Node.SUMMARY)) {
+		if (node.equals(Node.SUMMARY)) {
 			currentIssue.setSummary(strBuffer.toString());
-		}	
+		}
 	}
 }

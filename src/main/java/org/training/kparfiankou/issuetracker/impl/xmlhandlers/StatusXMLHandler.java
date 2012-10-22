@@ -8,6 +8,11 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ *
+ * @author Kiryl_Parfiankou
+ *
+ */
 public class StatusXMLHandler extends DefaultHandler {
 
 	private static final String KEY_STATUS = "status";
@@ -16,20 +21,28 @@ public class StatusXMLHandler extends DefaultHandler {
 
 	private List<Status> statuses;
 
+	/**
+	 * default Constructor.
+	 */
 	public StatusXMLHandler() {
 		statuses = new ArrayList<Status>();
 	}
 
-	public List<Status> getStatuses(){
+	/**
+	 *
+	 * @return List\<Type\>
+	 */
+	public List<Status> getStatuses() {
 		return statuses;
 	}
 
+	@Override
 	public void startElement(String uri, String localName,
-							 String qName,Attributes attrs) throws SAXException {
+							 String qName, Attributes attrs) throws SAXException {
 
 		if (KEY_STATUS.equals(localName)) {
 			statuses.add(new Status(Integer.valueOf(attrs.getValue(ID)),
-								attrs.getValue(NAME)));
+						 			attrs.getValue(NAME)));
 		}
 	}
 }

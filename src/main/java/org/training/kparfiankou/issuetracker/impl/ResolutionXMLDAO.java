@@ -20,6 +20,9 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 	private ResolutionXMLHandler handler;
 	private List<Resolution> resolutions;
 
+	/**
+	 * Default constructor.
+	 */
 	public ResolutionXMLDAO() {
 		try {
 
@@ -40,10 +43,12 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 		}
 	}
 
+	@Override
 	public List<Resolution> getListResolution() {
 		return resolutions;
 	}
 
+	@Override
 	public Resolution getResolution(int id) {
 
 		for (Resolution resolution: resolutions) {
@@ -53,5 +58,5 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 		}
 
 		return null; // think here and there.
-	}	
+	}
 }

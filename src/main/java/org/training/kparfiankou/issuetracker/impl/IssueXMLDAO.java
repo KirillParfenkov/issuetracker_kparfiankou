@@ -10,6 +10,11 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+/**
+ *
+ * @author Kiryl_Parfiankou
+ *
+ */
 public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 
 	private static final String TYPE_XML_FILE_NAME = "issues.xml";
@@ -17,10 +22,13 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 	private IssueXMLHandler handler;
 	private String realPath;
 
+	/**
+	 * Default constructor.
+	 */
 	public IssueXMLDAO() {
 
 		realPath = getXmlDirectoryPath() + TYPE_XML_FILE_NAME;
-		loadData();	
+		loadData();
 	}
 
 	/**
@@ -46,16 +54,17 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 		}
 	}
 
+	@Override
 	public List<Issue> getListIssue() {
 
 		return issues;
 	}
 
-
+	@Override
 	public Issue getIssue(int id) {
 
 		for (Issue issue: issues) {
-			if(issue.getId() == id) {
+			if (issue.getId() == id) {
 				return issue;
 			}
 		}

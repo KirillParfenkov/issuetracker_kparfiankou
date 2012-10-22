@@ -9,7 +9,11 @@ import org.training.kparfiankou.issuetracker.beans.User;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
+/**
+ *
+ * @author Kiryl_Parfiankou
+ *
+ */
 public class UserXMLHandler extends DefaultHandler {
 
 	private static final String  KEY_TYPE = "user";
@@ -21,15 +25,21 @@ public class UserXMLHandler extends DefaultHandler {
 
 	private List<User> users;
 
-
-	public UserXMLHandler(){
+	/**
+	 * default Constructor.
+	 */
+	public UserXMLHandler() {
 		users = new ArrayList<User>();
 	}
-
+	/**
+	 *
+	 * @return List\<User\>
+	 */
 	public List<User> getUsers() {
 		return users;
 	}
 
+	@Override
 	public void startElement(String uri, String localName,
 			  String qName, Attributes attrs) throws SAXException {
 
