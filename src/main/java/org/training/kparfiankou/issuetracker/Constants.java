@@ -34,4 +34,9 @@ public class Constants {
 	 * constant link to the controller MainController.
 	 */
 	public static final String JUMO_MAIN_CONTROLLER = "/";
+
+	/**
+	 * constant date pattern.
+	 */
+	public static final String  DATE_PATTERN = "dd.MM.yyyy";
 }

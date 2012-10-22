@@ -3,10 +3,12 @@ package org.training.kparfiankou.issuetracker.impl.xmlhandlers;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.beans.Build;
 import org.training.kparfiankou.issuetracker.beans.Comment;
 import org.training.kparfiankou.issuetracker.beans.Issue;
@@ -87,7 +89,8 @@ public class IssueXMLHandler extends DefaultHandler {
 		projectDAO = ProjectDAOFactory.getClassFromFacroty();
 		userDAO = UserDAOFactory.getClassFromFactory();
 		resolutionDAO = ResolutionDAOFactory.getClassFromFactory();
-		dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+		dateFormat = new SimpleDateFormat(Constants.DATE_PATTERN);
+
 	}
 
 	/**
