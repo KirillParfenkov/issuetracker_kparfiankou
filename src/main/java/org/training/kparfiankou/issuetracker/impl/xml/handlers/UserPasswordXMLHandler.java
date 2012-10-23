@@ -1,4 +1,4 @@
-package org.training.kparfiankou.issuetracker.impl.xmlhandlers;
+package org.training.kparfiankou.issuetracker.impl.xml.handlers;
 
 import org.training.kparfiankou.issuetracker.beans.Role;
 import org.training.kparfiankou.issuetracker.beans.User;

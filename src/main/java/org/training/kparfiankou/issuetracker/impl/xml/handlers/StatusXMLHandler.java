@@ -1,4 +1,4 @@
-package org.training.kparfiankou.issuetracker.impl.xmlhandlers;
+package org.training.kparfiankou.issuetracker.impl.xml.handlers;
 
 import java.util.ArrayList;
 import java.util.List;
