@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.ResolutionXMLDAO;
+import org.training.kparfiankou.issuetracker.impl.xml.ResolutionXMLDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
 
 /**

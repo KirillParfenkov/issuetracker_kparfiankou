@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.StatusXMLDAO;
+import org.training.kparfiankou.issuetracker.impl.xml.StatusXMLDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IStatusDAO;
 /**
  *

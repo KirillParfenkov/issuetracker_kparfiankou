@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.UserXMLDAO;
+import org.training.kparfiankou.issuetracker.impl.xml.UserXMLDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 
 /**
