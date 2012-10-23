@@ -1,6 +1,7 @@
 package org.training.kparfiankou.issuetracker.impl.database;
 
 import java.sql.Connection;
+import org.gjt.mm.mysql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -15,6 +16,7 @@ public abstract class AbstractDatabaseDAO {
 	private static final String PATH_DB = "jdbc:mysql://localhost/IssueTracker";
 	private static final String DB_ADMIN_NAME = "root";
 	private static final String DB_ADMIN_PASS = "@erbnruqp";
+
 
 	/**
 	 *
