@@ -1,7 +1,6 @@
 package org.training.kparfiankou.issuetracker.impl.database;
 
 import java.sql.Connection;
-import org.gjt.mm.mysql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
