@@ -59,4 +59,25 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 
 		return null; // think here and there
 	}
+
+	@Override
+	public Type getType(String nameType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void removeType(int id) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void insertType(String nameType) {
+		// TODO Auto-generated method stub
+	}
 }

@@ -23,6 +23,10 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	private static final String NAME = "name";
 
 	private static Connection connection;
+	private static PreparedStatement psInserType;
+	private static PreparedStatement psRemoveType;
+	private static PreparedStatement psSelecTypes;
+	private static boolean isTypesModified;
 	private static List<Type> types;
 
 
@@ -33,16 +37,9 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 
 		try {
 			connection = getConnection();
-
-			PreparedStatement psSelecTypes =  connection.prepareStatement(ConstantSqlQuerys.QUERY_SELECT_TYPES);
-			ResultSet resultSet = psSelecTypes.executeQuery();
-
-			types = new ArrayList<Type>();
-
-			while (resultSet.next()) {
-				types.add(new Type(resultSet.getInt(ID),
-								   resultSet.getString(NAME)));
-			}
+			initQuerys();
+			updateTypeList();
+			isTypesModified = false;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -51,14 +48,52 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 		}
 	}
 
+	private void initQuerys() throws SQLException {
+
+		psInserType = connection.prepareStatement(ConstantSqlQuerys.INSERT_TYPE);
+		psRemoveType = connection.prepareStatement(ConstantSqlQuerys.DELETE_TYPE_BY_ID);
+		psSelecTypes =  connection.prepareStatement(ConstantSqlQuerys.SELECT_TYPES);
+	}
+
+	private void updateTypeList() {
+
+		ResultSet resultSet = null;
+
+		try {
+
+			resultSet = psSelecTypes.executeQuery();
+			types = new ArrayList<Type>();
+
+			while (resultSet.next()) {
+				types.add(new Type(resultSet.getInt(ID),
+								   resultSet.getString(NAME)));
+			}
+
+			isTypesModified = false;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+	}
+
 	@Override
 	public List<Type> getListType() {
+
+		if (isTypesModified) {
+			updateTypeList();
+		}
 
 		return types;
 	}
 
 	@Override
 	public Type getType(int id) {
+
+		if (isTypesModified) {
+			updateTypeList();
+		}
 
 		for (Type type: types) {
 			if (type.getId() == id) {
@@ -67,5 +102,63 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 		}
 
 		return null;
+	}
+
+	@Override
+	public Type getType(String name) {
+
+		if (isTypesModified) {
+			updateTypeList();
+		}
+
+		for (Type type: types) {
+			if (type.getName().equals(name)) {
+				return type;
+			}
+		}
+
+		return null;
+	}
+
+	@Override
+	public void insertType(String nameType) {
+
+		final int NUM_NAME_TYPE = 1;
+
+		try {
+
+			psInserType.setString(NUM_NAME_TYPE, nameType);
+			psInserType.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			isTypesModified = true;
+		}
+	}
+
+	@Override
+	public void removeType(int id) {
+
+		final int NUM_ID = 1;
+
+		try {
+
+			psRemoveType.setInt(NUM_ID, id);
+			psRemoveType.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			isTypesModified = true;
+		}
+	}
+
+	@Override
+	public void close() {
+
+		closeConnection(psRemoveType);
+		closeConnection(psInserType);
+		closeConnection(connection);
 	}
 }

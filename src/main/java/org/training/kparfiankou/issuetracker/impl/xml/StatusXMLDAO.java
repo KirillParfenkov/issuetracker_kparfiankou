@@ -59,4 +59,25 @@ public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO {
 
 		return null; // think here and there.
 	}
+
+	@Override
+	public Status getStatus(String nameStatus) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void removeStatus(int id) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void insertStatus(String nameStatus) {
+		// TODO Auto-generated method stub
+	}
 }
