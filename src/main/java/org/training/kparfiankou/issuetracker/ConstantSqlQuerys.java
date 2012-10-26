@@ -53,6 +53,21 @@ public final class ConstantSqlQuerys {
 	 */
 	public static final String DELETE_RESOLUTION_BY_ID = "DELETE FROM Resolutions WHERE id = ? ;";
 
+	/**
+	 * Selects all priorities of issues.
+	 */
+	public static final String SELECT_PRIORITYS = "SELECT * FROM Prioritys;";
+
+	/**
+	 * Insert new type in table priority.
+	 */
+	public static final String INSERT_PRIORITY = "INSERT INTO Prioritys (name) VALUES (?);";
+
+	/**
+	 * Delete priority by id.
+	 */
+	public static final String DELETE_PRIORITY_BY_ID = "DELETE FROM Prioritys WHERE id = ? ;";
+
 	private ConstantSqlQuerys() {
 		// Prevent instantiation
 	}
