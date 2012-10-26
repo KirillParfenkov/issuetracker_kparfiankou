@@ -62,4 +62,9 @@ public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO {
 
 		return null;
 	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+	}
 }

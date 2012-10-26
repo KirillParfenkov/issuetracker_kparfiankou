@@ -68,6 +68,17 @@ public final class ConstantSqlQuerys {
 	 */
 	public static final String DELETE_PRIORITY_BY_ID = "DELETE FROM Prioritys WHERE id = ? ;";
 
+	/**
+	 * Select all projects.
+	 */
+	public static final String SELECT_PROJECTS = "SELECT * FROM Projects";
+
+	/**
+	 * Select project by id.
+	 */
+	public static final String SELECT_PROJECT_BY_ID = "SELECT * FROM Projects "
+													+ "WHERE id = ? ;";
+
 	private ConstantSqlQuerys() {
 		// Prevent instantiation
 	}
