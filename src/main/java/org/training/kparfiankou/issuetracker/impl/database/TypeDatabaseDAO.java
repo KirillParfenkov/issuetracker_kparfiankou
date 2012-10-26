@@ -123,11 +123,11 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	@Override
 	public void insertType(String nameType) {
 
-		final int NUM_NAME_TYPE = 1;
+		final int numNameType = 1;
 
 		try {
 
-			psInserType.setString(NUM_NAME_TYPE, nameType);
+			psInserType.setString(numNameType, nameType);
 			psInserType.executeUpdate();
 
 		} catch (SQLException e) {
@@ -140,11 +140,11 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	@Override
 	public void removeType(int id) {
 
-		final int NUM_ID = 1;
+		final int numId = 1;
 
 		try {
 
-			psRemoveType.setInt(NUM_ID, id);
+			psRemoveType.setInt(numId, id);
 			psRemoveType.executeUpdate();
 
 		} catch (SQLException e) {

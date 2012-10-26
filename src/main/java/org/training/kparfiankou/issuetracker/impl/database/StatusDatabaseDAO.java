@@ -123,11 +123,11 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 	@Override
 	public void insertStatus(String nameStatus) {
 
-		final int NUM_NAME_STATUS = 1;
+		final int numNameStatus = 1;
 
 		try {
 
-			psInserStatus.setString(NUM_NAME_STATUS, nameStatus);
+			psInserStatus.setString(numNameStatus, nameStatus);
 			psInserStatus.executeUpdate();
 
 		} catch (SQLException e) {
@@ -140,11 +140,11 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 	@Override
 	public void removeStatus(int id) {
 
-		final int NUM_ID = 1;
+		final int numId = 1;
 
 		try {
 
-			psRemoveStatus.setInt(NUM_ID, id);
+			psRemoveStatus.setInt(numId, id);
 			psRemoveStatus.executeUpdate();
 
 		} catch (SQLException e) {
