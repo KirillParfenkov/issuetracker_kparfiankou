@@ -115,12 +115,12 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 
 		return null;
 	}
-/*
+
 	@Override
 	public void close() {
 
 		closeConnection(psSelectProjects);
 		closeConnection(psSelectProjectById);
 		closeConnection(connection);
-	}*/
+	}
 }

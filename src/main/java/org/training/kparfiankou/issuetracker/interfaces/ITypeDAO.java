@@ -9,15 +9,36 @@ import org.training.kparfiankou.issuetracker.beans.Type;
  *
  */
 public interface ITypeDAO {
+
 	/**
-	 *
 	 * @return List of types.
 	 */
 	List<Type> getListType();
+
 	/**
-	 *
 	 * @param id Unique object identifier.
 	 * @return Object of class Type.
 	 */
 	Type getType(int id);
+
+	/**
+	 * @param nameType name of type
+	 * @return Object of class Type
+	 */
+	Type getType(String nameType);
+
+	/**
+	 * Close connection with Database.
+	 */
+	void close();
+
+	/**
+	 * @param id of type
+	 */
+	void removeType(int id);
+
+	/**
+	 * @param nameType name of type
+	 */
+	void insertType(String nameType);
 }

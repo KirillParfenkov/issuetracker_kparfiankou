@@ -59,7 +59,7 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 
 		return null; // think here and there
 	}
-/*
+
 	@Override
 	public Type getType(String nameType) {
 		// TODO Auto-generated method stub
@@ -79,5 +79,5 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 	@Override
 	public void insertType(String nameType) {
 		// TODO Auto-generated method stub
-	}*/
+	}
 }

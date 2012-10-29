@@ -103,7 +103,7 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 
 		return null;
 	}
-/*
+
 	@Override
 	public Status getStatus(String name) {
 
@@ -160,5 +160,5 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 		closeConnection(psRemoveStatus);
 		closeConnection(psInserStatus);
 		closeConnection(connection);
-	}*/
+	}
 }

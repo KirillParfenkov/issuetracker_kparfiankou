@@ -20,4 +20,25 @@ public interface IResolutionDAO {
 	 * @return Object of class Resolution.
 	 */
 	Resolution getResolution(int id);
+
+	/**
+	 * @param nameResolution name of resolution
+	 * @return Object of class Resolution
+	 */
+	Resolution getResolution(String nameResolution);
+
+	/**
+	 * Close connection with Database.
+	 */
+	void close();
+
+	/**
+	 * @param id of resolution
+	 */
+	void removeResolution(int id);
+
+	/**
+	 * @param nameResolution name of resolution
+	 */
+	void insertResolution(String nameResolution);
 }

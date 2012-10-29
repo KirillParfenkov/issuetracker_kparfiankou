@@ -9,15 +9,21 @@ import org.training.kparfiankou.issuetracker.beans.Project;
  *
  */
 public interface IProjectDAO {
+
 	/**
-	 *
 	 * @return List of existing.
 	 */
 	List<Project> getListProject();
+
 	/**
-	 *
 	 * @param id Unique object identifier.
 	 * @return Object if class Project.
 	 */
 	Project getProject(int id);
+
+	/**
+	 * Closes DAO.
+	 */
+	void close();
+
 }

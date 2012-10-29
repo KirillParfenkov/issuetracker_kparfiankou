@@ -22,10 +22,11 @@ public interface IUserDAO {
 	User getUser(int id);
 
 	/**
-	 *
 	 * @param emailAddres email address of user.
 	 * @param password password of user.
 	 * @return Object of class of class User.
 	 */
 	User authenticate(String emailAddres, String password);
+	
+	
 }

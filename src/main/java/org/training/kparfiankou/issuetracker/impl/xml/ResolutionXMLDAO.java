@@ -59,7 +59,7 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 
 		return null; // think here and there.
 	}
-/*
+
 	@Override
 	public Resolution getResolution(String nameResolution) {
 		// TODO Auto-generated method stub
@@ -79,5 +79,5 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 	@Override
 	public void insertResolution(String nameResolution) {
 		// TODO Auto-generated method stub
-	}*/
+	}
 }

@@ -102,7 +102,7 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 
 		return null;
 	}
-	/*
+
 	@Override
 	public Priority getPriority(String namePriority) {
 
@@ -158,5 +158,5 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 		} finally {
 			isPrioritysModified = true;
 		}
-	}*/
+	}
 }
