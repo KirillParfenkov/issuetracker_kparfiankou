@@ -59,7 +59,7 @@ public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO {
 
 		return null; // think here and there.
 	}
-
+/*
 	@Override
 	public Status getStatus(String nameStatus) {
 		// TODO Auto-generated method stub
@@ -79,5 +79,5 @@ public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO {
 	@Override
 	public void insertStatus(String nameStatus) {
 		// TODO Auto-generated method stub
-	}
+	}*/
 }

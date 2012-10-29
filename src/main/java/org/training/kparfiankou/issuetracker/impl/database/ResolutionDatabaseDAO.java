@@ -102,7 +102,7 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 
 		return null;
 	}
-
+/*
 	@Override
 	public Resolution getResolution(String nameResolution) {
 
@@ -158,5 +158,5 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 		} finally {
 			isResolutionsModified = true;
 		}
-	}
+	}*/
 }

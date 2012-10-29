@@ -40,6 +40,11 @@ public final class Constants {
 	 */
 	public static final String  DATE_PATTERN = "dd.MM.yyyy";
 
+	/**
+	 * constant MDC key for log.
+	 */
+	public static final String KEY_SETVER_CONTEXT = "server.context";
+
 	private Constants() {
 		 // Prevent instantiation
 	}

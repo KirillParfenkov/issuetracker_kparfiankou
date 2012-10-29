@@ -103,7 +103,7 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 
 		return null;
 	}
-
+/*
 	@Override
 	public Type getType(String name) {
 
@@ -160,5 +160,5 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 		closeConnection(psRemoveType);
 		closeConnection(psInserType);
 		closeConnection(connection);
-	}
+	}*/
 }
