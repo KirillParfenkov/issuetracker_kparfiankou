@@ -35,7 +35,6 @@ public class MainController extends AbstractController {
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		String errorMesage = (String) request.getAttribute(Constants.KEY_ERROR_MESAGE);

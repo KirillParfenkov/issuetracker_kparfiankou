@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 /**
  *
  * @author parf
@@ -20,9 +21,7 @@ public abstract class AbstractDatabaseDAO {
 	private static final String DB_ADMIN_PASS = "@erbnruqp";
 	private static final String ERROR_MESAGE = "Can't close connection.";
 
-
 	/**
-	 *
 	 * @return Connection
 	 */
 	protected Connection getConnection() {

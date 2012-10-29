@@ -3,6 +3,7 @@ package org.training.kparfiankou.issuetracker.impl.xml;
 import java.io.IOException;
 import java.util.List;
 
+import org.training.kparfiankou.issuetracker.beans.Role;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.impl.xml.handlers.UserPasswordXMLHandler;
 import org.training.kparfiankou.issuetracker.impl.xml.handlers.UserXMLHandler;
@@ -87,5 +88,22 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 		}
 
 		return passwordHandler.getUser();
+	}
+
+	@Override
+	public void inserUser(String lastName, String firstName, Role role,
+			String emailAddress, String password) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public User getUser(String emailAddress) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeUser(int id) {
+		// TODO Auto-generated method stub
 	}
 }
