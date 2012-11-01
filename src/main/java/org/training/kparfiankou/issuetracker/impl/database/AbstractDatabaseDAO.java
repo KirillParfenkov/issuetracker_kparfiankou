@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.training.kparfiankou.issuetracker.ConstantSqlQuerys;
+
 
 /**
  *
@@ -25,11 +27,13 @@ public abstract class AbstractDatabaseDAO {
 	 * @return Connection
 	 */
 	protected Connection getConnection() {
-
+		
+		Connection connection;
 		try {
 
 			Class.forName(DB_DRIVER);
-			return DriverManager.getConnection(PATH_DB, DB_ADMIN_NAME, DB_ADMIN_PASS);
+			connection = DriverManager.getConnection(PATH_DB, DB_ADMIN_NAME, DB_ADMIN_PASS);
+			return connection;
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

@@ -140,6 +140,9 @@ public final class ConstantSqlQuerys {
 														  + "WHERE (emailAddress = ? ) "
 														  	+ "AND (password = ? ) ;";
 
+	public static final String SELECT_ISSUES = "SELECT * FROM Issues;";
+
+
 	private ConstantSqlQuerys() {
 		// Prevent instantiation
 	}
