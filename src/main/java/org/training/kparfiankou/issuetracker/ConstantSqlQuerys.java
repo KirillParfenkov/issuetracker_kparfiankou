@@ -140,7 +140,15 @@ public final class ConstantSqlQuerys {
 														  + "WHERE (emailAddress = ? ) "
 														  	+ "AND (password = ? ) ;";
 
+	/**
+	 * Selet issues.
+	 */
 	public static final String SELECT_ISSUES = "SELECT * FROM Issues;";
+
+	/**
+	 * Select issue by id.
+	 */
+	public static final String SELECT_ISSUE_BY_ID = "";
 
 
 	private ConstantSqlQuerys() {

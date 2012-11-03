@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.training.kparfiankou.issuetracker.ConstantSqlQuerys;
 
 
 /**
@@ -27,7 +26,7 @@ public abstract class AbstractDatabaseDAO {
 	 * @return Connection
 	 */
 	protected Connection getConnection() {
-		
+
 		Connection connection;
 		try {
 

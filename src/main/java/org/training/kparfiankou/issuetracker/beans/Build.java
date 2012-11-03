@@ -30,6 +30,7 @@ public class Build extends AbstractEntity {
 	public String getName() {
 		return name;
 	}
+
 	/**
 	 * @param name the name to set
 	 */

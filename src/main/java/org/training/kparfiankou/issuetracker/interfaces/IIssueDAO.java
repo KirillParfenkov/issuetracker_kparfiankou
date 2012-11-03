@@ -9,15 +9,22 @@ import org.training.kparfiankou.issuetracker.beans.Issue;
  *
  */
 public interface IIssueDAO {
+
 	/**
 	 *
 	 * @return List of issues
 	 */
 	List<Issue> getListIssue();
+
 	/**
 	 *
 	 * @param id Unique object identifier.
 	 * @return Object of class Issue.
 	 */
 	Issue getIssue(int id);
+
+	/**
+	 * Close all connections.
+	 */
+	void close();
 }
