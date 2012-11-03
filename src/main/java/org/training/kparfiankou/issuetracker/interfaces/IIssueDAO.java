@@ -24,6 +24,18 @@ public interface IIssueDAO {
 	Issue getIssue(int id);
 
 	/**
+	 *
+	 * @param issue object of type Issue.
+	 */
+	void insertIssue(Issue issue);
+
+	/**
+	 *
+	 * @param id of Issue.
+	 */
+	void removeIssue(int id);
+
+	/**
 	 * Close all connections.
 	 */
 	void close();

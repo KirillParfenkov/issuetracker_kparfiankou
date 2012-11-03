@@ -76,4 +76,14 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 	public void close() {
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public void insertIssue(Issue issue) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void removeIssue(int id) {
+		// TODO Auto-generated method stub
+	}
 }

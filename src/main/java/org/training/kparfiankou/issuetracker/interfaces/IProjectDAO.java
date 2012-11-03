@@ -22,8 +22,19 @@ public interface IProjectDAO {
 	Project getProject(int id);
 
 	/**
+	 *
+	 * @param project the project to be added. 
+	 */
+	void insertProject(Project project);
+
+	/**
+	 *
+	 * @param id of project. 
+	 */
+	void removeProject(int id);
+
+	/**
 	 * Closes DAO.
 	 */
 	void close();
-
 }

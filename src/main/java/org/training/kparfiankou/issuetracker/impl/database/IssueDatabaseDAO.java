@@ -31,7 +31,7 @@ import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
  */
 public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 
-	private static final String ISSUE_ID = "Issues.id";
+	private static final String ISSUE_ID = "id";
 	private static final String STATUS_ID = "statusId";
 	private static final String TYPE_ID = "typeId";
 	private static final String PRIOTIRY_ID = "priorityId";
@@ -52,7 +52,8 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	private PreparedStatement psSelectIssues;
 	private PreparedStatement psSelectIssueById;
 	private PreparedStatement psSelectMaxId;
-
+	private PreparedStatement psInsertIssue;
+	private PreparedStatement psRemoveIssue;
 
 	private IStatusDAO statusDAO;
 	private ITypeDAO typeDAO;
@@ -89,6 +90,8 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 
 		psSelectIssues = connection.prepareStatement(ConstantSqlQuerys.SELECT_ISSUES);
 		psSelectIssueById = connection.prepareStatement(ConstantSqlQuerys.SELECT_ISSUE_BY_ID);
+		psInsertIssue = connection.prepareStatement(ConstantSqlQuerys.INSERT_ISSUE);
+		psRemoveIssue = connection.prepareStatement(ConstantSqlQuerys.DELETE_ISSUE);
 		psSelectMaxId = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID);
 		psSelectMaxId.setString(numDbTableUsers, DB_TABLE_NAME);
 
@@ -170,7 +173,34 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
+	public void insertIssue(Issue issue){
+		
+	}
+
+	@Override
+	public void removeIssue(int id){
+
+		final int numId = 1;
+
+		try {
+
+			psRemoveIssue.setInt(numId, id);
+			psRemoveIssue.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public void close() {
+
+		statusDAO.close();
+		typeDAO.close();
+		priorityDAO.close();
+		userDAO.close();
+		projectDAO.close();
+		resolutionDAO.close();
 
 		closeConnection(psSelectIssues);
 		closeConnection(psSelectIssueById);

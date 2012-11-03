@@ -83,6 +83,15 @@ public final class ConstantSqlQuerys {
 	 */
 	public static final String SELECT_PROJECT_BY_ID = "SELECT * FROM Projects "
 													+ "WHERE id = ? ;";
+	/**
+	 * Insert new project.
+	 */
+	public static final String INSERT_PROJECT = "";
+
+	/**
+	 * Delete project.
+	 */
+	public static final String DELETE_PROJECT = "DELETE FROM Projects WHERE id = ? ;";
 
 	/**
 	 * Select all Users.
@@ -148,8 +157,18 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Select issue by id.
 	 */
-	public static final String SELECT_ISSUE_BY_ID = "";
+	public static final String SELECT_ISSUE_BY_ID = "SELECT * FROM Issues "
+												  + "WHERE id = ? ;";
 
+	/**
+	 * Insert new issue.
+	 */
+	public static final String INSERT_ISSUE = "";
+
+	/**
+	 * Delete issue.
+	 */
+	public static final String DELETE_ISSUE = "DELETE FROM Issues WHERE id = ? ;";
 
 	private ConstantSqlQuerys() {
 		// Prevent instantiation
