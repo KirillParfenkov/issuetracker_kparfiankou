@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.training.kparfiankou.issuetracker.ConstantSqlQuerys;
+import org.training.kparfiankou.issuetracker.beans.Build;
 import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
 import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
@@ -29,6 +30,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 	private PreparedStatement psSelectProjects;
 	private PreparedStatement psSelectProjectById;
 	private PreparedStatement psInsertProject;
+	private PreparedStatement psInsertBuildProject;
 	private PreparedStatement psRemoveProject;
 
 	private IUserDAO userDAO;
@@ -45,6 +47,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 			psSelectProjects = connection.prepareStatement(ConstantSqlQuerys.SELECT_PROJECTS);
 			psSelectProjectById = connection.prepareStatement(ConstantSqlQuerys.SELECT_PROJECT_BY_ID);
 			psInsertProject = connection.prepareStatement(ConstantSqlQuerys.INSERT_PROJECT);
+			psInsertBuildProject = connection.prepareStatement(ConstantSqlQuerys.INSERT_BUILD_PROJECT);
 			psRemoveProject = connection.prepareStatement(ConstantSqlQuerys.DELETE_PROJECT);
 
 			projects = new ArrayList<Project>();
@@ -121,7 +124,36 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 	}
 
 	public void insertProject(Project project){
-		
+
+		final int numId = 1;
+		final int numName = 2;
+		final int numMenagerId = 3;
+		final int numDescription = 4;
+		final int numBuildId = 1;
+		final int numBuildProjectId = 2;
+		final int numBuildName = 3;
+
+		try {
+
+			psInsertProject.setLong(numId, project.getId());
+			psInsertProject.setString(numName, project.getName());
+			psInsertProject.setLong(numMenagerId, project.getManager().getId());
+			psInsertProject.setString(numDescription, project.getDescription());
+			psInsertProject.executeUpdate();
+
+			List<Build> builds = project.getBuilds();
+
+			for(Build build: builds) {
+
+				psInsertBuildProject.setLong(numBuildId, build.getId());
+				psInsertBuildProject.setLong(numBuildProjectId, project.getId());
+				psInsertBuildProject.setString(numBuildName, build.getName());
+				psInsertBuildProject.executeUpdate();
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void removeProject(int id){
@@ -146,6 +178,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		closeConnection(psSelectProjects);
 		closeConnection(psSelectProjectById);
 		closeConnection(psInsertProject);
+		closeConnection(psInsertBuildProject);
 		closeConnection(psRemoveProject);
 		closeConnection(connection);
 	}

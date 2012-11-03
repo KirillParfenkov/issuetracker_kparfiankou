@@ -86,7 +86,12 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Insert new project.
 	 */
-	public static final String INSERT_PROJECT = "";
+	public static final String INSERT_PROJECT = "INSERT INTO Projects VALUES (?,?,?,?);";
+
+	/**
+	 * Insert new build of project.
+	 */
+	public static final String INSERT_BUILD_PROJECT = "INSERT INTO Builds VALUES (?,?,?);";
 
 	/**
 	 * Delete project.
@@ -163,7 +168,7 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Insert new issue.
 	 */
-	public static final String INSERT_ISSUE = "";
+	public static final String INSERT_ISSUE = "INSERT INTO Issues VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	/**
 	 * Delete issue.

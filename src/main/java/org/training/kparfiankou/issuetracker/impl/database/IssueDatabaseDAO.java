@@ -1,6 +1,7 @@
 package org.training.kparfiankou.issuetracker.impl.database;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -174,7 +175,44 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 
 	@Override
 	public void insertIssue(Issue issue){
-		
+
+		final int numId = 1;
+		final int numStatusId = 2;
+		final int numTypeId = 3;
+		final int numPriorityId = 4;
+		final int numProjectId = 5;
+		final int numBuildId = 6;
+		final int numAssigneeId = 7;
+		final int numCreateDate = 8;
+		final int numCreaterId = 9;
+		final int numModifyDate = 10;
+		final int numLastModifyerId = 11;
+		final int numResolutionId = 12;
+		final int numSummary = 13;
+		final int numDescription = 14;
+
+		try {
+
+			psInsertIssue.setLong(numId, issue.getId());
+			psInsertIssue.setLong(numStatusId, issue.getStatus().getId());
+			psInsertIssue.setLong(numTypeId, issue.getType().getId());
+			psInsertIssue.setLong(numPriorityId, issue.getPriority().getId());
+			psInsertIssue.setLong(numProjectId, issue.getProject().getId());
+			psInsertIssue.setLong(numBuildId, issue.getBuild().getId());
+			psInsertIssue.setLong(numAssigneeId, issue.getAssignee().getId());
+			psInsertIssue.setDate(numCreateDate, (Date) issue.getCreateDate());
+			psInsertIssue.setLong(numCreaterId, issue.getCreater().getId());
+			psInsertIssue.setDate(numModifyDate, (Date) issue.getModifyDate());
+			psInsertIssue.setLong(numLastModifyerId, issue.getLastModifier().getId());
+			psInsertIssue.setLong(numResolutionId, issue.getResolution().getId());
+			psInsertIssue.setString(numSummary, issue.getSummary());
+			psInsertIssue.setString(numDescription, issue.getDescription());
+			psInsertIssue.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override
