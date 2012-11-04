@@ -2,7 +2,6 @@ package org.training.kparfiankou.issuetracker.interfaces;
 
 import java.util.List;
 
-import org.training.kparfiankou.issuetracker.beans.Role;
 import org.training.kparfiankou.issuetracker.beans.User;
 
 /**
@@ -29,17 +28,10 @@ public interface IUserDAO {
 	User getUser(String emailAddress);
 
 	/**
-	 * @param lastName set last name new user
-	 * @param firstName set first name new user
-	 * @param role set role new user
-	 * @param emailAddress set email address new user
-	 * @param password set password new user
+	 * @param password the password of user.
+	 * @param user object of type User.
 	 */
-	void inserUser(String lastName,
-				   String firstName,
-				   Role role,
-				   String emailAddress,
-				   String password);
+	void inserUser(User user, String password);
 
 	/**
 	 * @param id if of user

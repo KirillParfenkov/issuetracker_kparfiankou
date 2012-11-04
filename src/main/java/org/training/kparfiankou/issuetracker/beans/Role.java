@@ -3,18 +3,22 @@ package org.training.kparfiankou.issuetracker.beans;
 /**
  *
  * @author parf
+ *
  */
 public enum Role {
+
 	/**
-	 * role.
+	 * Administrator.
 	 */
-	Role,
+	ADMINISTRATOR,
+
 	/**
-	 * user.
+	 * User.
 	 */
 	USER,
+
 	/**
-	 * Administractor.
+	 * Guest.
 	 */
-	ADMINISTRATOR
+	GUEST
 }

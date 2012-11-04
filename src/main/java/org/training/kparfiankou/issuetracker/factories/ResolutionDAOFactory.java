@@ -10,22 +10,15 @@ import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
  */
 public final class ResolutionDAOFactory {
 
-	private static IResolutionDAO resolutionDAO;
-
 	private ResolutionDAOFactory() {
 		// Prevent instantiation
 	}
 
 	/**
-	 *
 	 * @return IResolutionDAO
 	 */
 	public static IResolutionDAO getClassFromFactory() {
 
-		if (resolutionDAO == null) {
-			resolutionDAO = new ResolutionXMLDAO();
-		}
-		return resolutionDAO;
+		return new ResolutionXMLDAO();
 	}
-
 }

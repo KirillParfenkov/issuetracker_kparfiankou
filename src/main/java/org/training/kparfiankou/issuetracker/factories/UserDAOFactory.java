@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.xml.UserXMLDAO;
+import org.training.kparfiankou.issuetracker.impl.database.UserDatabaseDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 
 /**
@@ -10,22 +10,15 @@ import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
  */
 public final class UserDAOFactory {
 
-	private static IUserDAO userDAO;
-
 	private UserDAOFactory() {
 		// Prevent instantiation
 	}
 
 	/**
-	 *
 	 * @return IUserDAO
 	 */
 	public static IUserDAO getClassFromFactory() {
 
-		if (userDAO == null) {
-			userDAO = new UserXMLDAO();
-		}
-
-		return userDAO;
+		return new UserDatabaseDAO();
 	}
 }

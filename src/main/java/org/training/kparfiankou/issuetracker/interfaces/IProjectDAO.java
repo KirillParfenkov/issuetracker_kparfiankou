@@ -23,13 +23,13 @@ public interface IProjectDAO {
 
 	/**
 	 *
-	 * @param project the project to be added. 
+	 * @param project the project to be added.
 	 */
 	void insertProject(Project project);
 
 	/**
 	 *
-	 * @param id of project. 
+	 * @param id of project.
 	 */
 	void removeProject(int id);
 

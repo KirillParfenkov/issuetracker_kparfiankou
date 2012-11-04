@@ -174,7 +174,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
-	public void insertIssue(Issue issue){
+	public void insertIssue(Issue issue) {
 
 		final int numId = 1;
 		final int numStatusId = 2;
@@ -200,9 +200,9 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 			psInsertIssue.setLong(numProjectId, issue.getProject().getId());
 			psInsertIssue.setLong(numBuildId, issue.getBuild().getId());
 			psInsertIssue.setLong(numAssigneeId, issue.getAssignee().getId());
-			psInsertIssue.setDate(numCreateDate, (Date) issue.getCreateDate());
+			psInsertIssue.setDate(numCreateDate, new Date(issue.getCreateDate().getTime()));
 			psInsertIssue.setLong(numCreaterId, issue.getCreater().getId());
-			psInsertIssue.setDate(numModifyDate, (Date) issue.getModifyDate());
+			psInsertIssue.setDate(numModifyDate, new Date(issue.getModifyDate().getTime()));
 			psInsertIssue.setLong(numLastModifyerId, issue.getLastModifier().getId());
 			psInsertIssue.setLong(numResolutionId, issue.getResolution().getId());
 			psInsertIssue.setString(numSummary, issue.getSummary());
@@ -216,7 +216,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
-	public void removeIssue(int id){
+	public void removeIssue(int id) {
 
 		final int numId = 1;
 

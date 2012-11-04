@@ -18,7 +18,6 @@ import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
  */
 public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 
-	// function for User!
 	private static final String COL_USER_ID = "Users.id";
 	private static final String COL_FIRST_NAME = "firstName";
 	private static final String COL_LAST_NAME = "lastName";
@@ -34,11 +33,12 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 	private PreparedStatement psSelecUserByName;
 	private PreparedStatement psSelecAuthenticateUser;
 	private PreparedStatement psSelectId;
+	private PreparedStatement psSelecRoleId;
 
 	/**
 	 * default constructor.
 	 */
-	UserDatabaseDAO() {
+	public UserDatabaseDAO() {
 
 		try {
 
@@ -47,12 +47,11 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			closeConnection(connection);
 		}
 	}
 
-	private int getMaxIdexId() {
+
+/*	private int getMaxIdexId() {
 
 		final String collumIdName = "id";
 
@@ -72,22 +71,59 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 		}
 
 		return 0;
-	}
+	}*/
 
 	private void initQuerys() throws SQLException {
 
-		int numDbTableUsers = 1;
+		final int numDbName = 1;
 
 		psInserUser = connection.prepareStatement(ConstantSqlQuerys.INSERT_USER);
 		psRemoveUser = connection.prepareStatement(ConstantSqlQuerys.DELETE_USER_BY_ID);
-		psSelecAuthenticateUser = connection.prepareStatement(ConstantSqlQuerys.SELECT_AUTHENTICATION_USER);
+		psSelecAuthenticateUser = connection.prepareStatement(ConstantSqlQuerys.SELECT_AUTH_USER);
 		psSelecUsers =  connection.prepareStatement(ConstantSqlQuerys.SELECT_USERS);
 		psSelecUserById =  connection.prepareStatement(ConstantSqlQuerys.SELECT_USER_BY_ID);
 		psSelecUserByName =  connection.prepareStatement(ConstantSqlQuerys.SELECT_USER_BY_NAME);
 		psSelectId = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID);
-		psSelectId.setString(numDbTableUsers, DB_TABLE_NAME);
+		psSelectId.setString(numDbName, DB_TABLE_NAME);
+		psSelecRoleId = connection.prepareStatement(ConstantSqlQuerys.SELECT_ROLE_BY_NAME);
 	}
 
+	private User pickUser(ResultSet resultSet) throws SQLException {
+
+		User user = new User(resultSet.getInt(COL_USER_ID));
+		user.setFirstName(resultSet.getString(COL_FIRST_NAME));
+		user.setLastName(resultSet.getString(COL_LAST_NAME));
+		user.setEmailAddress(COL_EMAIL_ADDRESS);
+		user.setRole(Role.valueOf(resultSet.getString(COL_ROLE_NAME)));
+
+		return user;
+	}
+
+	private int getRoleId(String name) {
+
+		final int numName = 1;
+		final String roleId = "id";
+
+		ResultSet resultSet = null;
+		int result = -1;
+
+		try {
+
+			psSelecRoleId.setString(numName, name);
+			resultSet = psSelecRoleId.executeQuery();
+
+			if (resultSet.next()) {
+
+				result = resultSet.getInt(roleId);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+
+		return result;
+	}
 
 	@Override
 	public List<User> getListUser() {
@@ -99,15 +135,10 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 
 			resultSet = psSelecUsers.executeQuery();
 			users = new ArrayList<User>();
-			User user;
+
 			while (resultSet.next()) {
 
-				user = new User(resultSet.getInt(COL_USER_ID));
-				user.setFirstName(resultSet.getString(COL_FIRST_NAME));
-				user.setLastName(resultSet.getString(COL_LAST_NAME));
-				user.setEmailAddress(COL_EMAIL_ADDRESS);
-				user.setRole(Role.valueOf(resultSet.getString(COL_ROLE_NAME)));
-
+				users.add(pickUser(resultSet));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -133,12 +164,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 
 			if (resultSet.next()) {
 
-				user = new User(resultSet.getInt(COL_USER_ID));
-				user.setFirstName(resultSet.getString(COL_FIRST_NAME));
-				user.setLastName(resultSet.getString(COL_LAST_NAME));
-				user.setEmailAddress(COL_EMAIL_ADDRESS);
-				user.setRole(Role.valueOf(resultSet.getString(COL_ROLE_NAME)));
-
+				user = pickUser(resultSet);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -164,12 +190,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 
 			if (resultSet.next()) {
 
-				user = new User(resultSet.getInt(COL_USER_ID));
-				user.setFirstName(resultSet.getString(COL_FIRST_NAME));
-				user.setLastName(resultSet.getString(COL_LAST_NAME));
-				user.setEmailAddress(COL_EMAIL_ADDRESS);
-				user.setRole(Role.valueOf(resultSet.getString(COL_ROLE_NAME)));
-
+				user = pickUser(resultSet);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -193,28 +214,23 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 
 			psSelecAuthenticateUser.setString(numEmailAddress, emailAddres);
 			psSelecAuthenticateUser.setString(numPassword, password);
-			resultSet = psSelecUserByName.executeQuery();
+			resultSet = psSelecAuthenticateUser.executeQuery();
 
 			if (resultSet.next()) {
 
-				user = new User(resultSet.getInt(COL_USER_ID));
-				user.setFirstName(resultSet.getString(COL_FIRST_NAME));
-				user.setLastName(resultSet.getString(COL_LAST_NAME));
-				user.setEmailAddress(COL_EMAIL_ADDRESS);
-				user.setRole(Role.valueOf(resultSet.getString(COL_ROLE_NAME)));
-
+				user = pickUser(resultSet);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeConnection(resultSet);
 		}
-		return null;
+
+		return user;
 	}
 
 	@Override
-	public void inserUser(String lastName, String firstName, Role role,
-			String emailAddress, String password) {
+	public void inserUser(User user, String password) {
 
 		final int numId = 1;
 		final int numLastName = 2;
@@ -227,12 +243,11 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 
 		try {
 
-			int maxId = getMaxIdexId();
-			psInserUser.setInt(numId, ++maxId);
-			psInserUser.setString(numLastName, lastName);
-			psInserUser.setString(numFirtName, firstName);
-			psInserUser.setString(numRole, role.toString());
-			psInserUser.setString(numEmailAddress, emailAddress);
+			psInserUser.setLong(numId, user.getId());
+			psInserUser.setString(numLastName, user.getLastName());
+			psInserUser.setString(numFirtName, user.getFirstName());
+			psInserUser.setLong(numRole, getRoleId(user.getRole().toString()));
+			psInserUser.setString(numEmailAddress, user.getEmailAddress());
 			psInserUser.setString(numPassword, password);
 			psInserUser.executeUpdate();
 
@@ -253,15 +268,16 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 			psRemoveUser.setInt(numId, id);
 			psRemoveUser.executeUpdate();
 
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
+
 	@Override
 	public void close() {
 
-		closeConnection(connection);
 		closeConnection(psInserUser);
 		closeConnection(psRemoveUser);
 		closeConnection(psSelecUsers);
@@ -269,5 +285,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 		closeConnection(psSelecUserByName);
 		closeConnection(psSelecAuthenticateUser);
 		closeConnection(psSelectId);
+		closeConnection(psSelecRoleId);
+		closeConnection(connection);
 	}
 }

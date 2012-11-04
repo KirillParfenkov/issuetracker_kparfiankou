@@ -123,7 +123,8 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		return null;
 	}
 
-	public void insertProject(Project project){
+	@Override
+	public void insertProject(Project project) {
 
 		final int numId = 1;
 		final int numName = 2;
@@ -143,7 +144,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 
 			List<Build> builds = project.getBuilds();
 
-			for(Build build: builds) {
+			for (Build build: builds) {
 
 				psInsertBuildProject.setLong(numBuildId, build.getId());
 				psInsertBuildProject.setLong(numBuildProjectId, project.getId());
@@ -156,7 +157,8 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		}
 	}
 
-	public void removeProject(int id){
+	@Override
+	public void removeProject(int id) {
 
 		final int numId = 1;
 

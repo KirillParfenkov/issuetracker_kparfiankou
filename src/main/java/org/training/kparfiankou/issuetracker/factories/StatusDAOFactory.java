@@ -2,6 +2,7 @@ package org.training.kparfiankou.issuetracker.factories;
 
 import org.training.kparfiankou.issuetracker.impl.xml.StatusXMLDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IStatusDAO;
+
 /**
  *
  * @author parf
@@ -9,21 +10,15 @@ import org.training.kparfiankou.issuetracker.interfaces.IStatusDAO;
  */
 public final class StatusDAOFactory {
 
-	private static IStatusDAO statusDAO;
-
 	private StatusDAOFactory() {
 		// Prevent instantiation
 	}
 
 	/**
-	 *
 	 * @return IStatusDAO
 	 */
 	public static IStatusDAO getClassFromFactory() {
 
-		if (statusDAO == null) {
-			statusDAO = new StatusXMLDAO();
-		}
-		return statusDAO;
+		return new StatusXMLDAO();
 	}
 }

@@ -11,7 +11,7 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Select max id.
 	 */
-	public static final String SELECT_MAX_ID = "SELECT MAX(id) FROM ? ;";
+	public static final String SELECT_MAX_ID = "SELECT MAX(id) FROM ?;";
 
 	/**
 	 * Selects all types of issues.
@@ -103,8 +103,8 @@ public final class ConstantSqlQuerys {
 	 */
 	public static final String SELECT_USERS = "SELECT Users.id, "
 												   + "firstName, "
-												   + "lastName "
-												   + "Roles.name "
+												   + "lastName, "
+												   + "Roles.name, "
 												   + "emailAddress "
 											+ "FROM Users INNER JOIN Roles "
 											+ "ON Users.roleId = Roles.id ;";
@@ -112,22 +112,24 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Select a user by id.
 	 */
-	public static final String SELECT_USER_BY_ID = "SELECT firstName, "
+	public static final String SELECT_USER_BY_ID = "SELECT Users.id, "
+														+ "firstName, "
 														+ "lastName, "
-														+ "Roles.name "
+														+ "Roles.name, "
 														+ "emailAddress "
-												 + "FROM User INNER JOIN Roles "
+												 + "FROM Users INNER JOIN Roles "
 												 + "ON Users.roleId = Roles.id "
 												 + "WHERE Users.id = ? ;";
 
 	/**
 	 * Select a user by name.
 	 */
-	public static final String SELECT_USER_BY_NAME = "SELECT firstName, "
+	public static final String SELECT_USER_BY_NAME = "SELECT Users.id, "
+														+ "firstName, "
 														+ "lastName, "
-														+ "Roles.name "
+														+ "Roles.name, "
 														+ "emailAddress "
-												   + "FROM User INNER JOIN Roles "
+												   + "FROM Users INNER JOIN Roles "
 												   + "ON Users.roleId = Roles.id "
 												   + "WHERE Users.name = ? ;";
 
@@ -139,20 +141,20 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Delete user by id.
 	 */
-	public static final String DELETE_USER_BY_ID = "DELETE FROM Types WHERE id = ? ;";
+	public static final String DELETE_USER_BY_ID = "DELETE FROM Users WHERE id = ? ;";
 
 	/**
 	 * Select user by email address and password.
 	 */
-	public static final String SELECT_AUTHENTICATION_USER = "SELECT Users.id, "
-																 + "firstName, "
-																 + "lastName "
-																 + "Roles.name "
-																 + "emailAddress "
-														  + "FROM Users INNER JOIN Roles "
-														  + "ON Users.roleId = Roles.id "
-														  + "WHERE (emailAddress = ? ) "
-														  	+ "AND (password = ? ) ;";
+	public static final String SELECT_AUTH_USER = "SELECT Users.id, "
+													   + "firstName, "
+													   + "lastName, "
+													   + "Roles.name, "
+													   + "emailAddress "
+											    + "FROM Users INNER JOIN Roles "
+											    + "ON Users.roleId = Roles.id "
+											    + "WHERE (emailAddress = ? ) "
+												  + "AND (password = ? ) ;";
 
 	/**
 	 * Selet issues.
@@ -174,6 +176,12 @@ public final class ConstantSqlQuerys {
 	 * Delete issue.
 	 */
 	public static final String DELETE_ISSUE = "DELETE FROM Issues WHERE id = ? ;";
+
+	/**
+	 * Select if of role by name.
+	 */
+	public static final String SELECT_ROLE_BY_NAME = "SELECT * FROM Roles WHERE name = ? ;";
+
 
 	private ConstantSqlQuerys() {
 		// Prevent instantiation

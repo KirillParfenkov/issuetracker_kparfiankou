@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.beans.User;
@@ -20,15 +21,21 @@ import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
  * Servlet implementation class MainController.
  */
 public class MainController extends AbstractController {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	private static final int MAX_COUTN_RECORD = 10;
+	private static Logger logger = null;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
     public MainController() {
         super();
+    }
+
+    @Override
+    public void init() {
+    	logger = Logger.getLogger(LoginController.class);
     }
 
     @Override
@@ -40,7 +47,7 @@ public class MainController extends AbstractController {
 		String errorMesage = (String) request.getAttribute(Constants.KEY_ERROR_MESAGE);
 
 		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
-		List<Issue> issues = issueDAO.getListIssue();
+		List<Issue> issues = issueDAO.getListIssue(); // think
 
 		out.println("<html>");
 		out.println("<head>");

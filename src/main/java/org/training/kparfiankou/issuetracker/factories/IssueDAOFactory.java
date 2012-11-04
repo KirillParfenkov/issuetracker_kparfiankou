@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.xml.IssueXMLDAO;
+import org.training.kparfiankou.issuetracker.impl.database.IssueDatabaseDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
 
 /**
@@ -15,11 +15,10 @@ public final class IssueDAOFactory {
 	}
 
 	/**
-	 *
 	 * @return IIssueDAO
 	 */
 	public static IIssueDAO getClassFromFactory() {
 
-		return new IssueXMLDAO();
+		return new IssueDatabaseDAO();
 	}
 }
