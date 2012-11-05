@@ -1,0 +1,40 @@
+#main{
+	position: absolute;
+	top: 15%;
+	left: 25%;
+	width: 50%;
+	height: 70%;
+	overflow: auto;
+}
+
+#header{
+	position: absolute;
+	top: 5%;
+	width: 90%;
+	height: 6%;
+	left: 5%;
+	right: 5%;
+	text-align: center;
+}
+
+.hElem{
+	margin-right: 15pt;
+	width:10em;
+}
+
+span{
+	margin-right: 5pt;
+}
+
+.error{ 
+	color: red;
+	text-align: center;
+}
+
+.head{
+	background: gray;
+}
+
+td{
+	border-bottom: 1pt dotted black
+}

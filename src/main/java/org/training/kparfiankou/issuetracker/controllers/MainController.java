@@ -49,7 +49,9 @@ public class MainController extends AbstractController {
 		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
 		List<Issue> issues = issueDAO.getListIssue(); // think
 
-		out.println("<html>");
+		jump(Constants.MAIN_PAGE, request, response);
+
+		/*out.println("<html>");
 		out.println("<head>");
 		out.println("<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>");
 		printCssStyle(out);
@@ -93,7 +95,7 @@ public class MainController extends AbstractController {
 		out.println("</body>");
 		out.println("</html>");
 
-		request.removeAttribute(Constants.KEY_ERROR_MESAGE);
+		request.removeAttribute(Constants.KEY_ERROR_MESAGE);*/
 	}
 
 	private void printHeader(HttpSession session, PrintWriter out) {
@@ -101,7 +103,7 @@ public class MainController extends AbstractController {
 		User user = (User) session.getAttribute(Constants.KEY_USER);
 		out.println("<div id=header>");
 		out.println("<form name=headerForm method=POST "
-				    + "action=" + Constants.JUMP_LOGIN_CONTROLLER + " >");
+				    + "action=" + Constants.LOGIN_CONTROLLER + " >");
 
 		if (user == null) {
 			out.println("<span>Email </span>");
@@ -111,7 +113,7 @@ public class MainController extends AbstractController {
 			out.println("<input class=hElem type=submit value=\"sign in\">");
 		} else {
 			out.println("Hi, " + user.getFirstName() + " " + user.getLastName());
-			out.println("<a class=hElem href=" + Constants.JUMP_LOGOUT_CONTROLLER + ">Logout</a>");
+			out.println("<a class=hElem href=" + Constants.LOGOUT_CONTROLLER + ">Logout</a>");
 		}
 		out.println("</form>");
 		out.println("</div>");

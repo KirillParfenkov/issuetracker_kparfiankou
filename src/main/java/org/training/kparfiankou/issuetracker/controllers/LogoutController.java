@@ -29,6 +29,6 @@ public class LogoutController extends AbstractController {
 		HttpSession session = request.getSession();
 		session.removeAttribute(Constants.KEY_USER);
 
-		response.sendRedirect(request.getContextPath() + Constants.JUMO_MAIN_CONTROLLER);
+		response.sendRedirect(request.getContextPath() + Constants.MAIN_CONTROLLER);
 	}
 }
