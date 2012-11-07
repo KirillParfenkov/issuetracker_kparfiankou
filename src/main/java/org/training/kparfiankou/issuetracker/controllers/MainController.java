@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.training.kparfiankou.issuetracker.Constants;
+import org.training.kparfiankou.issuetracker.ConstantsJSP;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.factories.IssueDAOFactory;
@@ -49,12 +50,13 @@ public class MainController extends AbstractController {
 		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
 		List<Issue> issues = issueDAO.getListIssue(); // think
 
+		request.setAttribute(ConstantsJSP.KEY_JSP_ISSUES, issues);
 		jump(Constants.MAIN_PAGE, request, response);
+
 
 		/*out.println("<html>");
 		out.println("<head>");
 		out.println("<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>");
-		printCssStyle(out);
 
 		out.println("</head>");
 

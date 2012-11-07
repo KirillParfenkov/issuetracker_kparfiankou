@@ -25,6 +25,16 @@
             <td>Status</td>
             <td>Summary</td>
           </tr>
+          <c:forEach var="issue" items="${issues}">
+          	<tr>
+          		<td> <c:out value="${issue.id}"/> </td>
+          		<td> <c:out value="${issue.priority}"/> </td>
+          		<td> <c:out value="${issue.assignee}"/> </td>
+          		<td> <c:out value="${issue.type}"/> </td>
+          		<td> <c:out value="${issue.status}"/> </td>
+          		<td> <c:out value="${issue.summary}"/> </td>
+          	</tr>
+          </c:forEach>
         </table>
       </div>
 

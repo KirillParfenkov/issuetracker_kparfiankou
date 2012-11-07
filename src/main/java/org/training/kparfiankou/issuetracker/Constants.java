@@ -30,27 +30,27 @@ public final class Constants {
 	/**
 	 * constant link to the controller LoginController.
 	 */
-	public static final String LOGIN_CONTROLLER = "LoginController";
+	public static final String LOGIN_CONTROLLER = "/LoginController";
 
 	/**
 	 * constant link to the controller LogoutController.
 	 */
-	public static final String LOGOUT_CONTROLLER = "LogoutController";
+	public static final String LOGOUT_CONTROLLER = "/LogoutController";
 
 	/**
 	 * constant link to the controller MainController.
 	 */
-	public static final String MAIN_CONTROLLER = "/";
+	public static final String MAIN_CONTROLLER = "/MainController";
 
 	/**
 	 * constant link to the main page.
 	 */
-	public static final String MAIN_PAGE = "main.jsp";
+	public static final String MAIN_PAGE = "/main.jsp";
 
 	/**
 	 * constant link to the main page.
 	 */
-	public static final String HEADER_PAGE = "header.jsp";
+	public static final String HEADER_PAGE = "/header.jsp";
 
 	/**
 	 * constant date pattern.
