@@ -63,5 +63,6 @@ public class LoginController extends AbstractController {
 
 		jump(Constants.MAIN_CONTROLLER, request, response);
 
+
 	}
 }

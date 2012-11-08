@@ -30,5 +30,6 @@ public class LogoutController extends AbstractController {
 		session.removeAttribute(Constants.KEY_USER);
 
 		response.sendRedirect(request.getContextPath() + Constants.MAIN_CONTROLLER);
+
 	}
 }

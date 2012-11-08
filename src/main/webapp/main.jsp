@@ -15,6 +15,11 @@
    	  <div id="header">
 			<jsp:include page="<%= Constants.HEADER_PAGE %>"/>
 	  </div>
+	  
+	  <c:if test="${not empty errorMesage}">
+	  	<div class=error> <c:out value="${errorMesage}"></c:out></div>
+	  </c:if>
+	  
       <div id=main>
         <table>
           <tr class=head>
@@ -37,6 +42,5 @@
           </c:forEach>
         </table>
       </div>
-
     </body>
 </html>
