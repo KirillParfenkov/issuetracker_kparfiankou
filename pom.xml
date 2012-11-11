@@ -7,6 +7,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>JEE training project implementation by Kiryl Parfiankou</name>
 	<dependencies>
+	 	<dependency>
+      		<groupId>javax.servlet.jsp</groupId>
+      		<artifactId>jsp-api</artifactId>
+      		<version>2.2</version>
+      		<scope>provided</scope>
+    	</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>

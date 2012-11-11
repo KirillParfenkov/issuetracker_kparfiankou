@@ -36,6 +36,11 @@ public class Project extends AbstractEntity {
 		this.manager = manager;
 	}
 
+	@Override
+	public String toString() {
+		return name;
+	}
+
 	/**
 	 * @param build the build to set
 	 */

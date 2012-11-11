@@ -1,19 +1,16 @@
 package org.training.kparfiankou.issuetracker.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.ConstantsJSP;
 import org.training.kparfiankou.issuetracker.beans.Issue;
-import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.factories.IssueDAOFactory;
 import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
 
@@ -48,6 +45,7 @@ public class MainController extends AbstractController {
 
 		request.setAttribute(ConstantsJSP.KEY_JSP_ISSUES, issues);
 		jump(Constants.MAIN_PAGE, request, response);
+
 
 		request.removeAttribute(Constants.KEY_ERROR_MESAGE);
 	}

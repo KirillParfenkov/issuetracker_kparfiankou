@@ -23,9 +23,70 @@ public final class Constants {
 	public static final String KEY_INPUT_PASSWORD = "password";
 
 	/**
-	 * constant key of error mesage.
+	 * constant key of error message.
 	 */
-	public static final String KEY_ERROR_MESAGE = "errorMesage";
+	public static final String KEY_ERROR_MESAGE = "errorMessage";
+
+	/**
+	 * constant key of summary or issue.
+	 */
+	public static final String KEY_SUMMARY = "summary";
+
+	/**
+	 * constants key of description.
+	 */
+	public static final String KEY_DESCRIPTION = "description";
+
+	/**
+	 * constants key of status.
+	 */
+	public static final String KEY_STATUS = "status";
+
+	/**
+	 * constants key of type.
+	 */
+	public static final String KEY_TYPE = "type";
+
+	/**
+	 * constants key of priority.
+	 */
+	public static final String KEY_PRIORITY = "priority";
+
+	/**
+	 * constants key of project.
+	 */
+	public static final String KEY_PROJECT = "project";
+
+	/**
+	 * constants key of build.
+	 */
+	public static final String KEY_BUILD = "build";
+
+	/**
+	 * constants key of assignee.
+	 */
+	public static final String KEY_ASSIGNEE = "assignee";
+
+	/**
+	 * constants key of statuses.
+	 */
+	public static final String STATUSES = "statuses";
+	/**
+	 * constants key of types.
+	 */
+	public static final String TYPES = "types";
+	/**
+	 * constants key of prioritys.
+	 */
+	public static final String PRIORITYS = "prioritys";
+	/**
+	 * constants key of projects.
+	 */
+	public static final String PROJECTS = "projects";
+	/**
+	 * constants key of users.
+	 */
+	public static final String USERS = "users";
 
 	/**
 	 * constant link to the controller LoginController.
@@ -43,6 +104,11 @@ public final class Constants {
 	public static final String MAIN_CONTROLLER = "/MainController";
 
 	/**
+	 * constant link to the controller MainController.
+	 */
+	public static final String SUBMIT_ISSUE_CONTROLLER = "/SubmitIssueController";
+
+	/**
 	 * constant link to the main page.
 	 */
 	public static final String MAIN_PAGE = "/main.jsp";
@@ -51,6 +117,11 @@ public final class Constants {
 	 * constant link to the main page.
 	 */
 	public static final String HEADER_PAGE = "/header.jsp";
+
+	/**
+	 * constant link to the main page.
+	 */
+	public static final String SUBMIT_ISSUE_PAGE = "/submit_issue.jsp";
 
 	/**
 	 * constant date pattern.
