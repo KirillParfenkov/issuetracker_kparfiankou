@@ -5,13 +5,14 @@
 
 <c:url value="<%= Constants.HEADER_PAGE %>" var="urlHeaderPageJSP"/>
 <c:url value="<%= Constants.LOGIN_CONTROLLER %>" var="urlLoginController"/>
-
+<c:url value="<%= Constants.SUBMIT_ISSUE_CONTROLLER %>" var="urlSubmitInserController"/>
 
 <html>
   <head>
-    <meta hhtp-equiv='Content-Type' content='text/html' charset='utf-8'>
+      <meta hhtp-equiv='Content-Type' content='text/html' charset='utf-8'>
       <link rel="stylesheet" type="text/css" href="css/style.css">
       <title>Adding issue</title>
+      <script src="javascript/functions.js"></script>
   </head>
     <body>
    	  <div id="header">
@@ -23,7 +24,7 @@
 	  </c:if>
 
       <div id=main>
-        <form name="submitIssueForm">
+        <form name="submitIssueForm" method=POST action="${urlSubmitInserController}">
         	<table>
         		<tr>
         			<td>Summary</td>
@@ -47,22 +48,30 @@
         		</tr>
         		<tr>
         			<td>Project</td>
-        			<td><m:select name="<%= Constants.KEY_PROJECT %>" elements="<%= Constants.PROJECTS %>"/></td>
+        			<td><m:select id="projectSelect" name="<%= Constants.KEY_PROJECT %>" elements="<%= Constants.PROJECTS %>"/></td>
         		</tr>
-        		<tr>
-        			<td>Build</td> <td> 
-        							  <select>
-        							   	<option>Версия 1</option>	
-        								<option>Версия 2</option>
-        						   	  </select> 
-        						   </td>
+        		<tr class="nascent" id="buildSelect" >
+        			<td>Build</td> 
+        			<td>
+        				<select name="<%= Constants.KEY_BUILD%>">
+        				<c:forEach var="build" items="${projects[0].builds}">
+        					<option>${build}</option>
+        				</c:forEach>
+        				</select>
+        			</td>
         		</tr>
         		<tr>
         			<td>Assignee</td>
         			<td><m:select name="<%= Constants.KEY_USER %>" elements="<%= Constants.USERS %>"/></td>
         		</tr>
+        		<tr><td><input type="submit" value="add"></td></tr>
         	</table>
         </form>
       </div>
     </body>
 </html>
+
+<script>
+	var elem = document.getElementById("projectSelect");
+	elem.addEventListener("change",showBuilds);
+</script>

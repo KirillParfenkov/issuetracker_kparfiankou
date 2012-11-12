@@ -31,6 +31,10 @@ span{
 	text-align: center;
 }
 
+.nascent{
+	display: none;
+}
+
 .head{
 	background: gray;
 }

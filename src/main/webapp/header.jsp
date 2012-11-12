@@ -4,7 +4,8 @@
 
 <c:url value="<%= Constants.LOGIN_CONTROLLER %>" var="urlLoginController"/>
 <c:url value="<%= Constants.LOGOUT_CONTROLLER %>" var="urlLogoutController"/>
-<c:url value="<%= Constants.SUBMIT_ISSUE_CONTROLLER %>" var="urlSubmitController"/>
+<c:url value="<%= Constants.SUBMIT_ISSUE_CONTROLLER %>" var="urlSubmitInserController"/>
+<c:url value="<%= Constants.SUBMIT_CREATE_CONTROLLER %>" var="urlSubmitCreateController"/>
 
   <c:if test="${empty user}">
   	<form name=headerForm method=POST action="${urlLoginController}" >
@@ -19,7 +20,7 @@
   <c:if test="${not empty user}">
   	<c:out value="Hi, ${user.firstName}  ${user.lastName}"></c:out>
   	<a class=hElem href="${urlLogoutController}">Logout</a>
-  	<a class=hElem href="${urlSubmitController}">Add Issue</a>
+  	<a class=hElem href="${urlSubmitCreateController}">Add Issue</a>
 
   </c:if>
   

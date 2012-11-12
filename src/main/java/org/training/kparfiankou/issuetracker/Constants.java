@@ -104,9 +104,14 @@ public final class Constants {
 	public static final String MAIN_CONTROLLER = "/MainController";
 
 	/**
-	 * constant link to the controller MainController.
+	 * constant link to the controller SubmitIssueController.
 	 */
-	public static final String SUBMIT_ISSUE_CONTROLLER = "/SubmitIssueController";
+	public static final String SUBMIT_ISSUE_CONTROLLER = "/SubmitInsertController";
+
+	/**
+	 * constant link to the controller SubmitCreateController.
+	 */
+	public static final String SUBMIT_CREATE_CONTROLLER = "/SubmitCreateController";
 
 	/**
 	 * constant link to the main page.

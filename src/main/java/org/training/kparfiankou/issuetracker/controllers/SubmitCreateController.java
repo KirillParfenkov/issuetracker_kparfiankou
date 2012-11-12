@@ -1,7 +1,6 @@
 package org.training.kparfiankou.issuetracker.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,14 +27,14 @@ import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 /**
  * Servlet implementation class AddIssueController.
  */
-public class SubmitIssueController extends AbstractController {
+public class SubmitCreateController extends AbstractController {
 
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SubmitIssueController() {
+    public SubmitCreateController() {
         super();
     }
 
@@ -45,7 +44,7 @@ public class SubmitIssueController extends AbstractController {
 
 		IStatusDAO statusDAO = StatusDAOFactory.getClassFromFactory();
 		ITypeDAO typeDAO = TypeDAOFactory.getClassFromFactory();
-		IPriorityDAO priorityDAO= PriorityDAOFactory.getClassFromFactory();
+		IPriorityDAO priorityDAO = PriorityDAOFactory.getClassFromFactory();
 		IProjectDAO projectDAO = ProjectDAOFactory.getClassFromFacroty();
 		IUserDAO userDAO = UserDAOFactory.getClassFromFactory();
 

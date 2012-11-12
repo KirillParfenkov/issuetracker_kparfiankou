@@ -15,11 +15,11 @@
    	  <div id="header">
 			<jsp:include page="<%= Constants.HEADER_PAGE %>"/>
 	  </div>
-	  
+
 	  <c:if test="${not empty errorMessage}">
 	  	<div class=error> <c:out value="${errorMessage}"></c:out></div>
 	  </c:if>
-	  
+
       <div id=main>
         <table>
           <tr class=head>

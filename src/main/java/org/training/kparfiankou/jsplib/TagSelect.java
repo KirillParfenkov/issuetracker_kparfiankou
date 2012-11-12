@@ -19,6 +19,7 @@ public class TagSelect extends BodyTagSupport {
 	private static final long serialVersionUID = 1L;
 
 	private String elements;
+	private String id;
 	private String name;
 
 	/**
@@ -29,10 +30,31 @@ public class TagSelect extends BodyTagSupport {
 	}
 
 	/**
+	 * @param id the id to set.
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
 	 * @param elements the list of elements to set.
 	 */
 	public void setElements(String elements) {
 		this.elements = elements;
+	}
+
+	private String getParams() {
+
+		StringBuffer params = new StringBuffer();
+
+		if  (id != null) {
+			params.append(" id=");
+			params.append(id);
+		}
+		params.append(" name=");
+		params.append(name);
+
+		return params.toString();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -65,8 +87,8 @@ public class TagSelect extends BodyTagSupport {
 
 			if (list != null) {
 
-				out.println("<select name=" + name + ">");
-
+				out.println("<select " + getParams() + ">");
+				out.print("<option value=\"\" selected=\"selected\">Make a choice</option>");
 				for (AbstractEntity element: list) {
 
 					out.print("<option value=" + element.getId() + ">");
