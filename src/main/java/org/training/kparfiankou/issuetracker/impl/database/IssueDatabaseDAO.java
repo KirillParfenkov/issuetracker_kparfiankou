@@ -5,10 +5,12 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.training.kparfiankou.issuetracker.ConstantSqlQuerys;
+import org.training.kparfiankou.issuetracker.beans.AbstractEntity;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.factories.PriorityDAOFactory;
@@ -55,6 +57,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	private PreparedStatement psSelectMaxId;
 	private PreparedStatement psInsertIssue;
 	private PreparedStatement psRemoveIssue;
+	private PreparedStatement psCurrentDate;
 
 	private IStatusDAO statusDAO;
 	private ITypeDAO typeDAO;
@@ -93,9 +96,32 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 		psSelectIssueById = connection.prepareStatement(ConstantSqlQuerys.SELECT_ISSUE_BY_ID);
 		psInsertIssue = connection.prepareStatement(ConstantSqlQuerys.INSERT_ISSUE);
 		psRemoveIssue = connection.prepareStatement(ConstantSqlQuerys.DELETE_ISSUE);
+		psCurrentDate = connection.prepareStatement(ConstantSqlQuerys.SELECT_CURRENT_DATE);
 		psSelectMaxId = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID);
 		psSelectMaxId.setString(numDbTableUsers, DB_TABLE_NAME);
 
+	}
+
+	@Override
+	public java.util.Date getCurrentDate() {
+
+		final String dateColum = "NOW()";
+		java.util.Date date = null;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = psCurrentDate.executeQuery();
+			if (resultSet.next()) {
+				date = resultSet.getDate(dateColum);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+
+		return date;
 	}
 
 	/**
@@ -173,6 +199,24 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 		return null;
 	}
 
+	private void insertId(int num, AbstractEntity entity) throws SQLException {
+
+		if (entity != null) {
+			psInsertIssue.setLong(num, entity.getId());
+		} else  {
+			psInsertIssue.setNull(num, Types.BIGINT);
+		}
+	}
+
+	private void insertDate(int num, Date date) throws SQLException {
+
+		if (date != null) {
+			psInsertIssue.setDate(num, date);
+		} else {
+			psInsertIssue.setNull(num, Types.DATE);
+		}
+	}
+
 	@Override
 	public void insertIssue(Issue issue) {
 
@@ -204,7 +248,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 			psInsertIssue.setLong(numCreaterId, issue.getCreater().getId());
 			psInsertIssue.setDate(numModifyDate, new Date(issue.getModifyDate().getTime()));
 			psInsertIssue.setLong(numLastModifyerId, issue.getLastModifier().getId());
-			psInsertIssue.setLong(numResolutionId, issue.getResolution().getId());
+			insertId(numResolutionId, issue.getResolution());
 			psInsertIssue.setString(numSummary, issue.getSummary());
 			psInsertIssue.setString(numDescription, issue.getDescription());
 			psInsertIssue.executeUpdate();

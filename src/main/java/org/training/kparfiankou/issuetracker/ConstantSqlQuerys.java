@@ -182,6 +182,10 @@ public final class ConstantSqlQuerys {
 	 */
 	public static final String SELECT_ROLE_BY_NAME = "SELECT * FROM Roles WHERE name = ? ;";
 
+	/**
+	 * Select current date.
+	 */
+	public static final String SELECT_CURRENT_DATE = "SELECT NOW();";
 
 	private ConstantSqlQuerys() {
 		// Prevent instantiation

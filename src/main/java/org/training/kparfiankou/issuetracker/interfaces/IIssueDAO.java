@@ -1,5 +1,6 @@
 package org.training.kparfiankou.issuetracker.interfaces;
 
+import java.util.Date;
 import java.util.List;
 
 import org.training.kparfiankou.issuetracker.beans.Issue;
@@ -39,4 +40,9 @@ public interface IIssueDAO {
 	 * Close all connections.
 	 */
 	void close();
+
+	/**
+	 * @return current date.
+	 */
+	Date getCurrentDate();
 }

@@ -1,6 +1,7 @@
 package org.training.kparfiankou.issuetracker.impl.xml;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.training.kparfiankou.issuetracker.beans.Issue;
@@ -85,5 +86,11 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 	@Override
 	public void removeIssue(int id) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public Date getCurrentDate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

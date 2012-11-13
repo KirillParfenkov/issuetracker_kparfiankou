@@ -28,41 +28,41 @@
         	<table>
         		<tr>
         			<td>Summary</td>
-        			<td><input type="text" name="<%= Constants.KEY_SUMMARY %>"></td>
+        			<td><input type="text" name="<%=Constants.KEY_SUMMARY%>"></td>
         		</tr>
         		<tr>
         			<td>Description</td>
-        			<td><textarea rows="5" cols="45" name="<%= Constants.KEY_DESCRIPTION %>"></textarea></td>
+        			<td><textarea rows="5" cols="45" name="<%=Constants.KEY_DESCRIPTION%>"></textarea></td>
         		</tr>
         		<tr>
         			<td>Status</td>
-        			<td><m:select name="<%= Constants.KEY_STATUS %>" elements="<%= Constants.STATUSES %>"/></td>
+        			<td><m:select name="<%=Constants.KEY_STATUS%>" elements="<%=Constants.STATUSES%>"/></td>
 				</tr>
 				<tr>
         			<td>Type</td> 
-        			<td><m:select name="<%= Constants.KEY_TYPE %>" elements="<%= Constants.TYPES %>"/></td>
+        			<td><m:select name="<%=Constants.KEY_TYPE%>" elements="<%=Constants.TYPES%>"/></td>
 				</tr>
         		<tr>
         			<td>Priority</td>
-        			<td><m:select name="<%= Constants.KEY_PRIORITY %>" elements="<%= Constants.PRIORITYS %>"/></td>
+        			<td><m:select name="<%=Constants.KEY_PRIORITY%>" elements="<%=Constants.PRIORITYS%>"/></td>
         		</tr>
         		<tr>
         			<td>Project</td>
-        			<td><m:select id="projectSelect" name="<%= Constants.KEY_PROJECT %>" elements="<%= Constants.PROJECTS %>"/></td>
+        			<td><m:select id="projectSelect" name="<%=Constants.KEY_PROJECT%>" elements="<%=Constants.PROJECTS%>"/></td>
         		</tr>
         		<tr class="nascent" id="buildSelect" >
         			<td>Build</td> 
         			<td>
-        				<select name="<%= Constants.KEY_BUILD%>">
+        				<select name="<%=Constants.KEY_BUILD%>">
         				<c:forEach var="build" items="${projects[0].builds}">
-        					<option>${build}</option>
+        					<option value="${build.id}">${build}</option>
         				</c:forEach>
         				</select>
         			</td>
         		</tr>
         		<tr>
         			<td>Assignee</td>
-        			<td><m:select name="<%= Constants.KEY_USER %>" elements="<%= Constants.USERS %>"/></td>
+        			<td><m:select name="<%=Constants.KEY_ASSIGNEE%>" elements="<%=Constants.USERS%>"/></td>
         		</tr>
         		<tr><td><input type="submit" value="add"></td></tr>
         	</table>
