@@ -68,6 +68,16 @@ public final class Constants {
 	public static final String KEY_ASSIGNEE = "assignee";
 
 	/**
+	 * constant key of issue id.
+	 */
+	public static final String KEY_ISSUE_ID = "issueId";
+
+	/**
+	 * constant key of issue.
+	 */
+	public static final String KEY_ISSUE = "issue";
+
+	/**
 	 * constants key of statuses.
 	 */
 	public static final String STATUSES = "statuses";
@@ -114,6 +124,16 @@ public final class Constants {
 	public static final String SUBMIT_CREATE_CONTROLLER = "/SubmitCreateController";
 
 	/**
+	 * constant link to the controller CreateUpdateIssueController.
+	 */
+	public static final String CREATE_UPDATE_ISSUE_CONTROLLER = "/CreateUpdateIssueController";
+
+	/**
+	 * constant link to the controller InsertUpdateIssueController.
+	 */
+	public static final String INSERT_UPDATE_ISSUE_CONTROLLER = "/InsertUpdateIssueController";
+
+	/**
 	 * constant link to the main page.
 	 */
 	public static final String MAIN_PAGE = "/main.jsp";
@@ -124,14 +144,19 @@ public final class Constants {
 	public static final String HEADER_PAGE = "/header.jsp";
 
 	/**
-	 * constant link to the main page.
+	 * constant link to the submit issue page.
 	 */
 	public static final String SUBMIT_ISSUE_PAGE = "/submit_issue.jsp";
 
 	/**
+	 * constant link to the update page.
+	 */
+	public static final String UPDATE_ISSUE_PAGE = "/update_issue.jsp";
+
+	/**
 	 * constant date pattern.
 	 */
-	public static final String  DATE_PATTERN = "dd.MM.yyyy";
+	public static final String DATE_PATTERN = "dd.MM.yyyy";
 
 	/**
 	 * constant MDC key for log.

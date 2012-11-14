@@ -4,6 +4,7 @@
 
 <c:url value="<%= Constants.HEADER_PAGE %>" var="urlHeaderPageJSP"/>
 <c:url value="<%= Constants.LOGIN_CONTROLLER %>" var="urlLoginController"/>
+<c:url value="<%= Constants.CREATE_UPDATE_ISSUE_CONTROLLER %>" var="urlCreateUpdateIssueController"/>
 
 <html>
   <head>
@@ -21,6 +22,8 @@
 	  </c:if>
 
       <div id=main>
+       <form name="listIssueForm"  method="POST" action="${urlCreateUpdateIssueController}">
+       	<input type=hidden name=<%= Constants.KEY_ISSUE_ID %> value="">
         <table>
           <tr class=head>
             <td>Id</td>
@@ -32,15 +35,21 @@
           </tr>
           <c:forEach var="issue" items="${issues}">
           	<tr>
-          		<td> <c:out value="${issue.id}"/> </td>
-          		<td> <c:out value="${issue.priority}"/> </td>
-          		<td> <c:out value="${issue.assignee}"/> </td>
-          		<td> <c:out value="${issue.type}"/> </td>
-          		<td> <c:out value="${issue.status}"/> </td>
-          		<td> <c:out value="${issue.summary}"/> </td>
+          		<td> 
+          			<a href="JavaScript:document.listIssueForm.submit()" 
+					   onclick="listIssueForm.issueId.value = ${issue.id}">
+						${issue.id}
+					</a>
+				</td>
+          		<td> ${issue.priority} </td>
+          		<td> ${issue.assignee} </td>
+          		<td> ${issue.type} </td>
+          		<td> ${issue.status} </td>
+          		<td> ${issue.summary}</td>
           	</tr>
           </c:forEach>
         </table>
+       </form>
       </div>
     </body>
 </html>

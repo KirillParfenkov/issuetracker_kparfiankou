@@ -24,6 +24,11 @@ public class Resolution extends AbstractEntity {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return name;
+	}
+
 	/**
 	 * @return the name
 	 */

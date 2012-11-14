@@ -21,6 +21,7 @@ public class TagSelect extends BodyTagSupport {
 	private String elements;
 	private String id;
 	private String name;
+	private int selectedId;
 
 	/**
 	 * @param name the name to set.
@@ -34,6 +35,13 @@ public class TagSelect extends BodyTagSupport {
 	 */
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	/**
+	 * @param selectedId the selectedId to set.
+	 */
+	public void setSelectedId(String selectedId) {
+		this.selectedId = Integer.valueOf(selectedId);
 	}
 
 	/**
@@ -88,10 +96,13 @@ public class TagSelect extends BodyTagSupport {
 			if (list != null) {
 
 				out.println("<select " + getParams() + ">");
-				out.print("<option value=\"\" selected=\"selected\">Make a choice</option>");
 				for (AbstractEntity element: list) {
 
-					out.print("<option value=" + element.getId() + ">");
+					if (selectedId == element.getId()) {
+						out.print("<option selected value=" + element.getId() + ">");
+					} else {
+						out.print("<option value=" + element.getId() + ">");
+					}
 					out.print(element);
 					out.println("</option>");
 				}

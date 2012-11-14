@@ -50,7 +50,7 @@
         			<td>Project</td>
         			<td><m:select id="projectSelect" name="<%=Constants.KEY_PROJECT%>" elements="<%=Constants.PROJECTS%>"/></td>
         		</tr>
-        		<tr class="nascent" id="buildSelect" >
+        		<tr id="buildSelect" >
         			<td>Build</td> 
         			<td>
         				<select name="<%=Constants.KEY_BUILD%>">

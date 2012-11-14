@@ -6,6 +6,9 @@
 <c:url value="<%= Constants.LOGOUT_CONTROLLER %>" var="urlLogoutController"/>
 <c:url value="<%= Constants.SUBMIT_ISSUE_CONTROLLER %>" var="urlSubmitInserController"/>
 <c:url value="<%= Constants.SUBMIT_CREATE_CONTROLLER %>" var="urlSubmitCreateController"/>
+<c:url value="<%= Constants.MAIN_CONTROLLER %>" var="urlMainController"/>
+
+  <a class=hElem href="${urlMainController}">Main</a>
 
   <c:if test="${empty user}">
   	<form name=headerForm method=POST action="${urlLoginController}" >
