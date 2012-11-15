@@ -26,6 +26,7 @@
 	  </c:if>
 
       <div id=main>
+      	<form name="updateIssueForm" method=POST action="${urlInsertUpdateIssueController}">
          <table>
         	<tr>
         		<td>Id</td>
@@ -57,19 +58,19 @@
         	</tr>
         	<tr>
         		<td>Status</td>
-        		<td>${issue.status}</td>
+        		<td><m:select name="<%=Constants.KEY_STATUS%>" elements="<%=Constants.STATUSES%>" selectedId="${issue.status.id}" /></td>
         	</tr>
         	<tr>
         		<td>Type</td>
-        		<td>${issue.type}</td>
+        		<td><m:select name="<%=Constants.KEY_TYPE%>" elements="<%=Constants.TYPES%>" selectedId="${issue.type.id}" /></td>
         	</tr>
         	<tr>
         		<td>Priority</td>
-        		<td>${issue.priority}</td>
+        		<td><m:select name="<%=Constants.KEY_PRIORITY%>" elements="<%=Constants.PRIORITYS%>" selectedId="${issue.priority.id}" /></td>
         	</tr>
         	<tr>
         		<td>Project</td>
-        		<td>${issue.project}</td>
+        		<td><m:select name="<%=Constants.KEY_PROJECT%>" elements="<%=Constants.PROJECTS%>" selectedId="${issue.project.id}" /></td>
         	</tr>
         	<tr>
         		<td>Build found</td>
@@ -77,13 +78,15 @@
         	</tr>
         	<tr>
         		<td>Assignee</td>
-        		<td>${issue.assignee}</td>
+        		<td><m:select name="<%=Constants.KEY_ASSIGNEE%>" elements="<%=Constants.USERS%>" selectedId="${issue.assignee.id}" /></td>
         	</tr>
         	<tr>
         		<td>Resolution</td>
-        		<td>${issue.resolution}</td>
+        		<td><m:select name="<%=Constants.KEY_RESOLUTION%>" elements="<%=Constants.RESOLUTIONS%>" selectedId="${issue.resolution.id}" /></td>
         	</tr>
          </table>
+         <input type="submit" value="update">
+        </form>
       </div>
     </body>
 </html>

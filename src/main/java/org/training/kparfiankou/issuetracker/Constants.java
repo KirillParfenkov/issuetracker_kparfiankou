@@ -78,6 +78,11 @@ public final class Constants {
 	public static final String KEY_ISSUE = "issue";
 
 	/**
+	 * constant key of issue.
+	 */
+	public static final String KEY_RESOLUTION = "resolution";
+
+	/**
 	 * constants key of statuses.
 	 */
 	public static final String STATUSES = "statuses";
@@ -89,10 +94,17 @@ public final class Constants {
 	 * constants key of prioritys.
 	 */
 	public static final String PRIORITYS = "prioritys";
+
 	/**
 	 * constants key of projects.
 	 */
 	public static final String PROJECTS = "projects";
+
+	/**
+	 * constants key of projects.
+	 */
+	public static final String RESOLUTIONS = "resolutions";
+
 	/**
 	 * constants key of users.
 	 */
@@ -134,14 +146,44 @@ public final class Constants {
 	public static final String INSERT_UPDATE_ISSUE_CONTROLLER = "/InsertUpdateIssueController";
 
 	/**
+	 * constant link to the administration page.
+	 */
+	public static final String CREATE_ADMINISTRATION_PAGE_CONTROLLER = "/CreateAdministrationPageController";
+
+	/**
+	 * constant link to the search page.
+	 */
+	public static final String CREATE_SEARCH_PAGE_CONTROLLER = "/CreateSearchPageController";
+
+	/**
+	 * constant link to the profile page.
+	 */
+	public static final String CREATE_PROFILE_PAGE_CONTROLLER = "/CreateProfilePageController";
+
+	/**
 	 * constant link to the main page.
 	 */
 	public static final String MAIN_PAGE = "/main.jsp";
 
 	/**
-	 * constant link to the main page.
+	 * constant link to the header page.
 	 */
 	public static final String HEADER_PAGE = "/header.jsp";
+
+	/**
+	 * constant link to the administration page.
+	 */
+	public static final String ADMINISTRATION_PAGE = "/administration.jsp";
+
+	/**
+	 * constant link to the search page.
+	 */
+	public static final String SEARCH_PAGE = "/search.jsp";
+
+	/**
+	 * constant link to the profile page.
+	 */
+	public static final String PROFILE_PAGE = "/profile.jsp";
 
 	/**
 	 * constant link to the submit issue page.

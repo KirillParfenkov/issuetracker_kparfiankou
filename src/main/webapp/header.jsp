@@ -7,8 +7,13 @@
 <c:url value="<%= Constants.SUBMIT_ISSUE_CONTROLLER %>" var="urlSubmitInserController"/>
 <c:url value="<%= Constants.SUBMIT_CREATE_CONTROLLER %>" var="urlSubmitCreateController"/>
 <c:url value="<%= Constants.MAIN_CONTROLLER %>" var="urlMainController"/>
+<c:url value="<%= Constants.CREATE_ADMINISTRATION_PAGE_CONTROLLER %>" var="urlCreateAdministrationPageController"/>
+<c:url value="<%= Constants.CREATE_PROFILE_PAGE_CONTROLLER %>" var="urlCreateProfilePageController"/>
+<c:url value="<%= Constants.CREATE_SEARCH_PAGE_CONTROLLER %>" var="urlCreateSearchPageController"/>
+
 
   <a class=hElem href="${urlMainController}">Main</a>
+  <a class=hElem href="${urlCreateSearchPageController}">Search</a>
 
   <c:if test="${empty user}">
   	<form name=headerForm method=POST action="${urlLoginController}" >
@@ -23,13 +28,7 @@
   <c:if test="${not empty user}">
   	<c:out value="Hi, ${user.firstName}  ${user.lastName}"></c:out>
   	<a class=hElem href="${urlLogoutController}">Logout</a>
-  	<a class=hElem href="${urlSubmitCreateController}">Add Issue</a>
-
+  	<a class=hElem href="${urlSubmitCreateController}">Submit Issue</a>
+  	<a class=hElem href="${urlCreateProfilePageController}">Profile</a>
+  	<a class=hElem href="${urlCreateAdministrationPageController}">Administration</a>
   </c:if>
-  
-	
-			
-	
-	
-	
-
