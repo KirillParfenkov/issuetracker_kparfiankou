@@ -3,8 +3,6 @@
 <%@ taglib uri="/WEB-INF/m.tld" prefix="m"%>
 <%@ page import="org.training.kparfiankou.issuetracker.Constants"%>
 
-<c:url value="<%= Constants.CREATE_PROJECTS_LIST_PAGE_CONTROLLER %>" var="urlCreateProjectsListPageController"/>
-
 <html>
   <head>
       <meta hhtp-equiv='Content-Type' content='text/html' charset='utf-8'>
@@ -22,11 +20,20 @@
 	  </c:if>
 
       <div id=main>
-      	 <a href="${urlCreateProjectsListPageController}">List of projects</a> <br>
-         <a>List of simple entities</a> <br>
-         <a>New entity</a> <br>
-         <a>Search user</a> <br>
-         <a>Add user</a> <br>
+      	<table>
+      		<tr class=head>
+      			<td>Name</td>
+      			<td>Manager</td>
+      			<td>Description</td>
+      		</tr>
+      		<c:forEach var="project" items="${projects}">
+      		 	<tr>
+      				<td>${project.name}</td>
+      				<td>${project.manager}</td>
+      				<td>${project.description}</td>
+      			</tr>
+      		</c:forEach>
+      	</table>
       </div>
     </body>
 </html>

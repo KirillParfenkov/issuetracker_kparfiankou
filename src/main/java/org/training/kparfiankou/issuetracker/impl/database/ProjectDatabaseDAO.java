@@ -25,9 +25,12 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 	private static final String NAME_PROJECT = "name";
 	private static final String MENAGER_ID = "menagerId";
 	private static final String DESCRIPTION = "description";
+	private static final String ID_BUILD = "id";
+	private static final String NAME_BUILD = "name";
 
 	private Connection connection;
 	private PreparedStatement psSelectProjects;
+	private PreparedStatement psSelectBuildsProject;
 	private PreparedStatement psSelectProjectById;
 	private PreparedStatement psInsertProject;
 	private PreparedStatement psInsertBuildProject;
@@ -45,6 +48,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 
 			connection = getConnection();
 			psSelectProjects = connection.prepareStatement(ConstantSqlQuerys.SELECT_PROJECTS);
+			psSelectBuildsProject = connection.prepareStatement(ConstantSqlQuerys.SELECT_BUILDS_PROJECT);
 			psSelectProjectById = connection.prepareStatement(ConstantSqlQuerys.SELECT_PROJECT_BY_ID);
 			psInsertProject = connection.prepareStatement(ConstantSqlQuerys.INSERT_PROJECT);
 			psInsertBuildProject = connection.prepareStatement(ConstantSqlQuerys.INSERT_BUILD_PROJECT);
@@ -65,12 +69,33 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 	 */
 	private Project pick(ResultSet resultSet) throws SQLException {
 
-		Project project = new Project(resultSet.getInt(ID_PROJECT));
+		int numId = 1;
+		Project project = null;
+		ResultSet buildsResultSet = null;
 
-		project.setName(NAME_PROJECT);
-		project.setDescription(DESCRIPTION);
-		project.setManager(userDAO.getUser(resultSet.getInt(MENAGER_ID)));
-		project.setDescription(resultSet.getString(DESCRIPTION));
+		try {
+
+			int projectId = resultSet.getInt(ID_PROJECT);
+			project = new Project(projectId);
+
+			psSelectBuildsProject.setInt(numId, projectId);
+			buildsResultSet = psSelectBuildsProject.executeQuery();
+			List<Build> buildList = new ArrayList<Build>();
+
+			while (buildsResultSet.next()) {
+
+				buildList.add(new Build(buildsResultSet.getInt(ID_BUILD),
+										buildsResultSet.getString(NAME_BUILD)));
+			}
+
+			project.setBuilds(buildList);
+			project.setName(resultSet.getString(NAME_PROJECT));
+			project.setDescription(resultSet.getString(DESCRIPTION));
+			project.setManager(userDAO.getUser(resultSet.getInt(MENAGER_ID)));
+
+		} finally {
+			closeConnection(buildsResultSet);
+		}
 
 		return project;
 	}
@@ -95,7 +120,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 			closeConnection(resultSet);
 		}
 
-		return null;
+		return projects;
 	}
 
 	@Override
@@ -182,6 +207,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		closeConnection(psInsertProject);
 		closeConnection(psInsertBuildProject);
 		closeConnection(psRemoveProject);
+		closeConnection(psSelectBuildsProject);
 		closeConnection(connection);
 	}
 }

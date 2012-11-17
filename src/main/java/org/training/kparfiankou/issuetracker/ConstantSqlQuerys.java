@@ -79,6 +79,12 @@ public final class ConstantSqlQuerys {
 	public static final String SELECT_PROJECTS = "SELECT * FROM Projects";
 
 	/**
+	 * Select all projects.
+	 */
+	public static final String SELECT_BUILDS_PROJECT = "SELECT * FROM Builds "
+												        + "WHERE projectId = ? ;";
+
+	/**
 	 * Select project by id.
 	 */
 	public static final String SELECT_PROJECT_BY_ID = "SELECT * FROM Projects "

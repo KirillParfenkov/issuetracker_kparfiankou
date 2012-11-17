@@ -58,6 +58,11 @@ public final class Constants {
 	public static final String KEY_PROJECT = "project";
 
 	/**
+	 * constants key of projects.
+	 */
+	public static final String KEY_PROJECTS = "projects";
+
+	/**
 	 * constants key of build.
 	 */
 	public static final String KEY_BUILD = "build";
@@ -146,19 +151,24 @@ public final class Constants {
 	public static final String INSERT_UPDATE_ISSUE_CONTROLLER = "/InsertUpdateIssueController";
 
 	/**
-	 * constant link to the administration page.
+	 * constant link to the CreateAdministrationPageController controller.
 	 */
 	public static final String CREATE_ADMINISTRATION_PAGE_CONTROLLER = "/CreateAdministrationPageController";
 
 	/**
-	 * constant link to the search page.
+	 * constant link to the CreateSearchPageController controller.
 	 */
 	public static final String CREATE_SEARCH_PAGE_CONTROLLER = "/CreateSearchPageController";
 
 	/**
-	 * constant link to the profile page.
+	 * constant link to the CreateProfilePageController controller.
 	 */
 	public static final String CREATE_PROFILE_PAGE_CONTROLLER = "/CreateProfilePageController";
+
+	/**
+	 * constant link to the CreateProjectsListPageController controller.
+	 */
+	public static final String CREATE_PROJECTS_LIST_PAGE_CONTROLLER = "/CreateProjectsListPageController";
 
 	/**
 	 * constant link to the main page.
@@ -204,6 +214,11 @@ public final class Constants {
 	 * constant MDC key for log.
 	 */
 	public static final String KEY_SETVER_CONTEXT = "server.context";
+
+	/**
+	 * constant link to the list of projects page.
+	 */
+	public static final String PROJECTS_LIST_PAGE = "/projects_list.jsp";
 
 	private Constants() {
 		 // Prevent instantiation
