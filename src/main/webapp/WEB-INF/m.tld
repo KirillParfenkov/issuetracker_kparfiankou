@@ -37,4 +37,33 @@
             	<rtexprvalue>true</rtexprvalue>
         	</attribute>
   		</tag>
+  		<tag>
+  			<description>
+        		Description my tag.
+    		</description>
+  			<name>contextUser</name>
+       		<tag-class>org.training.kparfiankou.jsplib.TagContextUser</tag-class>
+        	<body-content>JSP</body-content>
+        	<attribute>
+            	<name>user</name>
+            	<required>true</required>
+            	<rtexprvalue>true</rtexprvalue>
+        	</attribute>
+  		</tag>
+  		<tag>
+  			<description>
+        		Description my tag.
+    		</description>
+  			<name>user</name>
+       		<tag-class>org.training.kparfiankou.jsplib.TagUser</tag-class>
+        	<body-content>JSP</body-content>
+  		</tag>
+  		<tag>
+  			<description>
+        		Description my tag.
+    		</description>
+  			<name>administrator</name>
+       		<tag-class>org.training.kparfiankou.jsplib.TagAdministrator</tag-class>
+        	<body-content>JSP</body-content>
+  		</tag>
 </taglib>

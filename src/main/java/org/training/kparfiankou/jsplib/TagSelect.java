@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.BodyTagSupport;
 
 import org.training.kparfiankou.issuetracker.beans.AbstractEntity;
 
@@ -14,7 +12,7 @@ import org.training.kparfiankou.issuetracker.beans.AbstractEntity;
  * @author parf
  *
  */
-public class TagSelect extends BodyTagSupport {
+public class TagSelect extends AbstractBodyCustomTag {
 
 	private static final long serialVersionUID = 1L;
 
@@ -66,31 +64,13 @@ public class TagSelect extends BodyTagSupport {
 	}
 
 	@SuppressWarnings("unchecked")
-	private List<AbstractEntity> searchElements() {
-
-		List<AbstractEntity> list;
-
-		list = (List<AbstractEntity>) pageContext.getAttribute(elements, PageContext.REQUEST_SCOPE);
-
-		if (list == null) {
-			list = (List<AbstractEntity>) pageContext.getAttribute(elements, PageContext.APPLICATION_SCOPE);
-		}
-		if (list == null) {
-			list = (List<AbstractEntity>) pageContext.getAttribute(elements, PageContext.SESSION_SCOPE);
-		}
-		if (list == null) {
-			list = (List<AbstractEntity>) pageContext.getAttribute(elements, PageContext.PAGE_SCOPE);
-		}
-		return list;
-	}
-
 	@Override
 	public int doStartTag() {
 
 		List<AbstractEntity> list;
 		try {
 
-			list = searchElements();
+			list = (List<AbstractEntity>) searchElement(elements);
 			JspWriter out = pageContext.getOut();
 
 			if (list != null) {

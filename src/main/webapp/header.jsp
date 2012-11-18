@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/m.tld" prefix="m"%>
 <%@ page import="org.training.kparfiankou.issuetracker.Constants"%>
 
 <c:url value="<%= Constants.LOGIN_CONTROLLER %>" var="urlLoginController"/>
@@ -25,10 +26,16 @@
   	</form>
   </c:if>
 
-  <c:if test="${not empty user}">
+  <m:contextUser user="user">
   	<c:out value="Hi, ${user.firstName}  ${user.lastName}"></c:out>
-  	<a class=hElem href="${urlLogoutController}">Logout</a>
-  	<a class=hElem href="${urlSubmitCreateController}">Submit Issue</a>
+   	<a class=hElem href="${urlLogoutController}">Logout</a>
+   	<a class=hElem href="${urlSubmitCreateController}">Submit Issue</a>
   	<a class=hElem href="${urlCreateProfilePageController}">Profile</a>
-  	<a class=hElem href="${urlCreateAdministrationPageController}">Administration</a>
-  </c:if>
+   	<m:administrator>
+   		<a class=hElem href="${urlCreateAdministrationPageController}">Administration</a>
+   	</m:administrator>
+  </m:contextUser>  	
+  
+
+
+  
