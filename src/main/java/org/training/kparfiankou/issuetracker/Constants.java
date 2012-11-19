@@ -38,6 +38,16 @@ public final class Constants {
 	public static final String KEY_DESCRIPTION = "description";
 
 	/**
+	 * constants key of name.
+	 */
+	public static final String KEY_NAME = "name";
+
+	/**
+	 * constants key of name.
+	 */
+	public static final String KEY_MANAGER = "manager";
+
+	/**
 	 * constants key of status.
 	 */
 	public static final String KEY_STATUS = "status";
@@ -58,6 +68,11 @@ public final class Constants {
 	public static final String KEY_PROJECT = "project";
 
 	/**
+	 * constants key of project id.
+	 */
+	public static final String KEY_PROJECT_ID = "projectId";
+
+	/**
 	 * constants key of projects.
 	 */
 	public static final String KEY_PROJECTS = "projects";
@@ -65,7 +80,12 @@ public final class Constants {
 	/**
 	 * constants key of build.
 	 */
-	public static final String KEY_BUILD = "build";
+	public static final String KEY_BUILD = "keyBuilds";
+
+	/**
+	 * constants key of builds.
+	 */
+	public static final String KEY_BUILDS = "builds";
 
 	/**
 	 * constants key of assignee.
@@ -104,6 +124,11 @@ public final class Constants {
 	 * constants key of projects.
 	 */
 	public static final String PROJECTS = "projects";
+
+	/**
+	 * constants key of managers.
+	 */
+	public static final String MANAGERS = "managers";
 
 	/**
 	 * constants key of projects.
@@ -169,6 +194,21 @@ public final class Constants {
 	 * constant link to the CreateProjectsListPageController controller.
 	 */
 	public static final String CREATE_PROJECTS_LIST_PAGE_CONTROLLER = "/CreateProjectsListPageController";
+
+	/**
+	 * constant link to the CreateUpdateProjectController controller.
+	 */
+	public static final String CREATE_UPDATE_PROJECT_CONTROLLER = "/CreateUpdateProjectController";
+
+	/**
+	 * constant link to the InsertUpdateProjectController controller.
+	 */
+	public static final String INSERT_UPDATE_PROJECT_CONTROLLER = "/InsertUpdateProjectController";
+
+	/**
+	 * constant link to the CreateUpdateProjectController controller.
+	 */
+	public static final String UPDATE_PROJECT_PAGE = "/update_project.jsp";
 
 	/**
 	 * constant link to the main page.
