@@ -22,11 +22,28 @@
 	  </c:if>
 
       <div id=main>
-      	 <a href="${urlCreateProjectsListPageController}">List of projects</a> <br>
-         <a>List of simple entities</a> <br>
-         <a>New entity</a> <br>
-         <a>Search user</a> <br>
-         <a>Add user</a> <br>
+
+      	 <h4>Looking:</h4>
+         <ul>
+         	<li><a href="${urlCreateProjectsListPageController}">List of projects</a> <br></li>
+         	<li>List of statuses</li>
+         	<li>List of resolutions</li>
+         	<li>List of priorities</li>
+         	<li>List of types</li>
+         </ul>
+         <h4>Adding:</h4>
+         <ul>
+         	<li>Project</a> <br></li>
+         	<li>Resolution</li>
+         	<li>Priority</li>
+         	<li>Type</li>
+         </ul>
+      	 
+      	 <h4>Working with Users:</h4>
+      	 <ul>
+         	<li>Search user</a> <br></li>
+         	<li>Add user</li>
+         </ul>
       </div>
     </body>
 </html>

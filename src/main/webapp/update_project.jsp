@@ -8,7 +8,7 @@
 <c:url value="<%= Constants.SUBMIT_ISSUE_CONTROLLER %>" var="urlSubmitInserController"/>
 <c:url value="<%= Constants.INSERT_UPDATE_PROJECT_CONTROLLER %>" var="urlInsertUpdateProjectController"/>
 
-<c:set var="builds" value="${project.builds}" scope="page"></c:set>
+<c:set var="pageBuilds" value="${project.builds}" scope="page"></c:set>
 
 <html>
   <head>
@@ -16,6 +16,15 @@
       <link rel="stylesheet" type="text/css" href="css/style.css">
       <title>Details of the issue</title>
       <script src="javascript/functions.js"></script>
+      <script>
+		alert(${project.id});
+		function attachValues(){
+			updateProjectForm.projectId.value = ${project.id};
+			updateProjectForm.builds.value = builds.options;
+		}
+		attachValues();
+		alert("");
+	  </script>
   </head>
     <body>
    	  <div id="header">
@@ -28,7 +37,8 @@
 
       <div id=main>
        <form name="updateProjectForm"  method="POST" action="${urlInsertUpdateProjectController}">
-        <input name="<%=Constants.KEY_PROJECT_ID%>" type="hidden" value="${project.id}">
+        <input type="hidden" name="projectId" value="${project.id}">
+        <input type="hidden" name="builds" value="">
       	<table>
       		<tr>
       			<td>Name</td>
@@ -39,15 +49,19 @@
       			<td><input name="<%=Constants.KEY_DESCRIPTION %>" type="text" value="${project.description}"/></td>
       		</tr>
       		<tr>
+      			<td>New build</td>
+      			<td><input type="text"><button>add</button></td>
+      		</tr>
+      		<tr>
       			<td>Builds</td>
-      			<td><m:select name="<%=Constants.KEY_BUILDS%>" elements="builds"/></td>
+      			<td><m:select name="<%=Constants.KEY_BUILDS%>" elements="pageBuilds"/></td>
       		</tr>
       		<tr>
       			<td>Manager</td>
 				<td><m:select name="<%=Constants.KEY_MANAGER%>" elements="<%=Constants.MANAGERS%>" selectedId="${project.manager.id}"/></td>      		
       		</tr>
       		<tr>
-				<td><input type="submit" value="update" /></td>      		
+				<td><input type="submit" value="update" onclick="updateProjectForm.projectId.value = ${issue.id};"/></td>      		
       		</tr>
 		</table>
 	   </form>

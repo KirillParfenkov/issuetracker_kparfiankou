@@ -4,3 +4,7 @@ function showBuilds(){
 	elem.style.display = "table-row";
 
 }
+
+function test(patam) {
+	this.elements = patam; 
+}
