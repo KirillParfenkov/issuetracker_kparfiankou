@@ -28,6 +28,11 @@ public interface IResolutionDAO {
 	Resolution getResolution(String nameResolution);
 
 	/**
+	 * @param resolution object of class Resolution
+	 */
+	void updateResolution(Resolution resolution);
+
+	/**
 	 * Close connection with Database.
 	 */
 	void close();

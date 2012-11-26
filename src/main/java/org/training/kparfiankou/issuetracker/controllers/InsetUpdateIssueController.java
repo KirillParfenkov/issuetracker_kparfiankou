@@ -5,19 +5,29 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.training.kparfiankou.issuetracker.Constants;
 
 /**
- * Servlet implementation class InsetUpdateIssueController.
+ * AbstractController implementation class InsetUpdateIssueController.
  */
 public class InsetUpdateIssueController extends AbstractController {
+
 	private static final long serialVersionUID = 1L;
+	private static Logger logger = null;
+
+	private static final String INFO_UPDATE_ISSUE = "Issue was updated.";
 
     /**
      * @see HttpServlet#HttpServlet()
      */
     public InsetUpdateIssueController() {
         super();
+    }
+
+    @Override
+    public void init() {
+    	logger = Logger.getLogger(InsetUpdateIssueController.class);
     }
 
 	@Override

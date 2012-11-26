@@ -80,4 +80,9 @@ public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO {
 	public void insertStatus(String nameStatus) {
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public void updateStatus(Status status) {
+		// TODO Auto-generated method stub
+	}
 }

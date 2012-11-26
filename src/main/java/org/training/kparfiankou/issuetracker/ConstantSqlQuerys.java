@@ -24,6 +24,31 @@ public final class ConstantSqlQuerys {
 	public static final String INSERT_TYPE = "INSERT INTO Types (name) VALUES (?);";
 
 	/**
+	 * Update type by id.
+	 */
+	public static final String UPDATE_TYPE = "UPDATE Types SET name = ? WHERE id = ? ;";
+
+	/**
+	 * Update status by id.
+	 */
+	public static final String UPDATE_STATUS = "UPDATE Statuses SET name = ? WHERE id = ? ;";
+
+	/**
+	 * Update resolution by id.
+	 */
+	public static final String UPDATE_RESOLUTION = "UPDATE Resolutions SET name = ? WHERE id = ? ;";
+
+	/**
+	 * Update priority by id.
+	 */
+	public static final String UPDATE_PRIORY = "UPDATE Prioritys SET name = ? WHERE id = ? ;";
+
+	/**
+	 * Update project by id.
+	 */
+	public static final String UPDATE_PROJECT = "UPDATE Projects SET...";
+
+	/**
 	 * Delete type by id.
 	 */
 	public static final String DELETE_TYPE_BY_ID = "DELETE FROM Types WHERE id = ? ;";

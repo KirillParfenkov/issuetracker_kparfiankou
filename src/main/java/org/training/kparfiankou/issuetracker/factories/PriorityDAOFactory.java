@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.xml.PriorityXMLDAO;
+import org.training.kparfiankou.issuetracker.impl.database.PriorityDatabaseDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IPriorityDAO;
 
 /**
@@ -19,6 +19,6 @@ public final class PriorityDAOFactory {
 	 */
 	public static IPriorityDAO getClassFromFactory() {
 
-		return new PriorityXMLDAO();
+		return new PriorityDatabaseDAO();
 	}
 }

@@ -22,13 +22,14 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 	private static final String ID = "id";
 	private static final String NAME = "name";
 
-	private static Connection connection;
-	private static PreparedStatement psInserStatus;
-	private static PreparedStatement psRemoveStatus;
-	private static PreparedStatement psSelecStatuses;
 	private static boolean isStatusesModified;
 	private static List<Status> statuses;
 
+	private Connection connection;
+	private PreparedStatement psInserStatus;
+	private PreparedStatement psRemoveStatus;
+	private PreparedStatement psSelecStatuses;
+	private PreparedStatement psUpdateStatus;
 
 	/**
 	 * Default constructor.
@@ -43,8 +44,6 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			closeConnection(connection);
 		}
 	}
 
@@ -53,6 +52,7 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 		psInserStatus = connection.prepareStatement(ConstantSqlQuerys.INSERT_STATUS);
 		psRemoveStatus = connection.prepareStatement(ConstantSqlQuerys.DELETE_STATUS_BY_ID);
 		psSelecStatuses =  connection.prepareStatement(ConstantSqlQuerys.SELECT_STATUSES);
+		psUpdateStatus = connection.prepareStatement(ConstantSqlQuerys.UPDATE_STATUS);
 	}
 
 	private void updateStatusList() {
@@ -75,6 +75,25 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 			e.printStackTrace();
 		} finally {
 			closeConnection(resultSet);
+		}
+	}
+
+	@Override
+	public void updateStatus(Status status) {
+
+		final int numNameStatus = 1;
+		final int numNameId = 2;
+
+		try {
+
+			psUpdateStatus.setString(numNameStatus, status.getName());
+			psUpdateStatus.setLong(numNameId, status.getId());
+			psUpdateStatus.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			isStatusesModified = true;
 		}
 	}
 
@@ -159,6 +178,7 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 
 		closeConnection(psRemoveStatus);
 		closeConnection(psInserStatus);
+		closeConnection(psUpdateStatus);
 		closeConnection(connection);
 	}
 }

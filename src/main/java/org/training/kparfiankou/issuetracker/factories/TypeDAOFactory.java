@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.xml.TypeXMLDAO;
+import org.training.kparfiankou.issuetracker.impl.database.TypeDatabaseDAO;
 import org.training.kparfiankou.issuetracker.interfaces.ITypeDAO;
 
 /**
@@ -19,6 +19,6 @@ public final class TypeDAOFactory {
 	 */
 	public static ITypeDAO getClassFromFactory() {
 
-		return new TypeXMLDAO();
+		return new TypeDatabaseDAO();
 	}
 }

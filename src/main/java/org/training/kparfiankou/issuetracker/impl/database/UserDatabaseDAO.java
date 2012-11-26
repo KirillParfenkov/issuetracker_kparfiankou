@@ -288,4 +288,10 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 		closeConnection(psSelecRoleId);
 		closeConnection(connection);
 	}
+
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+	}
 }

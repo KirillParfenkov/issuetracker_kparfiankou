@@ -35,6 +35,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 	private PreparedStatement psInsertProject;
 	private PreparedStatement psInsertBuildProject;
 	private PreparedStatement psRemoveProject;
+	private PreparedStatement psUpdateProject;
 
 	private IUserDAO userDAO;
 	private List<Project> projects;
@@ -53,6 +54,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 			psInsertProject = connection.prepareStatement(ConstantSqlQuerys.INSERT_PROJECT);
 			psInsertBuildProject = connection.prepareStatement(ConstantSqlQuerys.INSERT_BUILD_PROJECT);
 			psRemoveProject = connection.prepareStatement(ConstantSqlQuerys.DELETE_PROJECT);
+			psUpdateProject = connection.prepareStatement(ConstantSqlQuerys.UPDATE_PROJECT);
 
 			projects = new ArrayList<Project>();
 			userDAO = UserDAOFactory.getClassFromFactory();
@@ -60,6 +62,23 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void updateProject(Project project) {
+
+		final int numNameProject = 1;
+		final int numNameId = 2;
+
+		/*try {
+
+			psUpdateProject.setString(numNameProject, project.getName());
+			psUpdateProject.setLong(numNameId, project.getId());
+			psUpdateProject.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}*/
 	}
 
 	/**
@@ -208,6 +227,7 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		closeConnection(psInsertBuildProject);
 		closeConnection(psRemoveProject);
 		closeConnection(psSelectBuildsProject);
+		closeConnection(psUpdateProject);
 		closeConnection(connection);
 	}
 }

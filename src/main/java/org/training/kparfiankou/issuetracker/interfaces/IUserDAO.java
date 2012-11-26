@@ -34,6 +34,11 @@ public interface IUserDAO {
 	void inserUser(User user, String password);
 
 	/**
+	 * @param user object of class User
+	 */
+	void updateUser(User user);
+
+	/**
 	 * @param id if of user
 	 */
 	void removeUser(int id);

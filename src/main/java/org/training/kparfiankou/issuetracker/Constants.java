@@ -78,6 +78,26 @@ public final class Constants {
 	public static final String KEY_PROJECTS = "projects";
 
 	/**
+	 * constants key of resolutions.
+	 */
+	public static final String KEY_RESOLUTIONS = "resolutions";
+
+	/**
+	 * constants key of priorities.
+	 */
+	public static final String KEY_PRIORITIES = "priorities";
+
+	/**
+	 * constants key of types.
+	 */
+	public static final String KEY_TYPES = "types";
+
+	/**
+	 * constants key of statuses.
+	 */
+	public static final String KEY_STATUSES = "statuses";
+
+	/**
 	 * constants key of build.
 	 */
 	public static final String KEY_BUILD = "keyBuilds";
@@ -124,6 +144,26 @@ public final class Constants {
 	 * constants key of projects.
 	 */
 	public static final String PROJECTS = "projects";
+
+	/**
+	 * constants key of type id.
+	 */
+	public static final String KEY_TYPE_ID = "typeId";
+
+	/**
+	 * constants key of status id.
+	 */
+	public static final String KEY_STATUS_ID = "statusId";
+
+	/**
+	 * constants key of resolution id.
+	 */
+	public static final String KEY_RESOLUTION_ID = "resolutionId";
+
+	/**
+	 * constants key of priority id.
+	 */
+	public static final String KEY_PRIORITY_ID = "priorityId";
 
 	/**
 	 * constants key of managers.
@@ -196,9 +236,49 @@ public final class Constants {
 	public static final String CREATE_PROJECTS_LIST_PAGE_CONTROLLER = "/CreateProjectsListPageController";
 
 	/**
+	 * constant link to the CreateTypesListPageController controller.
+	 */
+	public static final String CREATE_TYPES_LIST_PAGE_CONTROLLER = "/CreateTypesListPageController";
+
+	/**
+	 * constant link to the CreateStatusesListPageController controller.
+	 */
+	public static final String CREATE_STATUSES_LIST_PAGE_CONTROLLER = "/CreateStatusesListPageController";
+
+	/**
+	 * constant link to the CreateResolutionsListPageController controller.
+	 */
+	public static final String CREATE_RESOLUTIONS_LIST_PAGE_CONTROLLER = "/CreateResolutionsListPageController";
+
+	/**
+	 * constant link to the CreatePrioritiesListPageController controller.
+	 */
+	public static final String CREATE_PRIORITIES_LIST_PAGE_CONTROLLER = "/CreatePrioritiesListPageController";
+
+	/**
 	 * constant link to the CreateUpdateProjectController controller.
 	 */
 	public static final String CREATE_UPDATE_PROJECT_CONTROLLER = "/CreateUpdateProjectController";
+
+	/**
+	 * constant link to the CreateUpdateStatusController controller.
+	 */
+	public static final String CREATE_UPDATE_STATUS_CONTROLLER = "/CreateUpdateStatusController";
+
+	/**
+	 * constant link to the CreateUpdateResolutionController controller.
+	 */
+	public static final String CREATE_UPDATE_RESOLUTION_CONTROLLER = "/CreateUpdateResolutionController";
+
+	/**
+	 * constant link to the CreateUpdatePriorityController controller.
+	 */
+	public static final String CREATE_UPDATE_PRIORITY_CONTROLLER = "/CreateUpdatePriorityController";
+
+	/**
+	 * constant link to the CreateUpdateTypeController controller.
+	 */
+	public static final String CREATE_UPDATE_TYPE_CONTROLLER = "/CreateUpdateTypeController";
 
 	/**
 	 * constant link to the InsertUpdateProjectController controller.
@@ -206,9 +286,49 @@ public final class Constants {
 	public static final String INSERT_UPDATE_PROJECT_CONTROLLER = "/InsertUpdateProjectController";
 
 	/**
-	 * constant link to the CreateUpdateProjectController controller.
+	 * constant link to the InsertUpdateStatusController controller.
+	 */
+	public static final String INSERT_UPDATE_STATUS_CONTROLLER = "/InsertUpdateStatusController";
+
+	/**
+	 * constant link to the InsertUpdateResolutionController controller.
+	 */
+	public static final String INSERT_UPDATE_RESOLUTION_CONTROLLER = "/InsertUpdateResolutionController";
+
+	/**
+	 * constant link to the InsertUpdatePriorityController controller.
+	 */
+	public static final String INSERT_UPDATE_PRIORITY_CONTROLLER = "/InsertUpdatePriorityController";
+
+	/**
+	 * constant link to the InsertUpdateTypeController controller.
+	 */
+	public static final String INSERT_UPDATE_TYPE_CONTROLLER = "/InsertUpdateTypeController";
+
+	/**
+	 * constant link to the page of project update.
 	 */
 	public static final String UPDATE_PROJECT_PAGE = "/update_project.jsp";
+
+	/**
+	 * constant link to the page of update statuses.
+	 */
+	public static final String UPDATE_STATUS_PAGE = "/update_statuse.jsp";
+
+	/**
+	 * constant link to the page of update resolutions.
+	 */
+	public static final String UPDATE_RESOLUTION_PAGE = "/update_resolution.jsp";
+
+	/**
+	 * constant link to the page of update priority.
+	 */
+	public static final String UPDATE_PRIORITY_PAGE = "/update_priority.jsp";
+
+	/**
+	 * constant link to the page of update type.
+	 */
+	public static final String UPDATE_TYPE_PAGE = "/update_type.jsp";
 
 	/**
 	 * constant link to the main page.
@@ -259,6 +379,26 @@ public final class Constants {
 	 * constant link to the list of projects page.
 	 */
 	public static final String PROJECTS_LIST_PAGE = "/projects_list.jsp";
+
+	/**
+	 * constant link to the list of types page.
+	 */
+	public static final String TYPES_LIST_PAGE = "/types_list.jsp";
+
+	/**
+	 * constant link to the list of statuses page.
+	 */
+	public static final String STATUESES_LIST_PAGE = "/statuses_list.jsp";
+
+	/**
+	 * constant link to the list of resolutions page.
+	 */
+	public static final String RESOLUTIONS_LIST_PAGE = "/resolutions_list.jsp";
+
+	/**
+	 * constant link to the list of priorities page.
+	 */
+	public static final String PRIORITIES_LIST_PAGE = "/priorities_list.jsp";
 
 	private Constants() {
 		 // Prevent instantiation

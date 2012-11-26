@@ -14,7 +14,7 @@ import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 
 /**
- * Servlet implementation class LoginController.
+ * AbstractController implementation class LoginController.
  */
 public class LoginController extends AbstractController {
 

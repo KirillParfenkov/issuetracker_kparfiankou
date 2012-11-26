@@ -80,4 +80,9 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 	public void insertType(String nameType) {
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public void updateType(Type type) {
+		// TODO Auto-generated method stub
+	}
 }

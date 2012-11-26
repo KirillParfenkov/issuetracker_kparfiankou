@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.xml.ResolutionXMLDAO;
+import org.training.kparfiankou.issuetracker.impl.database.ResolutionDatabaseDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
 
 /**
@@ -19,6 +19,6 @@ public final class ResolutionDAOFactory {
 	 */
 	public static IResolutionDAO getClassFromFactory() {
 
-		return new ResolutionXMLDAO();
+		return new ResolutionDatabaseDAO();
 	}
 }

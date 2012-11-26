@@ -28,6 +28,11 @@ public interface ITypeDAO {
 	Type getType(String nameType);
 
 	/**
+	 * @param type object of class Type
+	 */
+	void updateType(Type type);
+
+	/**
 	 * Close connection with Database.
 	 */
 	void close();

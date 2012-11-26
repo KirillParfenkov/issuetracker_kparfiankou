@@ -28,6 +28,11 @@ public interface IStatusDAO {
 	Status getStatus(String nameStatus);
 
 	/**
+	 * @param status object of class Status
+	 */
+	void updateStatus(Status status);
+
+	/**
 	 * Close connection with Database.
 	 */
 	void close();

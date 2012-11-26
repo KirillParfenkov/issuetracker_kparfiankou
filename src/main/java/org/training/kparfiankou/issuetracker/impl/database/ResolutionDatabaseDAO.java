@@ -21,12 +21,14 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 	private static final String ID = "id";
 	private static final String NAME = "name";
 
-	private static Connection connection;
-	private static PreparedStatement psInsertResolution;
-	private static PreparedStatement psRemoveResolution;
-	private static PreparedStatement psSelecResolutions;
 	private static boolean isResolutionsModified;
 	private static List<Resolution> resolutions;
+
+	private Connection connection;
+	private PreparedStatement psInsertResolution;
+	private PreparedStatement psRemoveResolution;
+	private PreparedStatement psSelecResolutions;
+	private PreparedStatement psUpdateResolution;
 
 	/**
 	 * Default constructor.
@@ -41,8 +43,6 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			closeConnection(connection);
 		}
 	}
 
@@ -50,7 +50,8 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 
 		psInsertResolution = connection.prepareStatement(ConstantSqlQuerys.INSERT_STATUS);
 		psRemoveResolution = connection.prepareStatement(ConstantSqlQuerys.DELETE_STATUS_BY_ID);
-		psSelecResolutions =  connection.prepareStatement(ConstantSqlQuerys.SELECT_STATUSES);
+		psSelecResolutions =  connection.prepareStatement(ConstantSqlQuerys.SELECT_RESOLUTIONS);
+		psUpdateResolution =  connection.prepareStatement(ConstantSqlQuerys.UPDATE_RESOLUTION);
 	}
 
 	private void updateStatusList() {
@@ -76,6 +77,24 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 		}
 	}
 
+	@Override
+	public void updateResolution(Resolution  resolution) {
+
+		final int numNameResolution = 1;
+		final int numNameId = 2;
+
+		try {
+
+			psUpdateResolution.setString(numNameResolution, resolution.getName());
+			psUpdateResolution.setLong(numNameId, resolution.getId());
+			psUpdateResolution.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			isResolutionsModified = true;
+		}
+	}
 
 	@Override
 	public List<Resolution> getListResolution() {
@@ -123,6 +142,7 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 
 		closeConnection(psInsertResolution);
 		closeConnection(psRemoveResolution);
+		closeConnection(psUpdateResolution);
 		closeConnection(connection);
 	}
 

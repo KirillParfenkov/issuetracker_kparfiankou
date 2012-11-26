@@ -4,6 +4,10 @@
 <%@ page import="org.training.kparfiankou.issuetracker.Constants"%>
 
 <c:url value="<%= Constants.CREATE_PROJECTS_LIST_PAGE_CONTROLLER %>" var="urlCreateProjectsListPageController"/>
+<c:url value="<%= Constants.CREATE_TYPES_LIST_PAGE_CONTROLLER %>" var="urlCreateTypesListPageController"/>
+<c:url value="<%= Constants.CREATE_STATUSES_LIST_PAGE_CONTROLLER %>" var="urlCreateStatusesListPageController"/>
+<c:url value="<%= Constants.CREATE_RESOLUTIONS_LIST_PAGE_CONTROLLER %>" var="urlCreateResolutionsListPageController"/>
+<c:url value="<%= Constants.CREATE_PRIORITIES_LIST_PAGE_CONTROLLER %>" var="urlCreatePrioritiesListPageController"/>
 
 <html>
   <head>
@@ -25,11 +29,11 @@
 
       	 <h4>Looking:</h4>
          <ul>
-         	<li><a href="${urlCreateProjectsListPageController}">List of projects</a> <br></li>
-         	<li>List of statuses</li>
-         	<li>List of resolutions</li>
-         	<li>List of priorities</li>
-         	<li>List of types</li>
+         	<li><a href="${urlCreateProjectsListPageController}">List of projects</a></li>
+         	<li><a href="${urlCreateStatusesListPageController}">List of statuses</a></li>
+         	<li><a href="${urlCreateResolutionsListPageController}">List of resolutions</a></li>
+         	<li><a href="${urlCreatePrioritiesListPageController}">List of priorities</a></li>
+         	<li><a href="${urlCreateTypesListPageController}">List of types</a></li>
          </ul>
          <h4>Adding:</h4>
          <ul>

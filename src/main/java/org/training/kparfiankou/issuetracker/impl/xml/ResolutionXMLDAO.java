@@ -80,4 +80,9 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 	public void insertResolution(String nameResolution) {
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public void updateResolution(Resolution resolution) {
+		// TODO Auto-generated method stub
+	}
 }

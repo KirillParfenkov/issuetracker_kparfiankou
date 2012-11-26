@@ -28,6 +28,11 @@ public interface IProjectDAO {
 	void insertProject(Project project);
 
 	/**
+	 * @param project object of class Project
+	 */
+	void updateProject(Project project);
+
+	/**
 	 *
 	 * @param id of project.
 	 */

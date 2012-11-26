@@ -22,12 +22,14 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	private static final String ID = "id";
 	private static final String NAME = "name";
 
-	private static Connection connection;
-	private static PreparedStatement psInserType;
-	private static PreparedStatement psRemoveType;
-	private static PreparedStatement psSelecTypes;
 	private static boolean isTypesModified;
 	private static List<Type> types;
+
+	private Connection connection;
+	private PreparedStatement psInserType;
+	private PreparedStatement psRemoveType;
+	private PreparedStatement psSelecTypes;
+	private PreparedStatement psUpdateTypes;
 
 
 	/**
@@ -43,8 +45,6 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			closeConnection(connection);
 		}
 	}
 
@@ -53,6 +53,7 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 		psInserType = connection.prepareStatement(ConstantSqlQuerys.INSERT_TYPE);
 		psRemoveType = connection.prepareStatement(ConstantSqlQuerys.DELETE_TYPE_BY_ID);
 		psSelecTypes =  connection.prepareStatement(ConstantSqlQuerys.SELECT_TYPES);
+		psUpdateTypes = connection.prepareStatement(ConstantSqlQuerys.UPDATE_TYPE);
 	}
 
 	private void updateTypeList() {
@@ -75,6 +76,25 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 			e.printStackTrace();
 		} finally {
 			closeConnection(resultSet);
+		}
+	}
+
+	@Override
+	public void updateType(Type type) {
+
+		final int numNameType = 1;
+		final int numNameId = 2;
+
+		try {
+
+			psUpdateTypes.setString(numNameType, type.getName());
+			psUpdateTypes.setLong(numNameId, type.getId());
+			psUpdateTypes.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			isTypesModified = true;
 		}
 	}
 
@@ -159,6 +179,8 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 
 		closeConnection(psRemoveType);
 		closeConnection(psInserType);
+		closeConnection(psUpdateTypes);
+		closeConnection(psSelecTypes);
 		closeConnection(connection);
 	}
 }

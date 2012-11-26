@@ -21,12 +21,14 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 	private static final String ID = "id";
 	private static final String NAME = "name";
 
-	private static Connection connection;
-	private static PreparedStatement psInsertPriority;
-	private static PreparedStatement psRemovePriority;
-	private static PreparedStatement psSelecPrioritys;
 	private static boolean isPrioritysModified;
 	private static List<Priority> prioritys;
+
+	private Connection connection;
+	private PreparedStatement psInsertPriority;
+	private PreparedStatement psRemovePriority;
+	private PreparedStatement psSelecPrioritys;
+	private PreparedStatement psUpdatePriority;
 
 	/**
 	 * Default constructor.
@@ -41,8 +43,6 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			closeConnection(connection);
 		}
 	}
 
@@ -50,7 +50,8 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 
 		psInsertPriority = connection.prepareStatement(ConstantSqlQuerys.INSERT_STATUS);
 		psRemovePriority = connection.prepareStatement(ConstantSqlQuerys.DELETE_STATUS_BY_ID);
-		psSelecPrioritys =  connection.prepareStatement(ConstantSqlQuerys.SELECT_STATUSES);
+		psSelecPrioritys =  connection.prepareStatement(ConstantSqlQuerys.SELECT_PRIORITYS);
+		psUpdatePriority = connection.prepareStatement(ConstantSqlQuerys.UPDATE_PRIORY);
 	}
 
 	private void updateStatusList() {
@@ -73,6 +74,25 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 			e.printStackTrace();
 		} finally {
 			closeConnection(resultSet);
+		}
+	}
+
+	@Override
+	public void updatePriority(Priority priority) {
+
+		final int numNamePriority = 1;
+		final int numNameId = 2;
+
+		try {
+
+			psUpdatePriority.setString(numNamePriority, priority.getName());
+			psUpdatePriority.setLong(numNameId, priority.getId());
+			psUpdatePriority.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			isPrioritysModified = true;
 		}
 	}
 
@@ -123,6 +143,7 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 
 		closeConnection(psInsertPriority);
 		closeConnection(psRemovePriority);
+		closeConnection(psUpdatePriority);
 		closeConnection(connection);
 	}
 

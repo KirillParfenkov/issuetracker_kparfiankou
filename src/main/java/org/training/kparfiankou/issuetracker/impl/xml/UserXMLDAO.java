@@ -109,4 +109,9 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 	public void close() {
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+	}
 }

@@ -28,6 +28,11 @@ public interface IPriorityDAO {
 	Priority getPriority(String namePriority);
 
 	/**
+	 * @param priority object of class Priority
+	 */
+	void updatePriority(Priority priority);
+
+	/**
 	 * Close connection with Database.
 	 */
 	void close();
