@@ -1,6 +1,7 @@
 package org.training.kparfiankou.issuetracker.interfaces;
 
 import java.util.List;
+import java.util.Map;
 
 import org.training.kparfiankou.issuetracker.beans.User;
 
@@ -51,8 +52,25 @@ public interface IUserDAO {
 	User authenticate(String emailAddres, String password);
 
 	/**
+	 * @return max index;
+	 */
+	int getMaxIndex();
+
+	/**
 	 * Close DAO.
 	 */
 	void close();
+
+	/**
+	 * @param map keys of search.
+	 * @return List of existing users.
+	 */
+	List<User> searchUsers(Map<String, String> map);
+
+	/**
+	 * @param id id of user.
+	 * @param password password of user.
+	 */
+	void newPassword(long id, String password);
 
 }

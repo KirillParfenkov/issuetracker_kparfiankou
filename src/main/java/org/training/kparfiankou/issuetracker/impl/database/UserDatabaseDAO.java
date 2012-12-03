@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.training.kparfiankou.issuetracker.ConstantSqlQuerys;
+import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.beans.Role;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
@@ -23,7 +25,6 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 	private static final String COL_LAST_NAME = "lastName";
 	private static final String COL_ROLE_NAME = "Roles.name";
 	private static final String COL_EMAIL_ADDRESS = "emailAddress";
-	private static final String DB_TABLE_NAME = "Users";
 
 	private Connection connection;
 	private PreparedStatement psInserUser;
@@ -34,6 +35,9 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 	private PreparedStatement psSelecAuthenticateUser;
 	private PreparedStatement psSelectId;
 	private PreparedStatement psSelecRoleId;
+	private PreparedStatement psSearchUsers;
+	private PreparedStatement psUpdateUser;
+	private PreparedStatement psUpdateUserPassword;
 
 	/**
 	 * default constructor.
@@ -50,32 +54,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 		}
 	}
 
-
-/*	private int getMaxIdexId() {
-
-		final String collumIdName = "id";
-
-		ResultSet resultSet = null;
-		try {
-
-			resultSet = psSelectId.executeQuery();
-
-			if (resultSet.next()) {
-				return resultSet.getInt(collumIdName);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConnection(resultSet);
-		}
-
-		return 0;
-	}*/
-
 	private void initQuerys() throws SQLException {
-
-		final int numDbName = 1;
 
 		psInserUser = connection.prepareStatement(ConstantSqlQuerys.INSERT_USER);
 		psRemoveUser = connection.prepareStatement(ConstantSqlQuerys.DELETE_USER_BY_ID);
@@ -83,9 +62,10 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 		psSelecUsers =  connection.prepareStatement(ConstantSqlQuerys.SELECT_USERS);
 		psSelecUserById =  connection.prepareStatement(ConstantSqlQuerys.SELECT_USER_BY_ID);
 		psSelecUserByName =  connection.prepareStatement(ConstantSqlQuerys.SELECT_USER_BY_NAME);
-		psSelectId = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID);
-		psSelectId.setString(numDbName, DB_TABLE_NAME);
+		psSelectId = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID_USER);
 		psSelecRoleId = connection.prepareStatement(ConstantSqlQuerys.SELECT_ROLE_BY_NAME);
+		psUpdateUser = connection.prepareStatement(ConstantSqlQuerys.UPDATE_USER);
+		psUpdateUserPassword = connection.prepareStatement(ConstantSqlQuerys.UPDATE_USER_PASSWORD);
 	}
 
 	private User pickUser(ResultSet resultSet) throws SQLException {
@@ -93,10 +73,27 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 		User user = new User(resultSet.getInt(COL_USER_ID));
 		user.setFirstName(resultSet.getString(COL_FIRST_NAME));
 		user.setLastName(resultSet.getString(COL_LAST_NAME));
-		user.setEmailAddress(COL_EMAIL_ADDRESS);
+		user.setEmailAddress(resultSet.getString(COL_EMAIL_ADDRESS));
 		user.setRole(Role.valueOf(resultSet.getString(COL_ROLE_NAME)));
 
 		return user;
+	}
+
+	@Override
+	public void newPassword(long id, String password) {
+
+		int numPassword = 1;
+		int numId = 2;
+
+		try {
+
+			psUpdateUserPassword.setString(numPassword, password);
+			psUpdateUserPassword.setLong(numId, id);
+			psUpdateUserPassword.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private int getRoleId(String name) {
@@ -183,6 +180,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 		ResultSet resultSet = null;
 		User user = null;
 
+
 		try {
 
 			psSelecUserByName.setString(numEmailAddress, emailAddress);
@@ -233,8 +231,8 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 	public void inserUser(User user, String password) {
 
 		final int numId = 1;
-		final int numLastName = 2;
-		final int numFirtName = 3;
+		final int numLastName = 3;
+		final int numFirtName = 2;
 		final int numRole = 4;
 		final int numEmailAddress = 5;
 		final int numPassword = 6;
@@ -286,12 +284,111 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 		closeConnection(psSelecAuthenticateUser);
 		closeConnection(psSelectId);
 		closeConnection(psSelecRoleId);
+		closeConnection(psUpdateUserPassword);
 		closeConnection(connection);
 	}
 
+	@Override
+	public int getMaxIndex() {
+
+		int numIdColum = 1;
+		int maxId = 0;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = psSelectId.executeQuery();
+			if (resultSet.next()) {
+				maxId = resultSet.getInt(numIdColum);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+		return maxId;
+	}
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
+
+		final int numfirstName = 1;
+		final int numLastName = 2;
+		final int numEmailAddress = 3;
+		final int numRoleId = 4;
+		final int numIdUser = 5;
+
+		try {
+
+			psUpdateUser.setString(numfirstName, user.getFirstName());
+			psUpdateUser.setString(numLastName, user.getLastName());
+			psUpdateUser.setString(numEmailAddress, user.getEmailAddress());
+			psUpdateUser.setLong(numRoleId, getRoleId(user.getRole().toString().toUpperCase()));
+			psUpdateUser.setLong(numIdUser, user.getId());
+
+			psUpdateUser.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public List<User> searchUsers(Map<String, String> map) {
+
+		int numLastName = 0;
+		int numfirstName = 0;
+		int numEmailAddress = 0;
+
+		StringBuffer fullQuery = new StringBuffer(ConstantSqlQuerys.SELECT_SEARCH_USERS);
+
+		String firstName = map.get(Constants.KEY_INPUT_FIRST_NAME);
+		String lastName = map.get(Constants.KEY_INPUT_LAST_NAME);
+		String email = map.get(Constants.KEY_INPUT_EMAIL);
+
+		ResultSet resultSet = null;
+		List<User> users = null;
+
+		int index = 1;
+		try {
+
+			if (lastName != null) {
+				fullQuery.append(" AND (lastName = ?)");
+				numLastName = index++;
+			}
+			if (firstName != null) {
+				fullQuery.append(" AND (firstName = ?)");
+				numfirstName = index++;
+			}
+			if (email != null) {
+				fullQuery.append(" AND (emailAddress = ?)");
+				numEmailAddress = index;
+			}
+
+			psSearchUsers = connection.prepareStatement(fullQuery.toString());
+
+			if (lastName != null) {
+				psSearchUsers.setString(numLastName, lastName);
+			}
+			if (firstName != null) {
+				psSearchUsers.setString(numfirstName, firstName);
+			}
+			if (email != null) {
+				psSearchUsers.setString(numEmailAddress, email);
+			}
+
+			resultSet = psSearchUsers.executeQuery();
+			users = new ArrayList<User>();
+
+			while (resultSet.next()) {
+				users.add(pickUser(resultSet));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+			closeConnection(psSearchUsers);
+		}
+		return users;
 	}
 }

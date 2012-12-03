@@ -5,35 +5,25 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.training.kparfiankou.issuetracker.Constants;
 
 /**
- * AbstractController implementation class InsetUpdateIssueController.
+ * AbstractController implementation class CreateResolutionAddingPage.
  */
-public class InsetUpdateIssueController extends AbstractController {
-
+public class CreateResolutionAddingPage extends AbstractController {
 	private static final long serialVersionUID = 1L;
-	private static Logger logger = null;
-
-	private static final String INFO_UPDATE_ISSUE = "Issue was updated.";
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsetUpdateIssueController() {
+    public CreateResolutionAddingPage() {
         super();
-    }
-
-    @Override
-    public void init() {
-    	logger = Logger.getLogger(InsetUpdateIssueController.class);
+        // TODO Auto-generated constructor stub
     }
 
 	@Override
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		jump(Constants.MAIN_PAGE, request, response);
+		jump(Constants.ADDING_RESOLUTION_PAGE, request, response);
 	}
 }

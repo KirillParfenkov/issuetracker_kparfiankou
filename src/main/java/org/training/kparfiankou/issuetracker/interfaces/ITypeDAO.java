@@ -43,7 +43,12 @@ public interface ITypeDAO {
 	void removeType(int id);
 
 	/**
-	 * @param nameType name of type
+	 * @param type object of class Type
 	 */
-	void insertType(String nameType);
+	void insertType(Type type);
+
+	/**
+	 * @return max index;
+	 */
+	int getMaxIndex();
 }

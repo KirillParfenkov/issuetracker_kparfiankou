@@ -30,6 +30,7 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	private PreparedStatement psRemoveType;
 	private PreparedStatement psSelecTypes;
 	private PreparedStatement psUpdateTypes;
+	private PreparedStatement psSelectMaxIndex;
 
 
 	/**
@@ -54,6 +55,7 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 		psRemoveType = connection.prepareStatement(ConstantSqlQuerys.DELETE_TYPE_BY_ID);
 		psSelecTypes =  connection.prepareStatement(ConstantSqlQuerys.SELECT_TYPES);
 		psUpdateTypes = connection.prepareStatement(ConstantSqlQuerys.UPDATE_TYPE);
+		psSelectMaxIndex = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID_TYPE);
 	}
 
 	private void updateTypeList() {
@@ -141,13 +143,15 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	}
 
 	@Override
-	public void insertType(String nameType) {
+	public void insertType(Type type) {
 
-		final int numNameType = 1;
+		final int numNameType = 2;
+		final int numId = 1;
 
 		try {
 
-			psInserType.setString(numNameType, nameType);
+			psInserType.setString(numNameType, type.getName());
+			psInserType.setLong(numId, type.getId());
 			psInserType.executeUpdate();
 
 		} catch (SQLException e) {
@@ -175,12 +179,33 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	}
 
 	@Override
+	public int getMaxIndex() {
+
+		int numIdColum = 1;
+		int maxId = 0;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = psSelectMaxIndex.executeQuery();
+			if (resultSet.next()) {
+				maxId = resultSet.getInt(numIdColum);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+		return maxId;
+	}
+
+	@Override
 	public void close() {
 
 		closeConnection(psRemoveType);
 		closeConnection(psInserType);
 		closeConnection(psUpdateTypes);
 		closeConnection(psSelecTypes);
+		closeConnection(psSelectMaxIndex);
 		closeConnection(connection);
 	}
 }

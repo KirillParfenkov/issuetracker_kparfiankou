@@ -77,12 +77,18 @@ public class PriorityXMLDAO extends AbstractXMLDAO implements IPriorityDAO {
 	}
 
 	@Override
-	public void insertPriority(String namePriority) {
+	public void insertPriority(Priority priority) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void updatePriority(Priority priority) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public int getMaxIndex() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

@@ -43,7 +43,12 @@ public interface IResolutionDAO {
 	void removeResolution(int id);
 
 	/**
-	 * @param nameResolution name of resolution
+	 * @param resolution object of class Resolution
 	 */
-	void insertResolution(String nameResolution);
+	void insertResolution(Resolution resolution);
+
+	/**
+	 * @return max index;
+	 */
+	int getMaxIndex();
 }

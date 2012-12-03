@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.training.kparfiankou.issuetracker.ConstantSqlQuerys;
 import org.training.kparfiankou.issuetracker.beans.AbstractEntity;
+import org.training.kparfiankou.issuetracker.beans.Comment;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.factories.PriorityDAOFactory;
@@ -49,15 +51,17 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	private static final String SUMMARY = "summary";
 	private static final String DESCRIPTION = "description";
 
-	private static final String DB_TABLE_NAME = "Issues";
-
 	private Connection connection;
 	private PreparedStatement psSelectIssues;
 	private PreparedStatement psSelectIssueById;
 	private PreparedStatement psSelectMaxId;
+	private PreparedStatement psSelectMaxCommentId;
 	private PreparedStatement psInsertIssue;
+	private PreparedStatement psInsertComment;
+	private PreparedStatement psSelectComments;
 	private PreparedStatement psRemoveIssue;
 	private PreparedStatement psCurrentDate;
+	private PreparedStatement psUpdateIssue;
 
 	private IStatusDAO statusDAO;
 	private ITypeDAO typeDAO;
@@ -87,18 +91,18 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 		}
 	}
 
-
 	private void initQuerys() throws SQLException {
-
-		int numDbTableUsers = 1;
 
 		psSelectIssues = connection.prepareStatement(ConstantSqlQuerys.SELECT_ISSUES);
 		psSelectIssueById = connection.prepareStatement(ConstantSqlQuerys.SELECT_ISSUE_BY_ID);
 		psInsertIssue = connection.prepareStatement(ConstantSqlQuerys.INSERT_ISSUE);
 		psRemoveIssue = connection.prepareStatement(ConstantSqlQuerys.DELETE_ISSUE);
 		psCurrentDate = connection.prepareStatement(ConstantSqlQuerys.SELECT_CURRENT_DATE);
-		psSelectMaxId = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID);
-		psSelectMaxId.setString(numDbTableUsers, DB_TABLE_NAME);
+		psSelectMaxId = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID_ISSUE);
+		psUpdateIssue = connection.prepareStatement(ConstantSqlQuerys.UPDATE_ISSUE);
+		psSelectMaxCommentId = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID_COMMENT);
+		psInsertComment = connection.prepareStatement(ConstantSqlQuerys.INSERT_COMMENT);
+		psSelectComments = connection.prepareStatement(ConstantSqlQuerys.SELECT_COMMENTS);
 
 	}
 
@@ -208,15 +212,6 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 		}
 	}
 
-	private void insertDate(int num, Date date) throws SQLException {
-
-		if (date != null) {
-			psInsertIssue.setDate(num, date);
-		} else {
-			psInsertIssue.setNull(num, Types.DATE);
-		}
-	}
-
 	@Override
 	public void insertIssue(Issue issue) {
 
@@ -287,6 +282,160 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 		closeConnection(psSelectIssues);
 		closeConnection(psSelectIssueById);
 		closeConnection(psSelectMaxId);
+		closeConnection(psUpdateIssue);
+		closeConnection(psSelectMaxCommentId);
+		closeConnection(psSelectComments);
+		closeConnection(psInsertComment);
 		closeConnection(connection);
+	}
+
+	@Override
+	public int getMaxIndex() {
+
+		int numIdColum = 1;
+		int maxId = 0;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = psSelectMaxId.executeQuery();
+			if (resultSet.next()) {
+				maxId = resultSet.getInt(numIdColum);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+		return maxId;
+	}
+
+	@Override
+	public List<Issue> searchUsers(Map<String, String> map) {
+
+		return null;
+	}
+
+	@Override
+	public void updateIssue(Issue issue) {
+
+		final int numStatusId = 1;
+		final int numTypeId = 2;
+		final int numPriorityId = 3;
+		final int numProjectId = 4;
+		final int numBuildId = 5;
+		final int numAssigneeId = 6;
+		final int numCreateDate = 7;
+		final int numCreaterId = 8;
+		final int numModifyDate = 9;
+		final int numLastModifierId = 10;
+		final int numResolutionId = 11;
+		final int numSummary = 12;
+		final int numDescription = 13;
+		final int numIssueId = 14;
+
+		try {
+
+			psUpdateIssue.setLong(numStatusId, issue.getStatus().getId());
+			psUpdateIssue.setLong(numTypeId, issue.getType().getId());
+			psUpdateIssue.setLong(numPriorityId, issue.getPriority().getId());
+			psUpdateIssue.setLong(numProjectId, issue.getProject().getId());
+			psUpdateIssue.setLong(numBuildId, issue.getBuild().getId());
+			psUpdateIssue.setLong(numAssigneeId, issue.getAssignee().getId());
+			psUpdateIssue.setDate(numCreateDate, new Date(issue.getCreateDate().getTime()));
+			psUpdateIssue.setLong(numCreaterId, issue.getCreater().getId());
+			psUpdateIssue.setDate(numModifyDate, new Date(issue.getModifyDate().getTime()));
+			psUpdateIssue.setLong(numLastModifierId, issue.getLastModifier().getId());
+			if (issue.getResolution() != null) {
+				psUpdateIssue.setLong(numResolutionId, issue.getResolution().getId());
+			} else  {
+				psUpdateIssue.setNull(numResolutionId, Types.BIGINT);
+			}
+			psUpdateIssue.setString(numSummary, issue.getSummary());
+			psUpdateIssue.setString(numDescription, issue.getDescription());
+			psUpdateIssue.setLong(numIssueId, issue.getId());
+			psUpdateIssue.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public List<Comment> getCommentList(int issueId) {
+
+		int numIssueId = 1;
+		String keyId = "id";
+		String keyAutorId = "autorId";
+		String keyContent = "content";
+		String keyDate = "date";
+
+		ResultSet resultSet = null;
+		List<Comment> comments = new ArrayList<Comment>();
+
+		try {
+
+			psSelectComments.setLong(numIssueId, issueId);
+			resultSet = psSelectComments.executeQuery();
+
+			Comment comment;
+			while (resultSet.next()) {
+
+				comment = new Comment(resultSet.getInt(keyId));
+				comment.setAutor(userDAO.getUser(resultSet.getInt(keyAutorId)));
+				comment.setAddDate(resultSet.getDate(keyDate));
+				comment.setContent(resultSet.getString(keyContent));
+
+				comments.add(comment);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+
+		return comments;
+	}
+
+	@Override
+	public void insertComment(Comment comment, int issueId) {
+
+		final int numCommentId = 1;
+		final int numIssueId = 2;
+		final int numAutorId = 3;
+		final int numContent = 4;
+		final int numDate = 5;
+
+		try {
+			psInsertComment.setLong(numCommentId, comment.getId());
+			psInsertComment.setLong(numIssueId, issueId);
+			psInsertComment.setLong(numAutorId, comment.getAutor().getId());
+			psInsertComment.setString(numContent, comment.getContent());
+			psInsertComment.setDate(numDate, new Date(comment.getAddDate().getTime()));
+			psInsertComment.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public int getMaxCommetnId() {
+
+		int numIdColum = 1;
+		int maxId = 0;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = psSelectMaxCommentId.executeQuery();
+			if (resultSet.next()) {
+				maxId = resultSet.getInt(numIdColum);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+		return maxId;
 	}
 }

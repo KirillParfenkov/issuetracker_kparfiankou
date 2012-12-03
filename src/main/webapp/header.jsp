@@ -34,8 +34,4 @@
    	<m:administrator>
    		<a class=hElem href="${urlCreateAdministrationPageController}">Administration</a>
    	</m:administrator>
-  </m:contextUser>  	
-  
-
-
-  
+  </m:contextUser>  

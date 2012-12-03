@@ -3,7 +3,9 @@ package org.training.kparfiankou.issuetracker.impl.xml;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import org.training.kparfiankou.issuetracker.beans.Comment;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.impl.xml.handlers.IssueXMLHandler;
 import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
@@ -92,5 +94,39 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 	public Date getCurrentDate() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int getMaxIndex() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Issue> searchUsers(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateIssue(Issue issue) {
+		// TODO Auto-generated method stubs
+	}
+
+	@Override
+	public List<Comment> getCommentList(int issueId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertComment(Comment comment, int issueId) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public int getMaxCommetnId() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

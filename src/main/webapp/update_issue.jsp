@@ -7,7 +7,7 @@
 <c:url value="<%= Constants.LOGIN_CONTROLLER %>" var="urlLoginController"/>
 <c:url value="<%= Constants.SUBMIT_ISSUE_CONTROLLER %>" var="urlSubmitInserController"/>
 <c:url value="<%= Constants.INSERT_UPDATE_ISSUE_CONTROLLER %>" var="urlInsertUpdateIssueController"/>
-
+<c:url value="<%= Constants.INSERT_COMMENT_CONTROLLER %>" var="urlInsertCommentController"/>
 
 <html>
   <head>
@@ -27,6 +27,11 @@
 
       <div id=main>
       	<form name="updateIssueForm" method=POST action="${urlInsertUpdateIssueController}">
+      	 <input type=hidden name=<%= Constants.KEY_ISSUE_ID %> value="${issue.id}">
+      	 <input type=hidden name=<%= Constants.KEY_CREATE_DATE %> value="${issue.createDate}">
+      	 <input type=hidden name=<%= Constants.KEY_CREATER_ID %> value="${issue.creater.id}">
+      	 <input type=hidden name=<%= Constants.KEY_MODIFY_DATE %> value="${issue.modifyDate}">
+      	 <input type=hidden name=<%= Constants.KEY_MODIFIER_ID %> value="${issue.lastModifier.id}">
          <table>
         	<tr>
         		<td>Id</td>
@@ -86,6 +91,31 @@
         	</tr>
          </table>
          <input type="submit" value="update">
+        </form>
+
+        <c:forEach var="comment" items="${comments}">
+        	<table class="commentTable">
+        		<tr>
+        			<td>Added by: ${comment.autor}</td>
+        		</tr>
+        		<tr>
+        			<td>Add date: ${comment.addDate}</td>
+        		</tr>
+        		<tr>
+        			<td class="underlined">${comment.content}</td>
+        		</tr>
+			</table>
+			<br>
+        </c:forEach>
+
+        <form name="commentIssueForm" method=POST action="${urlInsertCommentController}">
+        	<input type=hidden name=<%= Constants.KEY_ISSUE_ID %> value="${issue.id}">
+        	<table>
+        		<tr>
+        			<td><textarea rows="5" cols="45" name="<%=Constants.KEY_CONTENT%>"></textarea></td>
+        		</tr>
+        		<tr><td><input type="submit" value="comment"></td></tr>
+        	</table>
         </form>
       </div>
     </body>

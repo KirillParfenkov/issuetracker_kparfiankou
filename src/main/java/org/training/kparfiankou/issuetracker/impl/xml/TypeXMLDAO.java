@@ -77,12 +77,18 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 	}
 
 	@Override
-	public void insertType(String nameType) {
+	public void insertType(Type type) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void updateType(Type type) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public int getMaxIndex() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

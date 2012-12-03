@@ -24,6 +24,7 @@
 
       <div id=main>
          <form name="searchUserForm"  method="POST" action="${urlCreateSearchPageController}">
+         	<h1>Search issue!</h1>
       		<table>
       			<tr>
       				<th>Search user</th>

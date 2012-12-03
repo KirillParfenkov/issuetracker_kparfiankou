@@ -11,7 +11,32 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Select max id.
 	 */
-	public static final String SELECT_MAX_ID = "SELECT MAX(id) FROM ?;";
+	public static final String SELECT_MAX_ID_ISSUE = "SELECT MAX(id) FROM Issues;";
+
+	/**
+	 * Select max id.
+	 */
+	public static final String SELECT_MAX_ID_COMMENT = "SELECT MAX(id) FROM Comments;";
+
+	/**
+	 * Select max id.
+	 */
+	public static final String SELECT_MAX_ID_USER = "SELECT MAX(id) FROM Users;";
+
+	/**
+	 * Select max id.
+	 */
+	public static final String SELECT_MAX_ID_TYPE = "SELECT MAX(id) FROM Types;";
+
+	/**
+	 * Select max id.
+	 */
+	public static final String SELECT_MAX_ID_PRIORITY = "SELECT MAX(id) FROM Prioritys;";
+
+	/**
+	 * Select max id.
+	 */
+	public static final String SELECT_MAX_ID_RESOLUTION = "SELECT MAX(id) FROM Resolutions;";
 
 	/**
 	 * Selects all types of issues.
@@ -21,7 +46,17 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Insert new type in table types.
 	 */
-	public static final String INSERT_TYPE = "INSERT INTO Types (name) VALUES (?);";
+	public static final String INSERT_TYPE = "INSERT INTO Types (id,name) VALUES (?, ?);";
+
+	/**
+	 * Insert new comment in table comments.
+	 */
+	public static final String INSERT_COMMENT = "INSERT INTO Comments VALUES (?, ?, ?, ?, ?);";
+
+	/**
+	 * Select comments.
+	 */
+	public static final String SELECT_COMMENTS = "SELECT * FROM Comments WHERE issueId = ?";
 
 	/**
 	 * Update type by id.
@@ -47,6 +82,38 @@ public final class ConstantSqlQuerys {
 	 * Update project by id.
 	 */
 	public static final String UPDATE_PROJECT = "UPDATE Projects SET...";
+
+	/**
+	 * Update user by id.
+	 */
+	public static final String UPDATE_ISSUE = "UPDATE Issues SET statusId = ? ,"
+														+ "typeId = ? ,"
+														+ "priorityId = ? ,"
+														+ "projectId = ? ,"
+														+ "buildId = ? ,"
+														+ "assigneeId = ? ,"
+														+ "createDate = ? ,"
+														+ "createrId = ? ,"
+														+ "modifyDate = ? ,"
+														+ "lastModifierId = ? ,"
+														+ "resolutionId = ? ,"
+														+ "summary = ? ,"
+														+ "description = ? "
+										      + " WHERE id = ? ;";
+
+	/**
+	 * Update user.
+	 */
+	public static final String UPDATE_USER = "UPDATE Users SET firstName = ? ,"
+		   										+ "lastName = ? ,"
+		   										+ "emailAddress = ? ,"
+		   										+ "roleId = ? "
+		   										+ " WHERE id = ? ;";
+
+	/**
+	 * Update user's password.
+	 */
+	public static final String UPDATE_USER_PASSWORD = "UPDATE Users SET password = ? WHERE id = ? ;";
 
 	/**
 	 * Delete type by id.
@@ -76,7 +143,7 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Insert new type in table resolutions.
 	 */
-	public static final String INSERT_RESOLUTION = "INSERT INTO Resolutions (name) VALUES (?);";
+	public static final String INSERT_RESOLUTION = "INSERT INTO Resolutions (id, name) VALUES (?, ?);";
 
 	/**
 	 * Delete resolution by id.
@@ -91,7 +158,7 @@ public final class ConstantSqlQuerys {
 	/**
 	 * Insert new type in table priority.
 	 */
-	public static final String INSERT_PRIORITY = "INSERT INTO Prioritys (name) VALUES (?);";
+	public static final String INSERT_PRIORITY = "INSERT INTO Prioritys (id, name) VALUES (?, ?);";
 
 	/**
 	 * Delete priority by id.
@@ -212,6 +279,18 @@ public final class ConstantSqlQuerys {
 	 * Select if of role by name.
 	 */
 	public static final String SELECT_ROLE_BY_NAME = "SELECT * FROM Roles WHERE name = ? ;";
+
+	/**
+	 * Select search of users.
+	 */
+	public static final String SELECT_SEARCH_USERS = "SELECT Users.id, "
+		   											 + "firstName, "
+		   											 + "lastName, "
+		   											 + "Roles.name, "
+		   											 + "emailAddress "
+		   									  + "FROM Users INNER JOIN Roles "
+		   									  + "ON Users.roleId = Roles.id "
+											  +	"WHERE (true) ";
 
 	/**
 	 * Select current date.

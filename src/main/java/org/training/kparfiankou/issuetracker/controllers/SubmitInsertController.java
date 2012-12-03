@@ -53,7 +53,7 @@ public class SubmitInsertController extends AbstractController {
 
 		String summary = request.getParameter(Constants.KEY_SUMMARY);
 		String description = request.getParameter(Constants.KEY_DESCRIPTION);
-		int  statusId = Integer.valueOf(request.getParameter(Constants.KEY_STATUS));
+		int statusId = Integer.valueOf(request.getParameter(Constants.KEY_STATUS));
 		int typeId = Integer.valueOf(request.getParameter(Constants.KEY_TYPE));
 		int priorityId = Integer.valueOf(request.getParameter(Constants.KEY_PRIORITY));
 		int projectId = Integer.valueOf(request.getParameter(Constants.KEY_PROJECT));

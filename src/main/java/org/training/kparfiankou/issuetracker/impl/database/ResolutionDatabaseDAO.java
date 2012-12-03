@@ -20,6 +20,7 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 
 	private static final String ID = "id";
 	private static final String NAME = "name";
+	private static final String NAME_TABLE = "Resolutions";
 
 	private static boolean isResolutionsModified;
 	private static List<Resolution> resolutions;
@@ -29,6 +30,7 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 	private PreparedStatement psRemoveResolution;
 	private PreparedStatement psSelecResolutions;
 	private PreparedStatement psUpdateResolution;
+	private PreparedStatement psSelectMaxIndex;
 
 	/**
 	 * Default constructor.
@@ -48,10 +50,11 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 
 	private void initQuerys() throws SQLException {
 
-		psInsertResolution = connection.prepareStatement(ConstantSqlQuerys.INSERT_STATUS);
-		psRemoveResolution = connection.prepareStatement(ConstantSqlQuerys.DELETE_STATUS_BY_ID);
+		psInsertResolution = connection.prepareStatement(ConstantSqlQuerys.INSERT_RESOLUTION);
+		psRemoveResolution = connection.prepareStatement(ConstantSqlQuerys.DELETE_RESOLUTION_BY_ID);
 		psSelecResolutions =  connection.prepareStatement(ConstantSqlQuerys.SELECT_RESOLUTIONS);
 		psUpdateResolution =  connection.prepareStatement(ConstantSqlQuerys.UPDATE_RESOLUTION);
+		psSelectMaxIndex = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID_RESOLUTION);
 	}
 
 	private void updateStatusList() {
@@ -164,13 +167,35 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 	}
 
 	@Override
-	public void insertResolution(String nameResolution) {
+	public int getMaxIndex() {
 
-		final int numNameResolution = 1;
+		int numIdColum = 1;
+		int maxId = 0;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = psSelectMaxIndex.executeQuery();
+			if (resultSet.next()) {
+				maxId = resultSet.getInt(numIdColum);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+		return maxId;
+	}
+
+	@Override
+	public void insertResolution(Resolution resolution) {
+
+		final int numId = 1;
+		final int numNameResolution = 2;
 
 		try {
 
-			psInsertResolution.setString(numNameResolution, nameResolution);
+			psInsertResolution.setString(numNameResolution, resolution.getName());
+			psInsertResolution.setLong(numId, resolution.getId());
 			psInsertResolution.executeUpdate();
 
 		} catch (SQLException e) {

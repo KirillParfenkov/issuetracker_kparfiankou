@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.training.kparfiankou.issuetracker.Constants;
+import org.training.kparfiankou.issuetracker.beans.Comment;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.beans.Priority;
 import org.training.kparfiankou.issuetracker.beans.Project;
@@ -62,8 +63,8 @@ public class CreateUpdateIssueController extends AbstractController {
 		List<User> users = userDAO.getListUser();
 		List<Resolution> resolutions = resolutionDAO.getListResolution();
 		int issueId = Integer.valueOf(request.getParameter(Constants.KEY_ISSUE_ID));
+		List<Comment> comments = issueDAO.getCommentList(issueId);
 		Issue issue = issueDAO.getIssue(issueId);
-
 
 		request.setAttribute(Constants.STATUSES, statuses);
 		request.setAttribute(Constants.TYPES, types);
@@ -72,6 +73,7 @@ public class CreateUpdateIssueController extends AbstractController {
 		request.setAttribute(Constants.USERS, users);
 		request.setAttribute(Constants.KEY_ISSUE, issue);
 		request.setAttribute(Constants.RESOLUTIONS, resolutions);
+		request.setAttribute(Constants.KEY_COMMENTS, comments);
 
 		jump(Constants.UPDATE_ISSUE_PAGE, request, response);
 	}

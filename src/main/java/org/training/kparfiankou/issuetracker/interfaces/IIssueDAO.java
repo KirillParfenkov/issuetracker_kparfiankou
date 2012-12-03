@@ -2,7 +2,10 @@ package org.training.kparfiankou.issuetracker.interfaces;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+
+import org.training.kparfiankou.issuetracker.beans.Comment;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 
 /**
@@ -45,4 +48,37 @@ public interface IIssueDAO {
 	 * @return current date.
 	 */
 	Date getCurrentDate();
+
+	/**
+	 * @return max index;
+	 */
+	int getMaxIndex();
+
+	/**
+	 * @param map keys of search.
+	 * @return List of existing issues.
+	 */
+	List<Issue> searchUsers(Map<String, String> map);
+
+	/**
+	 * @param issue object of class Issue
+	 */
+	void updateIssue(Issue issue);
+
+	/**
+	 * @param issueId id of issue.
+	 * @return comment list.
+	 */
+	List<Comment> getCommentList(int issueId);
+
+	/**
+	 * @return max comment id.
+	 */
+	int getMaxCommetnId();
+
+	/**
+	 * @param comment object of class Comment.
+	 * @param issueId id of issue.
+	 */
+	void insertComment(Comment comment, int issueId);
 }

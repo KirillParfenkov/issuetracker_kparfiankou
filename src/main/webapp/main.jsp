@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="/WEB-INF/c.tld" prefix="c"%>
+<%@ taglib uri="/WEB-INF/m.tld" prefix="m"%>
 <%@ page import="org.training.kparfiankou.issuetracker.Constants"%>
 
 <c:url value="<%= Constants.HEADER_PAGE %>" var="urlHeaderPageJSP"/>
@@ -13,6 +14,7 @@
       <title>Main</title>
   </head>
     <body>
+
    	  <div id="header">
 			<jsp:include page="<%= Constants.HEADER_PAGE %>"/>
 	  </div>
@@ -26,26 +28,33 @@
        	<input type=hidden name=<%= Constants.KEY_ISSUE_ID %> value="">
         <table>
           <tr class=head>
-            <td>Id</td>
-            <td>Priority</td>
-            <td>Assignee</td>
-            <td>Type</td>
-            <td>Status</td>
-            <td>Summary</td>
+            <th>Id</th>
+            <th>Priority</th>
+            <th>Assignee</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Summary</th>
           </tr>
           <c:forEach var="issue" items="${issues}">
           	<tr>
-          		<td> 
-          			<a href="JavaScript:document.listIssueForm.submit()" 
-					   onclick="listIssueForm.issueId.value = ${issue.id}">
+          		<m:contextUser user="user">
+          			<td class="underlined"> 
+          				<a href="JavaScript:document.listIssueForm.submit()" 
+					   	onclick="listIssueForm.issueId.value = ${issue.id}">
+							${issue.id}
+						</a>
+					</td>
+  				</m:contextUser>
+  				<c:if test="${empty user}">
+  					<td class="underlined"> 
 						${issue.id}
-					</a>
-				</td>
-          		<td> ${issue.priority} </td>
-          		<td> ${issue.assignee} </td>
-          		<td> ${issue.type} </td>
-          		<td> ${issue.status} </td>
-          		<td> ${issue.summary}</td>
+					</td>
+  				</c:if>
+          		<td class="underlined"> ${issue.priority} </td>
+          		<td class="underlined"> ${issue.assignee} </td>
+          		<td class="underlined"> ${issue.type} </td>
+          		<td class="underlined"> ${issue.status} </td>
+          		<td class="underlined"> ${issue.summary}</td>
           	</tr>
           </c:forEach>
         </table>

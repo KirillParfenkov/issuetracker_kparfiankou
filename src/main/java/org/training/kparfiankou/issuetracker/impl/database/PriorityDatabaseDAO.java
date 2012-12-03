@@ -29,6 +29,7 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 	private PreparedStatement psRemovePriority;
 	private PreparedStatement psSelecPrioritys;
 	private PreparedStatement psUpdatePriority;
+	private PreparedStatement psSelectMaxIndex;
 
 	/**
 	 * Default constructor.
@@ -48,11 +49,13 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 
 	private void initQuerys() throws SQLException {
 
-		psInsertPriority = connection.prepareStatement(ConstantSqlQuerys.INSERT_STATUS);
-		psRemovePriority = connection.prepareStatement(ConstantSqlQuerys.DELETE_STATUS_BY_ID);
+		psInsertPriority = connection.prepareStatement(ConstantSqlQuerys.INSERT_PRIORITY);
+		psRemovePriority = connection.prepareStatement(ConstantSqlQuerys.DELETE_PRIORITY_BY_ID);
 		psSelecPrioritys =  connection.prepareStatement(ConstantSqlQuerys.SELECT_PRIORITYS);
 		psUpdatePriority = connection.prepareStatement(ConstantSqlQuerys.UPDATE_PRIORY);
+		psSelectMaxIndex = connection.prepareStatement(ConstantSqlQuerys.SELECT_MAX_ID_PRIORITY);
 	}
+
 
 	private void updateStatusList() {
 
@@ -165,13 +168,35 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 	}
 
 	@Override
-	public void insertPriority(String namePriority) {
+	public int getMaxIndex() {
 
-		final int numNameResolution = 1;
+		int numIdColum = 1;
+		int maxId = 0;
+		ResultSet resultSet = null;
+
+		try {
+			resultSet = psSelectMaxIndex.executeQuery();
+			if (resultSet.next()) {
+				maxId = resultSet.getInt(numIdColum);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(resultSet);
+		}
+		return maxId;
+	}
+
+	@Override
+	public void insertPriority(Priority priority) {
+
+		final int numId = 1;
+		final int numNameResolution = 2;
 
 		try {
 
-			psInsertPriority.setString(numNameResolution, namePriority);
+			psInsertPriority.setString(numNameResolution, priority.getName());
+			psInsertPriority.setLong(numId, priority.getId());
 			psInsertPriority.executeUpdate();
 
 		} catch (SQLException e) {

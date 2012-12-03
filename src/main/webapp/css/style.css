@@ -39,6 +39,6 @@ span{
 	background: gray;
 }
 
-td{
+.underlined{
 	border-bottom: 1pt dotted black
 }

@@ -2,6 +2,7 @@ package org.training.kparfiankou.issuetracker.impl.xml;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.impl.xml.handlers.UserPasswordXMLHandler;
@@ -112,6 +113,23 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 
 	@Override
 	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public int getMaxIndex() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<User> searchUsers(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void newPassword(long id, String password) {
 		// TODO Auto-generated method stub
 	}
 }

@@ -7,28 +7,28 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
 import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 
 /**
- * AbstractController implementation class LoginController.
+ * AbstractController implementation class InsertUpdatePasswordController.
  */
-public class LoginController extends AbstractController {
+public class InsertUpdatePasswordController extends AbstractController {
 
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = null;
 
-	private static final String INFO_USER_CONNECT = "User connection.";
+	private static final String INFO_PASSWORD_UPDATE = "Update password.";
 	private static final String INFO_RESULT_SUCCESS = "The result is a success.";
 	private static final String INFO_RESULT_FAILURE = "The result is a failure.";
+	private static final String ERROR_MESSAGE = "Passwords do not match";
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public InsertUpdatePasswordController() {
         super();
     }
 
@@ -37,31 +37,29 @@ public class LoginController extends AbstractController {
     	logger = Logger.getLogger(LoginController.class);
     }
 
-    @Override
+	@Override
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		String emailAddres = request.getParameter(Constants.KEY_INPUT_EMAIL);
-		String password = request.getParameter(Constants.KEY_INPUT_PASSWORD);
 
+		User user = (User) session.getAttribute(Constants.KEY_USER);
 		IUserDAO userDAO = UserDAOFactory.getClassFromFactory();
-		User user = userDAO.authenticate(emailAddres, password);
 
-		MDC.put(Constants.KEY_SETVER_CONTEXT, emailAddres);
+		String  newPassword = request.getParameter(Constants.KEY_INPUT_PASSWORD);
+		String  conPassword = request.getParameter(Constants.KEY_INPUT_CON_PASSWORD);
 
-		if (user == null) {
+		if ((newPassword != null) && (conPassword != null) && (newPassword.equals(conPassword))) {
 
-			request.setAttribute(Constants.KEY_ERROR_MESAGE, new String("Logon failure"));
-			logger.info(INFO_USER_CONNECT + " " + INFO_RESULT_FAILURE);
+			userDAO.newPassword(user.getId(), newPassword);
+			logger.info(INFO_PASSWORD_UPDATE + " " + INFO_RESULT_SUCCESS);
+			jump(Constants.CREATE_PROFILE_PAGE_CONTROLLER, request, response);
 
 		} else {
 
-			session.setAttribute(Constants.KEY_USER, user);
-			logger.info(INFO_USER_CONNECT + " " + INFO_RESULT_SUCCESS);
+			request.setAttribute(Constants.KEY_ERROR_MESAGE, ERROR_MESSAGE);
+			logger.info(INFO_PASSWORD_UPDATE + " " + INFO_RESULT_FAILURE);
+			jump(Constants.UPDATE_PASSWORD_PAGE, request, response);
 		}
-
-		jump(Constants.MAIN_CONTROLLER, request, response);
-
 	}
 }

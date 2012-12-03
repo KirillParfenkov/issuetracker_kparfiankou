@@ -8,6 +8,12 @@
 <c:url value="<%= Constants.CREATE_STATUSES_LIST_PAGE_CONTROLLER %>" var="urlCreateStatusesListPageController"/>
 <c:url value="<%= Constants.CREATE_RESOLUTIONS_LIST_PAGE_CONTROLLER %>" var="urlCreateResolutionsListPageController"/>
 <c:url value="<%= Constants.CREATE_PRIORITIES_LIST_PAGE_CONTROLLER %>" var="urlCreatePrioritiesListPageController"/>
+<c:url value="<%= Constants.ADDING_TYPE_PAGE %>" var="urlAddingTypePage"/>
+<c:url value="<%= Constants.ADDING_PRIORITY_PAGE %>" var="urlAddingPriorityPage"/>
+<c:url value="<%= Constants.ADDING_RESOLUTION_PAGE %>" var="urlAddingResolutionPage"/>
+<c:url value="<%= Constants.ADDING_PROJECT_PAGE %>" var="urlAddingProjectPage"/>
+<c:url value="<%= Constants.ADDING_USER_PAGE%>" var="urlAddingUserPage"/>
+<c:url value="<%= Constants.SEARCH_USER_PAGE%>" var="urlSearchUserPage"/>
 
 <html>
   <head>
@@ -37,16 +43,16 @@
          </ul>
          <h4>Adding:</h4>
          <ul>
-         	<li>Project</a> <br></li>
-         	<li>Resolution</li>
-         	<li>Priority</li>
-         	<li>Type</li>
+         	<li><a href="${urlAddingProjectPage}">Project</a></li>
+         	<li><a href="${urlAddingResolutionPage}">Resolution</a></li>
+         	<li><a href="${urlAddingPriorityPage}">Priority</a></li>
+         	<li><a href="${urlAddingTypePage}">Type</a></li>
          </ul>
       	 
       	 <h4>Working with Users:</h4>
       	 <ul>
-         	<li>Search user</a> <br></li>
-         	<li>Add user</li>
+         	<li><a href="${urlSearchUserPage}">Search user</a></li>
+         	<li><a href="${urlAddingUserPage}">Add user</a></li>
          </ul>
       </div>
     </body>

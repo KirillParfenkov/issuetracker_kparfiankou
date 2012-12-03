@@ -43,7 +43,12 @@ public interface IPriorityDAO {
 	void removePriority(int id);
 
 	/**
-	 * @param namePriority name of priority
+	 * @param priority object of class Priority
 	 */
-	void insertPriority(String namePriority);
+	void insertPriority(Priority priority);
+
+	/**
+	 * @return max index;
+	 */
+	int getMaxIndex();
 }
