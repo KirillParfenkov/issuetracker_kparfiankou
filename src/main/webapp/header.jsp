@@ -11,10 +11,12 @@
 <c:url value="<%= Constants.CREATE_ADMINISTRATION_PAGE_CONTROLLER %>" var="urlCreateAdministrationPageController"/>
 <c:url value="<%= Constants.CREATE_PROFILE_PAGE_CONTROLLER %>" var="urlCreateProfilePageController"/>
 <c:url value="<%= Constants.CREATE_SEARCH_PAGE_CONTROLLER %>" var="urlCreateSearchPageController"/>
+<c:url value="/logout" var="urlLogout"/>
 
 
   <a class=hElem href="${urlMainController}">Main</a>
   <a class=hElem href="${urlCreateSearchPageController}">Search</a>
+  <a class=hElem href="${urlLogout}">Logout Spring</a>
 
   <c:if test="${empty user}">
   	<form name=headerForm method=POST action="${urlLoginController}" >
