@@ -1,10 +1,25 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
+
+@Entity
+@Table(name="Types")
+@PrimaryKeyJoinColumn(name="id", referencedColumnName="id")
 public class Type extends SimpleEntiry {
+
+	/**
+	 * The default constructor.
+	 */
+	public Type() {
+	}
 
 	/**
 	 * @param id the id to set

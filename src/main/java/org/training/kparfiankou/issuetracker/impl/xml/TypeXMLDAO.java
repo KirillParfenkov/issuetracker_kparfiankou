@@ -3,6 +3,10 @@ package org.training.kparfiankou.issuetracker.impl.xml;
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.training.kparfiankou.issuetracker.beans.Type;
 import org.training.kparfiankou.issuetracker.impl.xml.handlers.TypeXMLHandler;
 import org.training.kparfiankou.issuetracker.interfaces.ITypeDAO;
@@ -49,7 +53,7 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 	}
 
 	@Override
-	public Type getType(int id) {
+	public Type getType(long id) {
 
 		for (Type type: types) {
 			if (type.getId() ==  id) {
@@ -87,7 +91,7 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

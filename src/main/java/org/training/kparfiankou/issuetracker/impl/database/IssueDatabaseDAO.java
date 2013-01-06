@@ -138,7 +138,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 		Issue issue = new Issue(resultSet.getInt(ISSUE_ID));
 
 		issue.setStatus(statusDAO.getStatus(resultSet.getInt(STATUS_ID)));
-		issue.setType(typeDAO.getType(resultSet.getInt(TYPE_ID)));
+		issue.setType(typeDAO.getType(resultSet.getLong(TYPE_ID)));
 		issue.setPriority(priorityDAO.getPriority(resultSet.getInt(PRIOTIRY_ID)));
 		Project project = projectDAO.getProject(resultSet.getInt(PROJECT_ID));
 		issue.setProject(project);

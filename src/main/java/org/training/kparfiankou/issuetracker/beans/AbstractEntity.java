@@ -1,11 +1,32 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
+
+
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class AbstractEntity {
+	@Id
+	@Column(name="id")
 	private long id;
+	
+	/**
+	 * The default constructor
+	 */
+	public AbstractEntity() {}
 
 	/**
 	 * @param id The id to set

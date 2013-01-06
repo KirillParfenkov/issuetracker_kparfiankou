@@ -1,13 +1,30 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+
+
 /**
  * @author parf
  *
  */
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+@PrimaryKeyJoinColumn(name="id", referencedColumnName="id")
 public class SimpleEntiry extends AbstractEntity {
 
+	@Column(name="name")
 	private String name;
 
+	/**
+	 * The default constructor.
+	 */
+	public SimpleEntiry() {
+	}
 	/**
 	 * @param id the id to set
 	 */

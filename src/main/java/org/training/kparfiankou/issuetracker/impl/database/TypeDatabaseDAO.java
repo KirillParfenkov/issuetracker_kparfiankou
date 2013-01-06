@@ -111,7 +111,7 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	}
 
 	@Override
-	public Type getType(int id) {
+	public Type getType(long id) {
 
 		if (isTypesModified) {
 			updateTypeList();
