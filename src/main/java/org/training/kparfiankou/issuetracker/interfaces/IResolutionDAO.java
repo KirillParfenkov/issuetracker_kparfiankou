@@ -19,7 +19,7 @@ public interface IResolutionDAO {
 	 * @param id Unique object identifier.
 	 * @return Object of class Resolution.
 	 */
-	Resolution getResolution(int id);
+	Resolution getResolution(long id);
 
 	/**
 	 * @param nameResolution name of resolution
@@ -40,7 +40,7 @@ public interface IResolutionDAO {
 	/**
 	 * @param id of resolution
 	 */
-	void removeResolution(int id);
+	void removeResolution(long id);
 
 	/**
 	 * @param resolution object of class Resolution
@@ -50,5 +50,5 @@ public interface IResolutionDAO {
 	/**
 	 * @return max index;
 	 */
-	int getMaxIndex();
+	long getMaxIndex();
 }

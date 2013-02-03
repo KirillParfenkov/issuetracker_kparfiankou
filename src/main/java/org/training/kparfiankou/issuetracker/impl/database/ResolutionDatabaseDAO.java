@@ -110,7 +110,7 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 	}
 
 	@Override
-	public Resolution getResolution(int id) {
+	public Resolution getResolution(long id) {
 
 		if (isResolutionsModified) {
 			updateStatusList();
@@ -150,13 +150,13 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 	}
 
 	@Override
-	public void removeResolution(int id) {
+	public void removeResolution(long id) {
 
 		final int numId = 1;
 
 		try {
 
-			psRemoveResolution.setInt(numId, id);
+			psRemoveResolution.setLong(numId, id);
 			psRemoveResolution.executeUpdate();
 
 		} catch (SQLException e) {
@@ -167,7 +167,7 @@ public class ResolutionDatabaseDAO extends AbstractDatabaseDAO implements IResol
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 
 		int numIdColum = 1;
 		int maxId = 0;

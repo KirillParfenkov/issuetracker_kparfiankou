@@ -1,15 +1,25 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 
 /**
  * @author Kiryl_Parfiankou
  *
  */
+@Entity
+@Table(name = "Users")
 public class User extends AbstractEntity {
 
+	@Column(name = "firstName")
 	private String firstName;
+	@Column(name = "lastName")
 	private String lastName;
+	@Column(name = "emailAddress")
 	private String emailAddress;
+	@Column(name = "role")
 	private Role role;
 
 	/**

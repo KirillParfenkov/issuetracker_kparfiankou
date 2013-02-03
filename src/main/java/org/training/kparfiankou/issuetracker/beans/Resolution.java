@@ -1,12 +1,23 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
+@Entity
+@Table(name = "Resolutions")
 public class Resolution extends AbstractEntity {
 
 	private String name;
+
+	/**
+	 * The default constructor.
+	 */
+	public Resolution() {
+	}
 
 	/**
 	 * @param id The id to set

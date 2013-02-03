@@ -1,12 +1,21 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
-public class Status extends AbstractEntity {
+@Entity
+@Table(name = "Statuses")
+public class Status extends SimpleEntiry {
 
-	private String name;
+	/**
+	 * The default constructor.
+	 */
+	public Status() {
+	}
 
 	/**
 	 * @param id the id to set
@@ -20,28 +29,6 @@ public class Status extends AbstractEntity {
 	 * @param name the name to set
 	 */
 	public Status(long id, String name) {
-		super(id);
-		this.name = name;
-	}
-
-	/**
-	 * @return String
-	 */
-	public String toString() {
-		return name;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
+		super(id, name);
 	}
 }

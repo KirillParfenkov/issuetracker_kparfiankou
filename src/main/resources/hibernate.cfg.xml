@@ -16,5 +16,12 @@
     	<property name="current_session_context_class">thread</property>
 
     	<mapping class="org.training.kparfiankou.issuetracker.beans.Type" />
+    	<mapping class="org.training.kparfiankou.issuetracker.beans.Status" />
+    	<mapping class="org.training.kparfiankou.issuetracker.beans.Resolution" />
+    	<mapping class="org.training.kparfiankou.issuetracker.beans.Priority" />
+    	<mapping class="org.training.kparfiankou.issuetracker.beans.User" />
+    	<mapping class="org.training.kparfiankou.issuetracker.beans.Build" />
+    	<mapping class="org.training.kparfiankou.issuetracker.beans.Project" />
+    	<mapping class="org.training.kparfiankou.issuetracker.beans.Password" />
 	</session-factory>
 </hibernate-configuration>

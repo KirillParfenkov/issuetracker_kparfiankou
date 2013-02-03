@@ -13,8 +13,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-@PrimaryKeyJoinColumn(name="id", referencedColumnName="id")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS )
 public class SimpleEntiry extends AbstractEntity {
 
 	@Column(name="name")

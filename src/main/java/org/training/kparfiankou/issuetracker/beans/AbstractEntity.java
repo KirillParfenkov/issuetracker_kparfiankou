@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS )
 public abstract class AbstractEntity {
 	@Id
 	@Column(name="id")

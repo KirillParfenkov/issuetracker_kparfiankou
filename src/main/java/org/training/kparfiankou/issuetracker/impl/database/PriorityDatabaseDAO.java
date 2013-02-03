@@ -111,7 +111,7 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 	}
 
 	@Override
-	public Priority getPriority(int id) {
+	public Priority getPriority(long id) {
 
 		if (isPrioritysModified) {
 			updateStatusList();
@@ -151,13 +151,13 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 	}
 
 	@Override
-	public void removePriority(int id) {
+	public void removePriority(long id) {
 
 		final int numId = 1;
 
 		try {
 
-			psRemovePriority.setInt(numId, id);
+			psRemovePriority.setLong(numId, id);
 			psRemovePriority.executeUpdate();
 
 		} catch (SQLException e) {
@@ -168,7 +168,7 @@ public class PriorityDatabaseDAO extends AbstractDatabaseDAO implements IPriorit
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 
 		int numIdColum = 1;
 		int maxId = 0;

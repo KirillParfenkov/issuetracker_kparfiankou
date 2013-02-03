@@ -1,12 +1,21 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
-public class Build extends AbstractEntity {
+@Entity
+@Table(name = "Builds")
+public class Build extends SimpleEntiry {
 
-	private String name;
+	/**
+	 * The default constructor. 
+	 */
+	public Build() {
+	}
 
 	/**
 	 * @param id The id to set
@@ -20,26 +29,6 @@ public class Build extends AbstractEntity {
 	 * @param name The name to set
 	 */
 	public Build(long id, String name) {
-		super(id);
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return name;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
+		super(id,name);
 	}
 }

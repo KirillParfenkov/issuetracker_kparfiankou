@@ -147,7 +147,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 	}
 
 	@Override
-	public User getUser(int id) {
+	public User getUser(long id) {
 
 		final int numId = 1;
 
@@ -156,7 +156,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 
 		try {
 
-			psSelecUserById.setInt(numId, id);
+			psSelecUserById.setLong(numId, id);
 			resultSet = psSelecUserById.executeQuery();
 
 			if (resultSet.next()) {
@@ -257,13 +257,13 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 	}
 
 	@Override
-	public void removeUser(int id) {
+	public void removeUser(long id) {
 
 		final int numId = 1;
 
 		try {
 
-			psRemoveUser.setInt(numId, id);
+			psRemoveUser.setLong(numId, id);
 			psRemoveUser.executeUpdate();
 
 
@@ -289,7 +289,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 
 		int numIdColum = 1;
 		int maxId = 0;

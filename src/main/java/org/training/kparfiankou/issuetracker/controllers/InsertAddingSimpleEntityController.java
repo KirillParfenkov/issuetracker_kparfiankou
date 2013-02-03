@@ -61,6 +61,7 @@ public class InsertAddingSimpleEntityController extends AbstractController {
 		resolutionDAO.close();
 		priorityDAO.close();
 
+
 		jump(Constants.ADMINISTRATION_PAGE , request, response);
 	}
 }

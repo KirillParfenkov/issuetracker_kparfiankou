@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.ConstantsJSP;
+import org.training.kparfiankou.issuetracker.Converter;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.factories.IssueDAOFactory;
 import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
@@ -34,6 +35,7 @@ public class MainController extends AbstractController {
     @Override
     public void init() {
     	logger = Logger.getLogger(LoginController.class);
+    	Converter.deliver();
     }
 
     @Override

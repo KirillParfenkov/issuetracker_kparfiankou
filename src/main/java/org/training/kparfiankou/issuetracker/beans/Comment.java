@@ -2,6 +2,9 @@ package org.training.kparfiankou.issuetracker.beans;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * @author Kiryl_Parfiankou
  *

@@ -137,18 +137,18 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 
 		Issue issue = new Issue(resultSet.getInt(ISSUE_ID));
 
-		issue.setStatus(statusDAO.getStatus(resultSet.getInt(STATUS_ID)));
+		issue.setStatus(statusDAO.getStatus(resultSet.getLong(STATUS_ID)));
 		issue.setType(typeDAO.getType(resultSet.getLong(TYPE_ID)));
-		issue.setPriority(priorityDAO.getPriority(resultSet.getInt(PRIOTIRY_ID)));
-		Project project = projectDAO.getProject(resultSet.getInt(PROJECT_ID));
+		issue.setPriority(priorityDAO.getPriority(resultSet.getLong(PRIOTIRY_ID)));
+		Project project = projectDAO.getProject(resultSet.getLong(PROJECT_ID));
 		issue.setProject(project);
-		issue.setBuild(project.getBuild(resultSet.getInt(BUILD_ID)));
-		issue.setAssignee(userDAO.getUser(resultSet.getInt(ASSIGNEE_ID)));
+		issue.setBuild(project.getBuild(resultSet.getLong(BUILD_ID)));
+		issue.setAssignee(userDAO.getUser(resultSet.getLong(ASSIGNEE_ID)));
 		issue.setCreateDate(resultSet.getDate(CREATE_DATE));
-		issue.setCreater(userDAO.getUser(resultSet.getInt(CREATER_ID)));
+		issue.setCreater(userDAO.getUser(resultSet.getLong(CREATER_ID)));
 		issue.setModifyDate(resultSet.getDate(MODIFY_DATE));
-		issue.setLastModifier(userDAO.getUser(resultSet.getInt(LAST_MODIFIER_ID)));
-		issue.setResolution(resolutionDAO.getResolution(resultSet.getInt(RESOLUTION_ID)));
+		issue.setLastModifier(userDAO.getUser(resultSet.getLong(LAST_MODIFIER_ID)));
+		issue.setResolution(resolutionDAO.getResolution(resultSet.getLong(RESOLUTION_ID)));
 		issue.setSummary(resultSet.getString(SUMMARY));
 		issue.setDescription(resultSet.getString(DESCRIPTION));
 

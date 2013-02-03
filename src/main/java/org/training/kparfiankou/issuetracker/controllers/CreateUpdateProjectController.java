@@ -43,5 +43,6 @@ public class CreateUpdateProjectController extends AbstractController {
 		request.setAttribute(Constants.MANAGERS, managers);
 
 		jump(Constants.UPDATE_PROJECT_PAGE, request, response);
+
 	}
 }

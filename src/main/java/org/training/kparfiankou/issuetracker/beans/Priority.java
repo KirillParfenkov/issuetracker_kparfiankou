@@ -1,12 +1,23 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
+@Entity
+@Table(name = "Priorities")
 public class Priority extends AbstractEntity {
 
 	private String name;
+
+	/**
+	 * The default constructor.
+	 */
+	public Priority() {
+	}
 
 	/**
 	 *

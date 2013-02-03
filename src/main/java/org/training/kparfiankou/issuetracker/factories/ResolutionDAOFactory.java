@@ -1,6 +1,7 @@
 package org.training.kparfiankou.issuetracker.factories;
 
 import org.training.kparfiankou.issuetracker.impl.database.ResolutionDatabaseDAO;
+import org.training.kparfiankou.issuetracker.impl.hibernate.ResolutionHibernateDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
 
 /**
@@ -19,6 +20,6 @@ public final class ResolutionDAOFactory {
 	 */
 	public static IResolutionDAO getClassFromFactory() {
 
-		return new ResolutionDatabaseDAO();
+		return new ResolutionHibernateDAO();
 	}
 }

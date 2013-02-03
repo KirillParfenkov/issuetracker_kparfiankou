@@ -1,7 +1,6 @@
 package org.training.kparfiankou.issuetracker.beans;
 
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 
@@ -12,7 +11,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Types")
-@PrimaryKeyJoinColumn(name="id", referencedColumnName="id")
 public class Type extends SimpleEntiry {
 
 	/**

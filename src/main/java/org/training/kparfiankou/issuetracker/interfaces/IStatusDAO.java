@@ -19,7 +19,7 @@ public interface IStatusDAO {
 	 * @param id Unique object identifier.
 	 * @return Object class Status.
 	 */
-	Status getStatus(int id);
+	Status getStatus(long id);
 
 	/**
 	 * @param nameStatus name of type
@@ -40,10 +40,15 @@ public interface IStatusDAO {
 	/**
 	 * @param id of status
 	 */
-	void removeStatus(int id);
+	void removeStatus(long id);
 
 	/**
 	 * @param nameStatus name of status
 	 */
-	void insertStatus(String nameStatus);
+	void insertStatus(Status status);
+
+	/**
+	 * @return max index;
+	 */
+	long getMaxIndex();
 }

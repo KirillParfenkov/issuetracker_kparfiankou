@@ -3,15 +3,29 @@ package org.training.kparfiankou.issuetracker.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
+@Entity
+@Table(name = "Projects")
 public class Project extends AbstractEntity {
 
+	@Column(name = "name")
 	private String name;
+	@Column(name = "description")
 	private String description;
+	@OneToMany(mappedBy="build")
 	private List<Build> builds;
+	@ManyToOne
+	@JoinTable(name = "manager_id")
 	private User manager;
 
 	/**
@@ -51,7 +65,7 @@ public class Project extends AbstractEntity {
 	 * @return the build
 	 * @param id the id of build
 	 */
-	public Build getBuild(int id) {
+	public Build getBuild(long id) {
 
 		for (Build build: builds) {
 			if (build.getId() == id) {
