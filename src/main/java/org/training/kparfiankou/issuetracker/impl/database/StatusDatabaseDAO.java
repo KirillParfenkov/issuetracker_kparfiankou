@@ -108,7 +108,7 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 	}
 
 	@Override
-	public Status getStatus(int id) {
+	public Status getStatus(long id) {
 
 		if (isStatusesModified) {
 			updateStatusList();
@@ -140,13 +140,13 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 	}
 
 	@Override
-	public void insertStatus(String nameStatus) {
+	public void insertStatus(Status status) {
 
 		final int numNameStatus = 1;
 
 		try {
 
-			psInserStatus.setString(numNameStatus, nameStatus);
+			psInserStatus.setString(numNameStatus, status.getName());
 			psInserStatus.executeUpdate();
 
 		} catch (SQLException e) {
@@ -157,13 +157,13 @@ public class StatusDatabaseDAO extends AbstractDatabaseDAO implements IStatusDAO
 	}
 
 	@Override
-	public void removeStatus(int id) {
+	public void removeStatus(long id) {
 
 		final int numId = 1;
 
 		try {
 
-			psRemoveStatus.setInt(numId, id);
+			psRemoveStatus.setLong(numId, id);
 			psRemoveStatus.executeUpdate();
 
 		} catch (SQLException e) {

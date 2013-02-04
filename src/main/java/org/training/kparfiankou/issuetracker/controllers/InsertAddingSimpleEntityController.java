@@ -40,7 +40,7 @@ public class InsertAddingSimpleEntityController extends AbstractController {
 		ITypeDAO typeDAO = TypeDAOFactory.getClassFromFactory();
 		IPriorityDAO priorityDAO = PriorityDAOFactory.getClassFromFactory();
 		IResolutionDAO resolutionDAO = ResolutionDAOFactory.getClassFromFactory();
-		int maxId;
+		long maxId;
 
 		if (ClassEntity.TYPE.equals(entity)) {
 			maxId = typeDAO.getMaxIndex();

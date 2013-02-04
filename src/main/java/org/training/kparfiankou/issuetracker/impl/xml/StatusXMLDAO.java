@@ -49,7 +49,7 @@ public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO {
 	}
 
 	@Override
-	public Status getStatus(int id) {
+	public Status getStatus(long id) {
 
 		for (Status status: statuses) {
 			if (status.getId() ==  id) {
@@ -72,12 +72,12 @@ public class StatusXMLDAO extends AbstractXMLDAO implements IStatusDAO {
 	}
 
 	@Override
-	public void removeStatus(int id) {
+	public void removeStatus(long id) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void insertStatus(String nameStatus) {
+	public void insertStatus(Status status) {
 		// TODO Auto-generated method stub
 	}
 

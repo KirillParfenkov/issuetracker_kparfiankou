@@ -12,9 +12,8 @@ public class TestHibernateUtil {
 
     @Test
     public void testGettingSessionFactory() {
-      //  HibernateUtil hibernateUtil = new HibernateUtil();
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-     //   Assert.assertNotNull("Failed to create SessionFactory",sessionFactory);
+        Assert.assertNotNull("Failed to create SessionFactory",sessionFactory);
     }
 }

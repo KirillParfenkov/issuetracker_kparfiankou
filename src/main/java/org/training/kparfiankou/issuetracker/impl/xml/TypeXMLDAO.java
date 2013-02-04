@@ -49,7 +49,7 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 	}
 
 	@Override
-	public Type getType(int id) {
+	public Type getType(long id) {
 
 		for (Type type: types) {
 			if (type.getId() ==  id) {
@@ -72,7 +72,7 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 	}
 
 	@Override
-	public void removeType(int id) {
+	public void removeType(long id) {
 		// TODO Auto-generated method stub
 	}
 
@@ -87,7 +87,7 @@ public class TypeXMLDAO extends AbstractXMLDAO implements ITypeDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

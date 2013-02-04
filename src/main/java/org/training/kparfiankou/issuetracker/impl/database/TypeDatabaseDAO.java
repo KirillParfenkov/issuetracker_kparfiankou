@@ -111,7 +111,7 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	}
 
 	@Override
-	public Type getType(int id) {
+	public Type getType(long id) {
 
 		if (isTypesModified) {
 			updateTypeList();
@@ -162,13 +162,13 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	}
 
 	@Override
-	public void removeType(int id) {
+	public void removeType(long id) {
 
 		final int numId = 1;
 
 		try {
 
-			psRemoveType.setInt(numId, id);
+			psRemoveType.setLong(numId, id);
 			psRemoveType.executeUpdate();
 
 		} catch (SQLException e) {
@@ -179,7 +179,7 @@ public class TypeDatabaseDAO extends AbstractDatabaseDAO implements ITypeDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 
 		int numIdColum = 1;
 		int maxId = 0;

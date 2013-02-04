@@ -19,7 +19,7 @@ public interface ITypeDAO {
 	 * @param id Unique object identifier.
 	 * @return Object of class Type.
 	 */
-	Type getType(int id);
+	Type getType(long id);
 
 	/**
 	 * @param nameType name of type
@@ -40,7 +40,7 @@ public interface ITypeDAO {
 	/**
 	 * @param id of type
 	 */
-	void removeType(int id);
+	void removeType(long id);
 
 	/**
 	 * @param type object of class Type
@@ -50,5 +50,5 @@ public interface ITypeDAO {
 	/**
 	 * @return max index;
 	 */
-	int getMaxIndex();
+	long getMaxIndex();
 }
