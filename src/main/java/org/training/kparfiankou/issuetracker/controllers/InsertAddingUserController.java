@@ -36,7 +36,7 @@ public class InsertAddingUserController extends AbstractController {
 		Role role = Role.valueOf(request.getParameter(Constants.KEY_INPUT_ROLE));
 		String password	= request.getParameter(Constants.KEY_INPUT_PASSWORD);
 		String conPassword = request.getParameter(Constants.KEY_INPUT_CON_PASSWORD);
-		int maxId = userDAO.getMaxIndex();
+		long maxId = userDAO.getMaxIndex();
 
 		// Some checks
 

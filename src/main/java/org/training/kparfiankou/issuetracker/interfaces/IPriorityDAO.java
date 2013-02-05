@@ -19,7 +19,7 @@ public interface IPriorityDAO {
 	 * @param id Unique object identifier.
 	 * @return Object of class Priority.
 	 */
-	Priority getPriority(int id);
+	Priority getPriority(long id);
 
 	/**
 	 * @param namePriority name of type
@@ -40,7 +40,7 @@ public interface IPriorityDAO {
 	/**
 	 * @param id of priority
 	 */
-	void removePriority(int id);
+	void removePriority(long id);
 
 	/**
 	 * @param priority object of class Priority
@@ -50,5 +50,5 @@ public interface IPriorityDAO {
 	/**
 	 * @return max index;
 	 */
-	int getMaxIndex();
+	long getMaxIndex();
 }

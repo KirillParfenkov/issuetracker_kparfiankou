@@ -54,7 +54,7 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 	}
 
 	@Override
-	public User getUser(int id) {
+	public User getUser(long id) {
 
 		for (User user: users) {
 			if (user.getId() == id) {
@@ -102,7 +102,7 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 	}
 
 	@Override
-	public void removeUser(int id) {
+	public void removeUser(long id) {
 		// TODO Auto-generated method stub
 	}
 
@@ -117,7 +117,7 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -49,7 +49,7 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 	}
 
 	@Override
-	public Resolution getResolution(int id) {
+	public Resolution getResolution(long id) {
 
 		for (Resolution resolution: resolutions) {
 			if (resolution.getId() ==  id) {
@@ -72,7 +72,7 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 	}
 
 	@Override
-	public void removeResolution(int id) {
+	public void removeResolution(long id) {
 		// TODO Auto-generated method stub
 	}
 
@@ -87,7 +87,7 @@ public class ResolutionXMLDAO extends AbstractXMLDAO implements IResolutionDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

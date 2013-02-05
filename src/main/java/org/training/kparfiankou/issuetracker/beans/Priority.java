@@ -1,12 +1,20 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
-public class Priority extends AbstractEntity {
+@Entity
+public class Priority extends SimpleEntiry {
 
-	private String name;
+    /**
+     * Default constructor.
+     */
+    public Priority() {
+        super();
+    }
 
 	/**
 	 *
@@ -22,28 +30,6 @@ public class Priority extends AbstractEntity {
 	 * @param name The name to set
 	 */
 	public Priority(long id, String name) {
-		super(id);
-		this.name = name;
-	}
-
-	/**
-	 * @return String
-	 */
-	public String toString() {
-		return name;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
+		super(id, name);
 	}
 }

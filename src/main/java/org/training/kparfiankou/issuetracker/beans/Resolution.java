@@ -1,12 +1,21 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
+
 /**
  * @author Kiryl_Parfiankou
  *
  */
-public class Resolution extends AbstractEntity {
+@Entity
+public class Resolution extends SimpleEntiry {
 
-	private String name;
+
+    /**
+     * Default constructor.
+     */
+    public Resolution() {
+        super();
+    }
 
 	/**
 	 * @param id The id to set
@@ -20,26 +29,7 @@ public class Resolution extends AbstractEntity {
 	 * @param name The name to set
 	 */
 	public Resolution(long id, String name) {
-		super(id);
-		this.name = name;
+		super(id, name);
 	}
 
-	@Override
-	public String toString() {
-		return name;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
 }

@@ -20,7 +20,7 @@ public interface IUserDAO {
 	 * @param id Unique object identifier.
 	 * @return Object of class User.
 	 */
-	User getUser(int id);
+	User getUser(long id);
 
 	/**
 	 * @param emailAddress email address of user.
@@ -42,7 +42,7 @@ public interface IUserDAO {
 	/**
 	 * @param id if of user
 	 */
-	void removeUser(int id);
+	void removeUser(long id);
 
 	/**
 	 * @param emailAddres email address of user.
@@ -54,7 +54,7 @@ public interface IUserDAO {
 	/**
 	 * @return max index;
 	 */
-	int getMaxIndex();
+	long getMaxIndex();
 
 	/**
 	 * Close DAO.

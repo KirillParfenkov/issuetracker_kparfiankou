@@ -1,5 +1,6 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Project extends AbstractEntity {
 	private String description;
 	private List<Build> builds;
 	private User manager;
+
 
 	/**
 	 * @param id the id to set

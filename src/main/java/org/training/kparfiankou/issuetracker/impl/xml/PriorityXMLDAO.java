@@ -49,7 +49,7 @@ public class PriorityXMLDAO extends AbstractXMLDAO implements IPriorityDAO {
 	}
 
 	@Override
-	public Priority getPriority(int id) {
+	public Priority getPriority(long id) {
 
 		for (Priority priority: prioritys) {
 			if (priority.getId() ==  id) {
@@ -72,7 +72,7 @@ public class PriorityXMLDAO extends AbstractXMLDAO implements IPriorityDAO {
 	}
 
 	@Override
-	public void removePriority(int id) {
+	public void removePriority(long id) {
 		// TODO Auto-generated method stub
 	}
 
@@ -87,7 +87,7 @@ public class PriorityXMLDAO extends AbstractXMLDAO implements IPriorityDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
