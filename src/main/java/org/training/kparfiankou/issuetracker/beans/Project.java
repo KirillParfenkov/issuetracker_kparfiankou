@@ -1,6 +1,6 @@
 package org.training.kparfiankou.issuetracker.beans;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,18 +8,32 @@ import java.util.List;
  * @author Kiryl_Parfiankou
  *
  */
+@Entity
 public class Project extends AbstractEntity {
 
+    @Column(name = "name")
 	private String name;
+    @Column(name = "description")
 	private String description;
+    @OneToMany(mappedBy = "build")
 	private List<Build> builds;
+    @ManyToOne
+    @JoinTable(name = "manager_id")
 	private User manager;
 
+
+    /**
+     * Default constructor.
+     */
+    public Project() {
+        super();
+        builds = new ArrayList<Build>();
+    }
 
 	/**
 	 * @param id the id to set
 	 */
-	public Project(int id) {
+	public Project(long id) {
 		super(id);
 		builds = new ArrayList<Build>();
 	}

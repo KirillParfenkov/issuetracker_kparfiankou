@@ -52,7 +52,7 @@ public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO {
 	}
 
 	@Override
-	public Project getProject(int id) {
+	public Project getProject(long id) {
 
 		for (Project project: projects) {
 			if (project.getId() == id) {
@@ -68,13 +68,18 @@ public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
+    @Override
+    public long getMaxIndex() {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
 	public void insertProject(Project project) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void removeProject(int id) {
+	public void removeProject(long id) {
 		// TODO Auto-generated method stub
 	}
 

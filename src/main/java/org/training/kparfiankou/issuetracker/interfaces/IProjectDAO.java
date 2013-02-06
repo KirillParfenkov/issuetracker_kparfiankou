@@ -19,7 +19,7 @@ public interface IProjectDAO {
 	 * @param id Unique object identifier.
 	 * @return Object if class Project.
 	 */
-	Project getProject(int id);
+	Project getProject(long id);
 
 	/**
 	 *
@@ -36,10 +36,15 @@ public interface IProjectDAO {
 	 *
 	 * @param id of project.
 	 */
-	void removeProject(int id);
+	void removeProject(long id);
 
 	/**
 	 * Closes DAO.
 	 */
 	void close();
+
+    /**
+     * @return max index.
+     */
+    long getMaxIndex();
 }

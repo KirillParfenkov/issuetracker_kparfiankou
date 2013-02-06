@@ -143,14 +143,14 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 	}
 
 	@Override
-	public Project getProject(int id) {
+	public Project getProject(long id) {
 
 		final int numId = 1;
 		ResultSet resultSet = null;
 
 		try {
 
-			psSelectProjectById.setInt(numId, id);
+			psSelectProjectById.setLong(numId, id);
 			resultSet = psSelectProjectById.executeQuery();
 
 			if (resultSet.next()) {
@@ -202,13 +202,13 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 	}
 
 	@Override
-	public void removeProject(int id) {
+	public void removeProject(long id) {
 
 		final int numId = 1;
 
 		try {
 
-			psRemoveProject.setInt(numId, id);
+			psRemoveProject.setLong(numId, id);
 			psRemoveProject.executeUpdate();
 
 		} catch (SQLException e) {
@@ -230,4 +230,9 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		closeConnection(psUpdateProject);
 		closeConnection(connection);
 	}
+
+    @Override
+    public long getMaxIndex() {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
