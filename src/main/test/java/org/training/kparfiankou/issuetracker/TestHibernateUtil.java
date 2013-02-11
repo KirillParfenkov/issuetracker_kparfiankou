@@ -1,3 +1,5 @@
+package org.training.kparfiankou.issuetracker;
+
 import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;

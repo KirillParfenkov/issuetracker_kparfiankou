@@ -8,6 +8,7 @@
 <c:url value="<%= Constants.CREATE_STATUSES_LIST_PAGE_CONTROLLER %>" var="urlCreateStatusesListPageController"/>
 <c:url value="<%= Constants.CREATE_RESOLUTIONS_LIST_PAGE_CONTROLLER %>" var="urlCreateResolutionsListPageController"/>
 <c:url value="<%= Constants.CREATE_PRIORITIES_LIST_PAGE_CONTROLLER %>" var="urlCreatePrioritiesListPageController"/>
+<c:url value="<%= Constants.CREATE_ADDING_PROJECT_PAGE_CONTROLLER %>" var="urlCreateAddingProjectPageController"/>
 <c:url value="<%= Constants.ADDING_TYPE_PAGE %>" var="urlAddingTypePage"/>
 <c:url value="<%= Constants.ADDING_PRIORITY_PAGE %>" var="urlAddingPriorityPage"/>
 <c:url value="<%= Constants.ADDING_RESOLUTION_PAGE %>" var="urlAddingResolutionPage"/>
@@ -43,7 +44,7 @@
          </ul>
          <h4>Adding:</h4>
          <ul>
-         	<li><a href="${urlAddingProjectPage}">Project</a></li>
+         	<li><a href="${urlCreateAddingProjectPageController}">Project</a></li>
          	<li><a href="${urlAddingResolutionPage}">Resolution</a></li>
          	<li><a href="${urlAddingPriorityPage}">Priority</a></li>
          	<li><a href="${urlAddingTypePage}">Type</a></li>

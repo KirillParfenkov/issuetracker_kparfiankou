@@ -10,7 +10,7 @@
     <properties>
         <spring.security.version>3.1.0.RELEASE</spring.security.version>
         <spring.version>3.1.1.RELEASE</spring.version>
-        <hibernate.core.version>4.1.6.Final</hibernate.core.version>
+        <hibernate.core.version>4.1.9.Final</hibernate.core.version>
         <jpa.version>2.0-cr-1</jpa.version>
     </properties>
 
@@ -61,6 +61,13 @@
              <scope>test</scope>
         </dependency>
 
+        <!-- JSON -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
+        </dependency>
+
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -88,6 +95,11 @@
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>3.12.1.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>3.6.3.Final</version>
         </dependency>
 	</dependencies>
 	<developers>
@@ -133,6 +145,18 @@
 					</execution>
 				</executions>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.13</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit47</artifactId>
+                        <version>2.13</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 </project>

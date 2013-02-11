@@ -34,8 +34,8 @@ public class InsertCommentController extends AbstractController {
 		HttpSession session = request.getSession();
 		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
 
-		int maxCommetnId = issueDAO.getMaxCommetnId();
-		int issueId = Integer.valueOf(request.getParameter(Constants.KEY_ISSUE_ID));
+		long maxCommetnId = issueDAO.getMaxCommetnId();
+		long issueId = Long.valueOf(request.getParameter(Constants.KEY_ISSUE_ID));
 		String content = request.getParameter(Constants.KEY_CONTENT);
 		User user = (User) session.getAttribute(Constants.KEY_USER);
 		Date date = issueDAO.getCurrentDate();
@@ -46,7 +46,7 @@ public class InsertCommentController extends AbstractController {
 		comment.setAddDate(date);
 		comment.setAutor(user);
 
-		issueDAO.insertComment(comment, issueId);
+		issueDAO.insertComment(comment, issueDAO.getIssue(issueId));
 
 		jump(Constants.CREATE_UPDATE_ISSUE_CONTROLLER, request, response);
 	}

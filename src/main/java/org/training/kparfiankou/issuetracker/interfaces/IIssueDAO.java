@@ -25,7 +25,7 @@ public interface IIssueDAO {
 	 * @param id Unique object identifier.
 	 * @return Object of class Issue.
 	 */
-	Issue getIssue(int id);
+	Issue getIssue(long id);
 
 	/**
 	 *
@@ -37,7 +37,7 @@ public interface IIssueDAO {
 	 *
 	 * @param id of Issue.
 	 */
-	void removeIssue(int id);
+	void removeIssue(long id);
 
 	/**
 	 * Close all connections.
@@ -52,7 +52,7 @@ public interface IIssueDAO {
 	/**
 	 * @return max index;
 	 */
-	int getMaxIndex();
+	long getMaxIndex();
 
 	/**
 	 * @param map keys of search.
@@ -69,16 +69,16 @@ public interface IIssueDAO {
 	 * @param issueId id of issue.
 	 * @return comment list.
 	 */
-	List<Comment> getCommentList(int issueId);
+	List<Comment> getCommentList(long issueId);
 
 	/**
 	 * @return max comment id.
 	 */
-	int getMaxCommetnId();
+	long getMaxCommetnId();
 
 	/**
 	 * @param comment object of class Comment.
-	 * @param issueId id of issue.
+	 * @param issue Object of class Issue.
 	 */
-	void insertComment(Comment comment, int issueId);
+    void insertComment(Comment comment, Issue issue);
 }

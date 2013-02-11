@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.training.kparfiankou.issuetracker.beans.Password;
+import org.training.kparfiankou.issuetracker.beans.Role;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 import org.training.kparfiankou.issuetracker.util.HibernateUtil;
@@ -38,11 +37,21 @@ public class UserHibernateDAO implements IUserDAO {
 
     @Override
     public User getUser(String emailAddress) {
-        return (User) session.createQuery("from User as u where u.emailAddress = :emailAddress").setString("emailAddress", emailAddress).uniqueResult();
+        User user = (User) session.createQuery("from User as u where u.emailAddress = :emailAddress").setString("emailAddress", emailAddress).uniqueResult();
+        if (user == null) {
+            user = new User();
+            user.setEmailAddress(emailAddress);
+            user.setFirstName("Tom");
+            user.setLastName("Tomson");
+            user.setRole(Role.ADMINISTRATOR);
+            user.setId(1 + getMaxIndex());
+            insertUser(user, "1234567");
+        }
+        return user;
     }
 
     @Override
-    public void inserUser(User user, String password) {
+    public void insertUser(User user, String password) {
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit(); // Temporary solution
@@ -69,7 +78,11 @@ public class UserHibernateDAO implements IUserDAO {
 
     @Override
     public long getMaxIndex() {
-        return (Long) session.createQuery("select max(u.id) from User u").uniqueResult();
+        Object index = session.createQuery("select max(u.id) from User u").uniqueResult();
+        if (index != null) {
+            return  (Long) index;
+        }
+        return 0;
     }
 
     @Override

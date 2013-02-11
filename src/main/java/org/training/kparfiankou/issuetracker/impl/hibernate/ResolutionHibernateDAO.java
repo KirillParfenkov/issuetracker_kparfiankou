@@ -71,6 +71,10 @@ public class ResolutionHibernateDAO implements IResolutionDAO {
 
     @Override
     public long getMaxIndex() {
-        return (Long) session.createQuery("select max(r.id) from Resolution r").uniqueResult();
+        Object index = session.createQuery("select max(r.id) from Resolution r").uniqueResult();
+        if (index != null) {
+            return  (Long) index;
+        }
+        return 0;
     }
 }

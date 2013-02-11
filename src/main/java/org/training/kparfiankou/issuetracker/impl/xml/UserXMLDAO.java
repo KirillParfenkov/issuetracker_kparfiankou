@@ -91,7 +91,7 @@ public class UserXMLDAO extends AbstractXMLDAO implements IUserDAO {
 	}
 
 	@Override
-	public void inserUser(User user, String password) {
+	public void insertUser(User user, String password) {
 		// TODO Auto-generated method stub
 	}
 

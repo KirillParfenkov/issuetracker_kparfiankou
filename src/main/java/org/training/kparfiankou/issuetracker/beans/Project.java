@@ -15,10 +15,10 @@ public class Project extends AbstractEntity {
 	private String name;
     @Column(name = "description")
 	private String description;
-    @OneToMany(mappedBy = "build")
+    @OneToMany
 	private List<Build> builds;
     @ManyToOne
-    @JoinTable(name = "manager_id")
+    @JoinTable(name = "project_manager")
 	private User manager;
 
 

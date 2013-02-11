@@ -1,6 +1,7 @@
 package org.training.kparfiankou.issuetracker.factories;
 
 import org.training.kparfiankou.issuetracker.impl.database.UserDatabaseDAO;
+import org.training.kparfiankou.issuetracker.impl.hibernate.UserHibernateDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 
 /**
@@ -19,6 +20,6 @@ public final class UserDAOFactory {
 	 */
 	public static IUserDAO getClassFromFactory() {
 
-		return new UserDatabaseDAO();
+		return new UserHibernateDAO();
 	}
 }

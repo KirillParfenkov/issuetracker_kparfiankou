@@ -48,11 +48,11 @@ public class LoginController extends AbstractController {
 		IUserDAO userDAO = UserDAOFactory.getClassFromFactory();
 		User user = userDAO.authenticate(emailAddres, password);
 
-		MDC.put(Constants.KEY_SETVER_CONTEXT, emailAddres);
+		//MDC.put(Constants.KEY_SETVER_CONTEXT, emailAddres);
 
 		if (user == null) {
 
-			request.setAttribute(Constants.KEY_ERROR_MESAGE, new String("Logon failure"));
+			request.setAttribute(Constants.KEY_ERROR_MESAGE, new String("Login failure"));
 			logger.info(INFO_USER_CONNECT + " " + INFO_RESULT_FAILURE);
 
 		} else {

@@ -5,7 +5,7 @@
 
 <c:url value="<%= Constants.HEADER_PAGE %>" var="urlHeaderPageJSP"/>
 <c:url value="<%= Constants.LOGIN_CONTROLLER %>" var="urlLoginController"/>
-<c:url value="<%= Constants.INSERT_UPDATE_RESOLUTION_CONTROLLER %>" var="urlInsertUpdateResolutionController"/>
+<c:url value="<%= Constants.INSERT_ADDING_PROJECT_CONTROLLER %>" var="urlInsertAddingProjectController"/>
 
 <html>
   <head>
@@ -24,16 +24,27 @@
 	  </c:if>
 
       <div id=main>
-       <form name="updateResolutionForm"  method="POST" action="${urlInsertUpdateResolutionController}">
-        <input type="hidden" name="resolutionId" value="${resolution.id}">
+       <form name="addResolutionForm"  method="POST" action="${urlInsertAddingProjectController}">
       	<table>
       		<tr>
       			<td>Name</td>
-      			<td><input name="<%=Constants.KEY_NAME %>" type="text" value="${resolution.name}"/></td>
+      			<td><input name="<%=Constants.KEY_NAME %>" type="text" value=""/></td>
       		</tr>
-      		<tr>
-				<td><input type="submit" value="update"/></td>      		
-      		</tr>
+            <tr>
+                <td>Description</td>
+                <td><textarea rows="5" cols="45" name="<%=Constants.KEY_DESCRIPTION%>"></textarea></td>
+            </tr>
+            <tr>
+                <td>Build</td>
+                <td><input name="<%=Constants.KEY_BUILD %>" type="text" value=""/></td>
+            </tr>
+            <tr>
+                <td>Manager</td>
+                <td><m:select name="<%=Constants.KEY_MANAGER%>" elements="<%=Constants.USERS%>"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="add"/></td>
+            </tr>
 		</table>
 	   </form>
       </div>

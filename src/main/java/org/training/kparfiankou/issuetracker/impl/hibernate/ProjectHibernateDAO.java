@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.training.kparfiankou.issuetracker.beans.Build;
 import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
 import org.training.kparfiankou.issuetracker.util.HibernateUtil;
@@ -34,7 +35,11 @@ public class ProjectHibernateDAO implements IProjectDAO {
 
     @Override
     public void insertProject(Project project) {
+        List<Build> builds = project.getBuilds();
         session.beginTransaction();
+        for (Build build: builds) {
+            session.save(build);
+        }
         session.save(project);
         session.getTransaction().commit();
     }
@@ -60,6 +65,10 @@ public class ProjectHibernateDAO implements IProjectDAO {
 
     @Override
     public long getMaxIndex() {
-        return (Long) session.createQuery("select max(p.id) from Project p").uniqueResult();
+        Object index = session.createQuery("select max(p.id) from Project p").uniqueResult();
+        if (index != null) {
+            return  (Long) index;
+        }
+        return 0;
     }
 }

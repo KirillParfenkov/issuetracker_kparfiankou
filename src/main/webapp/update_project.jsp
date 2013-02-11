@@ -16,15 +16,6 @@
       <link rel="stylesheet" type="text/css" href="css/style.css">
       <title>Details of the issue</title>
       <script src="javascript/functions.js"></script>
-      <script>
-		alert(${project.id});
-		function attachValues(){
-			updateProjectForm.projectId.value = ${project.id};
-			updateProjectForm.builds.value = builds.options;
-		}
-		attachValues();
-		alert("");
-	  </script>
   </head>
     <body>
    	  <div id="header">
@@ -45,26 +36,37 @@
       			<td><input name="<%=Constants.KEY_NAME %>" type="text" value="${project.name}"/></td>
       		</tr>
       		<tr>
-      			<td>Description</td>
+      			<td>Description2</td>
       			<td><input name="<%=Constants.KEY_DESCRIPTION %>" type="text" value="${project.description}"/></td>
       		</tr>
       		<tr>
       			<td>New build</td>
-      			<td><input type="text"><button>add</button></td>
+      			<td><input name="nameNewBuild" type="text"><button name="addBuildButton" type="button">add</button></td>
       		</tr>
       		<tr>
       			<td>Builds</td>
-      			<td><m:select name="<%=Constants.KEY_BUILDS%>" elements="pageBuilds"/></td>
+                <td>
+                    <select id="buildsId" name="selectBuilds" size=5>
+                    </select>
+                </td>
       		</tr>
       		<tr>
       			<td>Manager</td>
 				<td><m:select name="<%=Constants.KEY_MANAGER%>" elements="<%=Constants.MANAGERS%>" selectedId="${project.manager.id}"/></td>      		
       		</tr>
       		<tr>
-				<td><input type="submit" value="update" onclick="updateProjectForm.projectId.value = ${issue.id};"/></td>      		
+				<td><input type="submit" value="update" onclick="updateProjectForm.projectId.value = ${issue.id};"/></td>
       		</tr>
 		</table>
 	   </form>
       </div>
-    </body>
+
+    <script>
+        addEvent(updateProjectForm.addBuildButton, "click", function() {
+            var selBuilds = updateProjectForm.selectBuilds;
+            selBuilds.options[selBuilds.options.length] = new Option(updateProjectForm.nameNewBuild.value, -1);
+            updateProjectForm.builds.value = JSON.stringify(convertSelectToArray(updateProjectForm.selectBuilds.options), ['text','value']);
+        });
+    </script>
+</body>
 </html>

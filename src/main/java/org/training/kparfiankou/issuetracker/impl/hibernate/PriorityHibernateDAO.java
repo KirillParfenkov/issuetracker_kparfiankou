@@ -71,6 +71,10 @@ public class PriorityHibernateDAO implements IPriorityDAO{
 
     @Override
     public long getMaxIndex() {
-        return (Long) session.createQuery("select max(p.id) from Priority p").uniqueResult();
+        Object index = session.createQuery("select max(p.id) from Priority p").uniqueResult();
+        if (index != null) {
+            return  (Long) index;
+        }
+        return 0;
     }
 }

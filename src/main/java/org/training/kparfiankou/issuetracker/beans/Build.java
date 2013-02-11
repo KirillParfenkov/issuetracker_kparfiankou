@@ -1,6 +1,8 @@
 package org.training.kparfiankou.issuetracker.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * @author Kiryl_Parfiankou
@@ -8,6 +10,10 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Build extends SimpleEntiry {
+
+   /* @ManyToOne
+    @JoinColumn(name="project_id")
+    private Project project;        */
 
     /**
      * The default constructor.

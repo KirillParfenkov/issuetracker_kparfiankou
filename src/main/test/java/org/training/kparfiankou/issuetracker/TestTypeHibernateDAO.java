@@ -1,4 +1,8 @@
+package org.training.kparfiankou.issuetracker;
+
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.training.kparfiankou.issuetracker.beans.Type;
 import org.training.kparfiankou.issuetracker.impl.hibernate.TypeHibernateDAO;
@@ -12,6 +16,11 @@ import org.training.kparfiankou.issuetracker.impl.hibernate.TypeHibernateDAO;
 public class TestTypeHibernateDAO {
 
     TypeHibernateDAO typeHibernateDAO = new TypeHibernateDAO();
+
+    @Before
+    public void testInit() {
+        typeHibernateDAO = new TypeHibernateDAO();
+    }
 
     @Test
     public void testTypeDAO() {
@@ -39,5 +48,10 @@ public class TestTypeHibernateDAO {
         size = typeHibernateDAO.getListType().size();
         Assert.assertEquals("" + presize+ " != " + size, size, presize);
 
+    }
+
+    @After
+    public void testDescturctor() {
+        typeHibernateDAO.close();
     }
 }

@@ -3,6 +3,7 @@ package org.training.kparfiankou.issuetracker.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  * @author Kiryl_Parfiankou
@@ -19,7 +20,6 @@ public class User extends AbstractEntity {
 	private String emailAddress;
     @Column(name = "role")
 	private Role role;
-
 
     /**
      * The default constructor.

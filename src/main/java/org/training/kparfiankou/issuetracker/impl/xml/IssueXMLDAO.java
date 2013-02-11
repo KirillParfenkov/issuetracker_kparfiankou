@@ -64,7 +64,7 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 	}
 
 	@Override
-	public Issue getIssue(int id) {
+	public Issue getIssue(long id) {
 
 		for (Issue issue: issues) {
 			if (issue.getId() == id) {
@@ -86,7 +86,7 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 	}
 
 	@Override
-	public void removeIssue(int id) {
+	public void removeIssue(long id) {
 		// TODO Auto-generated method stub
 	}
 
@@ -97,7 +97,7 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -114,18 +114,18 @@ public class IssueXMLDAO extends AbstractXMLDAO implements IIssueDAO {
 	}
 
 	@Override
-	public List<Comment> getCommentList(int issueId) {
+	public List<Comment> getCommentList(long issueId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insertComment(Comment comment, int issueId) {
+	public void insertComment(Comment comment, Issue issue) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public int getMaxCommetnId() {
+	public long getMaxCommetnId() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

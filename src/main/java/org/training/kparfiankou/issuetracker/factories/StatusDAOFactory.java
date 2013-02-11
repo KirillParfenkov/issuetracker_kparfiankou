@@ -1,6 +1,7 @@
 package org.training.kparfiankou.issuetracker.factories;
 
 import org.training.kparfiankou.issuetracker.impl.database.StatusDatabaseDAO;
+import org.training.kparfiankou.issuetracker.impl.hibernate.StatusHibernateDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IStatusDAO;
 
 /**
@@ -19,6 +20,6 @@ public final class StatusDAOFactory {
 	 */
 	public static IStatusDAO getClassFromFactory() {
 
-		return new StatusDatabaseDAO();
+		return new StatusHibernateDAO();
 	}
 }

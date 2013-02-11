@@ -1,6 +1,7 @@
 package org.training.kparfiankou.issuetracker.factories;
 
 import org.training.kparfiankou.issuetracker.impl.database.ProjectDatabaseDAO;
+import org.training.kparfiankou.issuetracker.impl.hibernate.ProjectHibernateDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
 
 /**
@@ -19,7 +20,7 @@ public final class ProjectDAOFactory {
 	 */
 	public static IProjectDAO getClassFromFacroty() {
 
-		return new ProjectDatabaseDAO();
+		return new ProjectHibernateDAO();
 	}
 
 }

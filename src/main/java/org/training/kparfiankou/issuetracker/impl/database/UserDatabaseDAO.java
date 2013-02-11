@@ -228,7 +228,7 @@ public class UserDatabaseDAO extends AbstractDatabaseDAO implements IUserDAO {
 	}
 
 	@Override
-	public void inserUser(User user, String password) {
+	public void insertUser(User user, String password) {
 
 		final int numId = 1;
 		final int numLastName = 3;

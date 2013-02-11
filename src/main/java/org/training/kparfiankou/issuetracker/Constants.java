@@ -310,6 +310,11 @@ public final class Constants {
 	 */
 	public static final String CREATE_SEARCH_PAGE_CONTROLLER = "/CreateSearchPageController";
 
+    /**
+     * constant link to the CreateSearchPageController controller.
+     */
+    public static final String CREATE_ADDING_PROJECT_PAGE_CONTROLLER = "/CreateAddingProjectPageController";
+
 	/**
 	 * constant link to the CreateProfilePageController controller.
 	 */
@@ -379,6 +384,11 @@ public final class Constants {
 	 * constant link to the controller InsertAddingUserController.
 	 */
 	public static final String INSERT_ADDING_USER_CONTROLLER = "/InsertAddingUserController";
+
+    /**
+     * constant link to the controller InsertAddingUserController.
+     */
+    public static final String INSERT_ADDING_PROJECT_CONTROLLER = "/InsertAddingProjectController";
 
 	/**
 	 * constant link to the InsertUpdateProjectController controller.

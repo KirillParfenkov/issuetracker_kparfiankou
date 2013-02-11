@@ -72,6 +72,10 @@ public class TypeHibernateDAO implements ITypeDAO {
 
     @Override
     public long getMaxIndex() {
-        return (Long) session.createQuery("select max(t.id) from Type t").uniqueResult();
+        Object index = session.createQuery("select max(t.id) from Type t").uniqueResult();
+        if (index != null) {
+            return  (Long) index;
+        }
+        return 0;
     }
 }

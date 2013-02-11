@@ -41,7 +41,7 @@ public class InsertAddingUserController extends AbstractController {
 		// Some checks
 
 		User user = new User(++maxId, firstName, lastName, email, role);
-		userDAO.inserUser(user, password);
+		userDAO.insertUser(user, password);
 
 		userDAO.close();
 

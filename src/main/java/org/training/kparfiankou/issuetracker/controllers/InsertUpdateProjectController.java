@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.factories.ProjectDAOFactory;
@@ -39,11 +42,24 @@ public class InsertUpdateProjectController extends AbstractController {
 
 		IProjectDAO projectDAO = ProjectDAOFactory.getClassFromFacroty();
 		int projectId = Integer.valueOf(request.getParameter(Constants.KEY_PROJECT_ID));
+        String strBuilds = request.getParameter(Constants.KEY_BUILDS);
 
-		Project project = projectDAO.getProject(projectId);
+        JSONArray jsonBuilds = null;
+        try {
+            jsonBuilds = new JSONArray(strBuilds);
+            JSONObject jsonBuild = jsonBuilds.getJSONObject(0);
+            String test = jsonBuild.getString("text");
+            String value = jsonBuild.getString("value");
 
-		request.setAttribute(Constants.KEY_PROJECT, project);
+            logger.info(test + "  " + value);
 
-		jump(Constants.CREATE_UPDATE_PROJECT_CONTROLLER, request, response);
+        } catch (JSONException e) {
+        }
+
+        //Project project = projectDAO.getProject(projectId);
+
+		//request.setAttribute(Constants.KEY_PROJECT, project);
+
+		jump(Constants.ADMINISTRATION_PAGE, request, response);
 	}
 }
