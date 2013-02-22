@@ -3,6 +3,7 @@ package org.training.kparfiankou.issuetracker.impl.xml;
 import java.io.IOException;
 import java.util.List;
 
+import org.training.kparfiankou.issuetracker.beans.Build;
 import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.impl.xml.handlers.ProjectXMLHandler;
 import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
@@ -78,7 +79,12 @@ public class ProjectXMLDAO extends AbstractXMLDAO implements IProjectDAO {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
+    @Override
+    public void insertBuild(Build build) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
 	public void removeProject(long id) {
 		// TODO Auto-generated method stub
 	}

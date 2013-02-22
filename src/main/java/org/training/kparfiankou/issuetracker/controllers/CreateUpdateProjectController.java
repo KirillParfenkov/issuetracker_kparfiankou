@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.training.kparfiankou.issuetracker.Constants;
+import org.training.kparfiankou.issuetracker.beans.Build;
 import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.factories.ProjectDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
 import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
+import sun.security.provider.certpath.BuildStep;
 
 /**
  * Servlet implementation class CreateUpdateProjectController.
@@ -37,10 +39,12 @@ public class CreateUpdateProjectController extends AbstractController {
 
 		int projectId = Integer.valueOf(request.getParameter(Constants.KEY_PROJECT_ID));
 		Project project = projectDAO.getProject(projectId);
+        List<Build> bulds = project.getBuilds();
 		List<User> managers = userDAO.getListUser();
 
 		request.setAttribute(Constants.KEY_PROJECT, project);
 		request.setAttribute(Constants.MANAGERS, managers);
+        request.setAttribute(Constants.KEY_BUILDS, bulds);
 
 		jump(Constants.UPDATE_PROJECT_PAGE, request, response);
 	}

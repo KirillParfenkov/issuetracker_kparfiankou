@@ -47,6 +47,9 @@
       			<td>Builds</td>
                 <td>
                     <select id="buildsId" name="selectBuilds" size=5>
+                         <c:forEach var="build" items="${builds}">
+                             <option value="${build.id}">${build.name}</option>
+                         </c:forEach>
                     </select>
                 </td>
       		</tr>
@@ -64,7 +67,7 @@
     <script>
         addEvent(updateProjectForm.addBuildButton, "click", function() {
             var selBuilds = updateProjectForm.selectBuilds;
-            selBuilds.options[selBuilds.options.length] = new Option(updateProjectForm.nameNewBuild.value, -1);
+            selBuilds.options[selBuilds.options.length] = new Option(updateProjectForm.nameNewBuild.value, 0);
             updateProjectForm.builds.value = JSON.stringify(convertSelectToArray(updateProjectForm.selectBuilds.options), ['text','value']);
         });
     </script>

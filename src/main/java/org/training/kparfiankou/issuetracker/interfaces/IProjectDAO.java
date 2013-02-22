@@ -2,6 +2,7 @@ package org.training.kparfiankou.issuetracker.interfaces;
 
 import java.util.List;
 
+import org.training.kparfiankou.issuetracker.beans.Build;
 import org.training.kparfiankou.issuetracker.beans.Project;
 
 /**
@@ -26,6 +27,12 @@ public interface IProjectDAO {
 	 * @param project the project to be added.
 	 */
 	void insertProject(Project project);
+
+    /**
+     *
+     * @param build
+     */
+    void insertBuild(Build build);
 
 	/**
 	 * @param project object of class Project

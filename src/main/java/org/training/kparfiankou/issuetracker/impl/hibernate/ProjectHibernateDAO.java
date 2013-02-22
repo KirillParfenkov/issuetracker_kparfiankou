@@ -45,9 +45,16 @@ public class ProjectHibernateDAO implements IProjectDAO {
     }
 
     @Override
+    public void insertBuild(Build build) {
+        session.beginTransaction();
+        session.save(build);
+        session.getTransaction().commit();
+    }
+
+    @Override
     public void updateProject(Project project) {
         session.beginTransaction();
-        session.update(project);
+        session.merge(project);
         session.getTransaction().commit();
     }
 

@@ -15,7 +15,7 @@ public class Project extends AbstractEntity {
 	private String name;
     @Column(name = "description")
 	private String description;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
 	private List<Build> builds;
     @ManyToOne
     @JoinTable(name = "project_manager")
