@@ -61,6 +61,7 @@ public class LoginController extends AbstractController {
 			logger.info(INFO_USER_CONNECT + " " + INFO_RESULT_SUCCESS);
 		}
 
+
 		jump(Constants.MAIN_CONTROLLER, request, response);
 
 	}

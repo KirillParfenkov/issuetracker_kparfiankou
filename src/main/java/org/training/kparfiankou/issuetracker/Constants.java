@@ -263,17 +263,17 @@ public final class Constants {
 	/**
 	 * constant link to the controller LoginController.
 	 */
-	public static final String LOGIN_CONTROLLER = "/LoginController";
+	public static final String LOGIN_CONTROLLER = "/LoginController.to";
 
 	/**
 	 * constant link to the controller LogoutController.
 	 */
-	public static final String LOGOUT_CONTROLLER = "/LogoutController";
+	public static final String LOGOUT_CONTROLLER = "/LogoutController.to";
 
 	/**
 	 * constant link to the controller MainController.
 	 */
-	public static final String MAIN_CONTROLLER = "/MainController";
+	public static final String MAIN_CONTROLLER = "/MainController.to";
 
 	/**
 	 * constant link to the controller SubmitIssueController.
