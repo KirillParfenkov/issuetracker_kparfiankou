@@ -34,7 +34,7 @@ public class InsertUpdatePasswordController extends AbstractController {
 
     @Override
     public void init() {
-    	logger = Logger.getLogger(LoginController.class);
+    	logger = Logger.getLogger(InsertUpdatePasswordController.class);
     }
 
 	@Override

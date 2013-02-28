@@ -343,7 +343,7 @@ public final class Constants {
 	/**
 	 * constant link to the CreateStatusesListPageController controller.
 	 */
-	public static final String CREATE_STATUSES_LIST_PAGE_CONTROLLER = "/CreateStatusesListPageController";
+	public static final String CREATE_STATUSES_LIST_PAGE_CONTROLLER = "/CreateStatusesListPageController.cont";
 
 	/**
 	 * constant link to the CreateResolutionsListPageController controller.
@@ -363,7 +363,7 @@ public final class Constants {
 	/**
 	 * constant link to the CreateUpdateStatusController controller.
 	 */
-	public static final String CREATE_UPDATE_STATUS_CONTROLLER = "/CreateUpdateStatusController";
+	public static final String CREATE_UPDATE_STATUS_CONTROLLER = "/CreateUpdateStatusController.cont";
 
 	/**
 	 * constant link to the CreateUpdateResolutionController controller.
@@ -398,7 +398,7 @@ public final class Constants {
 	/**
 	 * constant link to the InsertUpdateStatusController controller.
 	 */
-	public static final String INSERT_UPDATE_STATUS_CONTROLLER = "/InsertUpdateStatusController";
+	public static final String INSERT_UPDATE_STATUS_CONTROLLER = "/InsertUpdateStatusController.cont";
 
 	/**
 	 * constant link to the InsertUpdateResolutionController controller.

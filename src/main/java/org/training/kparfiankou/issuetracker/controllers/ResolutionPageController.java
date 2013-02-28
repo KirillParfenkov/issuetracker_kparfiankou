@@ -29,7 +29,7 @@ public class ResolutionPageController {
 
     @PostConstruct
     public void init() {
-        logger = Logger.getLogger(LoginController.class);
+        logger = Logger.getLogger(ResolutionPageController.class);
     }
 
     @RequestMapping(value = Constants.CREATE_RESOLUTIONS_LIST_PAGE_CONTROLLER,

@@ -32,11 +32,11 @@ public class TypePageController {
 
     @PostConstruct
     public void init() {
-        logger = Logger.getLogger(LoginController.class);
+        logger = Logger.getLogger(TypePageController.class);
     }
 
     @RequestMapping(value = Constants.CREATE_TYPES_LIST_PAGE_CONTROLLER,
-            method = {RequestMethod.GET, RequestMethod.POST})
+                    method = {RequestMethod.GET, RequestMethod.POST})
     public String createTypesListPageController(Model uiModel) {
 
         ITypeDAO typeDAO = TypeDAOFactory.getClassFromFactory();
@@ -48,7 +48,7 @@ public class TypePageController {
     }
 
     @RequestMapping(value = Constants.CREATE_UPDATE_TYPE_CONTROLLER,
-            method = {RequestMethod.GET, RequestMethod.POST})
+                    method = {RequestMethod.GET, RequestMethod.POST})
     public String createUpdateTypeController(@RequestParam(Constants.KEY_TYPE_ID) int typeId,
                                              Model uiModel) {
 

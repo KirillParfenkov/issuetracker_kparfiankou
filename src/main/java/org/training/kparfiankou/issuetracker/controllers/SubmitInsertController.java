@@ -31,16 +31,13 @@ public class SubmitInsertController extends AbstractController {
 
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public SubmitInsertController() {
         super();
     }
 
 	@Override
 	protected void performTask(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			                   HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();

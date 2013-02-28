@@ -11,7 +11,6 @@ import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,7 +29,7 @@ public class AuthorizationController {
 
     @PostConstruct
     public void init() {
-        logger = Logger.getLogger(LoginController.class);
+        logger = Logger.getLogger(AuthorizationController.class);
     }
 
     @RequestMapping(value = "/LoginController.cont", method = {RequestMethod.GET, RequestMethod.POST})

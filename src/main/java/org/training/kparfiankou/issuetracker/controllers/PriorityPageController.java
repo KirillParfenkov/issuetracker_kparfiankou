@@ -32,7 +32,7 @@ public class PriorityPageController {
 
     @PostConstruct
     public void init() {
-        logger = Logger.getLogger(LoginController.class);
+        logger = Logger.getLogger(PriorityPageController.class);
     }
 
     @RequestMapping(value = Constants.CREATE_PRIORITIES_LIST_PAGE_CONTROLLER,
