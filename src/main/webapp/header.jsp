@@ -16,7 +16,6 @@
 
   <a class=hElem href="${urlMainController}">Main</a>
   <a class=hElem href="${urlCreateSearchPageController}">Search</a>
-  <a class=hElem href="${urlLogout}">Logout Spring</a>
 
   <c:if test="${empty user}">
   	<form name=headerForm method=POST action="${urlLoginController}" >

@@ -14,7 +14,8 @@ import org.training.kparfiankou.issuetracker.Constants;
 @Controller
 public class AdministrationPageController {
 
-    @RequestMapping(value = "/CreateAdministrationPageController.cont", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = Constants.CREATE_ADMINISTRATION_PAGE_CONTROLLER,
+                    method = {RequestMethod.GET, RequestMethod.POST})
     public String createAdministrationPage() {
 
         return Constants.ADMINISTRATION_PAGE;

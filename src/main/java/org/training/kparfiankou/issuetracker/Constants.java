@@ -278,17 +278,17 @@ public final class Constants {
 	/**
 	 * constant link to the controller SubmitIssueController.
 	 */
-	public static final String SUBMIT_ISSUE_CONTROLLER = "/SubmitInsertController";
+	public static final String SUBMIT_ISSUE_CONTROLLER = "/SubmitInsertController.cont";
 
 	/**
 	 * constant link to the controller SubmitCreateController.
 	 */
-	public static final String SUBMIT_CREATE_CONTROLLER = "/SubmitCreateController";
+	public static final String SUBMIT_CREATE_CONTROLLER = "/SubmitCreateController.cont";
 
 	/**
 	 * constant link to the controller CreateUpdateIssueController.
 	 */
-	public static final String CREATE_UPDATE_ISSUE_CONTROLLER = "/CreateUpdateIssueController";
+	public static final String CREATE_UPDATE_ISSUE_CONTROLLER = "/CreateUpdateIssueController.cont";
 
 	/**
 	 * constant link to the controller InsertUpdateIssueController.
@@ -298,7 +298,7 @@ public final class Constants {
 	/**
 	 * constant link to the controller InsertUpdateIssueController.
 	 */
-	public static final String INSERT_COMMENT_CONTROLLER = "/InsertCommentController";
+	public static final String INSERT_COMMENT_CONTROLLER = "/InsertCommentController.cont";
 
 	/**
 	 * constant link to the CreateAdministrationPageController controller.
@@ -308,7 +308,7 @@ public final class Constants {
 	/**
 	 * constant link to the CreateSearchPageController controller.
 	 */
-	public static final String CREATE_SEARCH_PAGE_CONTROLLER = "/CreateSearchPageController";
+	public static final String CREATE_SEARCH_PAGE_CONTROLLER = "/CreateSearchPageController.cont";
 
     /**
      * constant link to the CreateSearchPageController controller.
@@ -318,7 +318,7 @@ public final class Constants {
 	/**
 	 * constant link to the CreateProfilePageController controller.
 	 */
-	public static final String CREATE_PROFILE_PAGE_CONTROLLER = "/CreateProfilePageController";
+	public static final String CREATE_PROFILE_PAGE_CONTROLLER = "/CreateProfilePageController.cont";
 
 	/**
 	 * constant link to the CreateProjectsListPageController controller.
@@ -328,12 +328,12 @@ public final class Constants {
 	/**
 	 * constant link to the CreateUpdateUserController controller.
 	 */
-	public static final String CREATE_UPDATE_USER_CONTROLLER = "/CreateUpdateUserController";
+	public static final String CREATE_UPDATE_USER_CONTROLLER = "/CreateUpdateUserController.cont";
 
 	/**
 	 * constant link to the InsertUpdateUserController controller.
 	 */
-	public static final String INSERT_UPDATE_USER_CONTROLLER = "/InsertUpdateUserController";
+	public static final String INSERT_UPDATE_USER_CONTROLLER = "/InsertUpdateUserController.cont";
 
 	/**
 	 * constant link to the CreateTypesListPageController controller.
@@ -383,7 +383,7 @@ public final class Constants {
 	/**
 	 * constant link to the controller InsertAddingUserController.
 	 */
-	public static final String INSERT_ADDING_USER_CONTROLLER = "/InsertAddingUserController";
+	public static final String INSERT_ADDING_USER_CONTROLLER = "/InsertAddingUserController.cont";
 
     /**
      * constant link to the controller InsertAddingUserController.
@@ -393,7 +393,7 @@ public final class Constants {
 	/**
 	 * constant link to the InsertUpdateProjectController controller.
 	 */
-	public static final String INSERT_UPDATE_PROJECT_CONTROLLER = "/InsertUpdateProjectController";
+	public static final String INSERT_UPDATE_PROJECT_CONTROLLER = "/InsertUpdateProjectController.cont";
 
 	/**
 	 * constant link to the InsertUpdateStatusController controller.
@@ -408,7 +408,7 @@ public final class Constants {
 	/**
 	 * constant link to the InsertUpdatePasswordController controller.
 	 */
-	public static final String INSERT_UPDATE_PASSWORD_CONTROLLER = "/InsertUpdatePasswordController";
+	public static final String INSERT_UPDATE_PASSWORD_CONTROLLER = "/InsertUpdatePasswordController.cont";
 
 	/**
 	 * constant link to the InsertUpdatePriorityController controller.
@@ -438,7 +438,7 @@ public final class Constants {
 	/**
 	 * constant link to UpdateProfileController.
 	 */
-	public static final String UPDATE_PROFILE_CONTROLLER = "/UpdateProfileController";
+	public static final String UPDATE_PROFILE_CONTROLLER = "/UpdateProfileController.cont";
 
 	/**
 	 * constant link to the page of update resolutions.
