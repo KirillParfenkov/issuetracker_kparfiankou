@@ -40,7 +40,7 @@ public interface ITypeDAO {
 	/**
 	 * @param id of type
 	 */
-	void removeType(int id);
+	void removeType(long id);
 
 	/**
 	 * @param type object of class Type

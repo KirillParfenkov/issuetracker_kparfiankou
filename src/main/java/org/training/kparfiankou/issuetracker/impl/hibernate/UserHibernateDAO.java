@@ -4,90 +4,100 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.training.kparfiankou.issuetracker.beans.Password;
+import org.training.kparfiankou.issuetracker.beans.Role;
 import org.training.kparfiankou.issuetracker.beans.User;
-import org.training.kparfiankou.issuetracker.impl.hibernate.util.HibernateUtil;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
+import org.training.kparfiankou.issuetracker.util.HibernateUtil;
 
+/**
+ * Created with IntelliJ IDEA.
+ * User: Kiryl Parfiankou
+ * Date: 05.02.13
+ * Time: 19:16
+ */
 public class UserHibernateDAO implements IUserDAO {
 
-	private SessionFactory sessionFactory;
-	private Session session;
 
-	public UserHibernateDAO() {
-		sessionFactory = HibernateUtil.getSessionFactory();
-		session = sessionFactory.openSession();
-	}
+    private Session session;
 
-	@Override
-	public List<User> getListUser() {
-		return session.createCriteria(User.class).list();
-	}
+    public UserHibernateDAO() {
 
-	@Override
-	public User getUser(long id) {
-		return (User) session.get(User.class, id);
-	}
+        session = HibernateUtil.getSessionFactory().openSession();
+    }
 
-	@Override
-	public User getUser(String emailAddress) {
-		final int numEmail = 0;
-		return (User) session.createQuery("select from User u where u.emailAddress = :emailAddress").setString(numEmail, emailAddress).uniqueResult();
-	}
+    @Override
+    public List<User> getListUser() {
+        return session.createCriteria(User.class).list();
+    }
 
-	@Override
-	public void inserUser(User user, String password) {
-		session.beginTransaction();
-		session.save(user);
-		session.getTransaction().commit(); // Temporary solution
-	}
+    @Override
+    public User getUser(long id) {
+        return (User) session.get(User.class, id);
+    }
 
-	@Override
-	public void updateUser(User user) {
-		session.beginTransaction();
-		session.update(user);
-		session.getTransaction().commit();
-	}
+    @Override
+    public User getUser(String emailAddress) {
+        User user = (User) session.createQuery("from User as u where u.emailAddress = :emailAddress").setString("emailAddress", emailAddress).uniqueResult();
+        if (user == null) {
+            user = new User();
+            user.setEmailAddress(emailAddress);
+            user.setFirstName("Tom");
+            user.setLastName("Tomson");
+            user.setRole(Role.ADMINISTRATOR);
+            user.setId(1 + getMaxIndex());
+            insertUser(user, "1234567");
+        }
+        return user;
+    }
 
-	@Override
-	public void removeUser(long id) {
-		int numId = 0;
-		session.beginTransaction();
-		session.createQuery("delete from User as u where u.id = :id").setLong(numId, id).executeUpdate();
-		session.getTransaction().commit();
-	}
+    @Override
+    public void insertUser(User user, String password) {
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit(); // Temporary solution
+    }
 
-	@Override
-	public User authenticate(String emailAddres, String password) {
-		return getUser(emailAddres); // Temporary solution
-	}
+    @Override
+    public void updateUser(User user) {
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+    }
 
-	@Override
-	public long getMaxIndex() {
-		return (Long) session.createQuery("select max(u.id) from User u").uniqueResult();
-	}
+    @Override
+    public void removeUser(long id) {
+        session.beginTransaction();
+        session.createQuery("delete from User as u where u.id = :id").setLong("id", id).executeUpdate();
+        session.getTransaction().commit();
+    }
 
-	@Override
-	public void close() {
-		HibernateUtil.closeSession(session);
-	}
+    @Override
+    public User authenticate(String emailAddres, String password) {
+        return getUser(emailAddres); // Temporary solution
+    }
 
-	@Override
-	public List<User> searchUsers(Map<String, String> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public long getMaxIndex() {
+        Object index = session.createQuery("select max(u.id) from User u").uniqueResult();
+        if (index != null) {
+            return  (Long) index;
+        }
+        return 0;
+    }
 
-	@Override
-	public void newPassword(long id, String password) {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void close() {
+        HibernateUtil.closeSession(session);
+    }
 
-	/**
-	 * @param sessionFactory The SessionFactory to set
-	 */
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+    @Override
+    public List<User> searchUsers(Map<String, String> map) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void newPassword(long id, String password) {
+        // TODO Auto-generated method stub
+    }
 }

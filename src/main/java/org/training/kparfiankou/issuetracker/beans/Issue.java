@@ -1,5 +1,6 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,29 +9,58 @@ import java.util.List;
  * @author Kiryl_Parfiankou
  *
  */
+@Entity
 public class Issue extends AbstractEntity {
 
 	private String summary;
 	private String description;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
 	private Status status;
+    @ManyToOne
+    @JoinColumn(name = "type_id")
 	private Type type;
+    @ManyToOne
+    @JoinColumn(name = "priority_id")
 	private Priority priority;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
 	private Project project;
+    @ManyToOne
+    @JoinColumn(name = "build_id")
 	private Build build;
+    @ManyToOne
+    @JoinColumn(name = "assignee_id")
 	private User assignee;
 	private Date createDate;
+    @ManyToOne
+    @JoinColumn(name = "creater_id")
 	private User creater;
 	private Date modifyDate;
+    @ManyToOne
+    @JoinColumn(name = "lastModifier_id")
 	private User lastModifier;
-	private Resolution resolution;
-	private List<Comment> comments;
+    @ManyToOne
+    @JoinColumn(name = "resolution_id")
+    private Resolution resolution;
+  /*  @OneToMany
+    @JoinTable(name = "")
+	private List<Comment> comments; */
+
+    /**
+     * Default constructor.
+     */
+    public Issue() {
+        super();
+  //      comments = new ArrayList<Comment>();
+    }
 
 	/**
 	 * @param id the id of issue
 	 */
 	public Issue(long id) {
 		super(id);
-		comments = new ArrayList<Comment>();
+	//	comments = new ArrayList<Comment>();
 
 	}
 
@@ -38,7 +68,7 @@ public class Issue extends AbstractEntity {
 	 * @param comment add the comment
 	 */
 	public void addCommet(Comment comment) {
-		comments.add(comment);
+	//	comments.add(comment);
 	}
 
 	/**
@@ -201,12 +231,12 @@ public class Issue extends AbstractEntity {
 	 * @return the comments
 	 */
 	public List<Comment> getComments() {
-		return comments;
+		return null;//comments;
 	}
 	/**
 	 * @param comments the comments to set
 	 */
 	public void setComments(List<Comment> comments) {
-		this.comments = comments;
+	//	this.comments = comments;
 	}
 }

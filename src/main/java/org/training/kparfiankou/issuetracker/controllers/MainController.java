@@ -1,54 +1,35 @@
 package org.training.kparfiankou.issuetracker.controllers;
 
-import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.ConstantsJSP;
-import org.training.kparfiankou.issuetracker.Converter;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.factories.IssueDAOFactory;
 import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
 
+import java.util.List;
 
 /**
- * Servlet implementation class MainController.
+ * Created with IntelliJ IDEA.
+ * User: Kiryl_Parfiankou
+ * Date: 2/26/13
+ * Time: 3:56 PM
  */
-public class MainController extends AbstractController {
+@RequestMapping(Constants.MAIN_CONTROLLER)
+@Controller
+public class MainController {
 
-	private static final long serialVersionUID = 1L;
-	private static final int MAX_COUTN_RECORD = 10;
-	private static Logger logger = null;
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET} )
+    public String perform(Model uiModel) {
+        IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
+        List<Issue> issues = issueDAO.getListIssue(); // think
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MainController() {
-        super();
+
+        uiModel.addAttribute(ConstantsJSP.KEY_JSP_ISSUES, issues);
+
+        return Constants.MAIN_PAGE;
     }
-
-    @Override
-    public void init() {
-    	logger = Logger.getLogger(LoginController.class);
-    	Converter.deliver();
-    }
-
-    @Override
-	protected void performTask(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		IIssueDAO issueDAO = IssueDAOFactory.getClassFromFactory();
-		List<Issue> issues = issueDAO.getListIssue(); // think
-
-		request.setAttribute(ConstantsJSP.KEY_JSP_ISSUES, issues);
-		jump(Constants.MAIN_PAGE, request, response);
-
-
-		request.removeAttribute(Constants.KEY_ERROR_MESAGE);
-	}
 }

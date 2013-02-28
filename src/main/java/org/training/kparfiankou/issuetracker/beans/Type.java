@@ -1,23 +1,20 @@
 package org.training.kparfiankou.issuetracker.beans;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
-
 
 /**
  * @author Kiryl_Parfiankou
  *
  */
-
 @Entity
-@Table(name="Types")
 public class Type extends SimpleEntiry {
 
-	/**
-	 * The default constructor.
-	 */
-	public Type() {
-	}
+    /**
+     * The default constructor.
+     */
+    public Type() {
+        super();
+    }
 
 	/**
 	 * @param id the id to set

@@ -201,7 +201,12 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		}
 	}
 
-	@Override
+    @Override
+    public void insertBuild(Build build) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
 	public void removeProject(long id) {
 
 		final int numId = 1;
@@ -230,4 +235,9 @@ public class ProjectDatabaseDAO extends AbstractDatabaseDAO implements IProjectD
 		closeConnection(psUpdateProject);
 		closeConnection(connection);
 	}
+
+    @Override
+    public long getMaxIndex() {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

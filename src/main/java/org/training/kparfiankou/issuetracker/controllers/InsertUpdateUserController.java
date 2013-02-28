@@ -25,16 +25,14 @@ public class InsertUpdateUserController extends AbstractController {
 	private static final String INFO_RESULT_SUCCESS = "The result is a success.";
 	private static final String INFO_RESULT_FAILURE = "The result is a failure.";
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public InsertUpdateUserController() {
         super();
     }
 
     @Override
     public void init() {
-    	logger = Logger.getLogger(LoginController.class);
+    	logger = Logger.getLogger(InsertUpdateUserController.class);
     }
 
 	@Override

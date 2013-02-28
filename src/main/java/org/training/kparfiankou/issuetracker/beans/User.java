@@ -1,26 +1,32 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
-
+import javax.persistence.OneToMany;
 
 /**
  * @author Kiryl_Parfiankou
  *
  */
 @Entity
-@Table(name = "Users")
 public class User extends AbstractEntity {
 
-	@Column(name = "firstName")
+    @Column(name = "firstName")
 	private String firstName;
-	@Column(name = "lastName")
+    @Column(name = "lastName")
 	private String lastName;
-	@Column(name = "emailAddress")
+    @Column(name = "emailAddress")
 	private String emailAddress;
-	@Column(name = "role")
+    @Column(name = "role")
 	private Role role;
+
+    /**
+     * The default constructor.
+     */
+    public User() {
+       super();
+    }
 
 	/**
 	 * @param id the id to set

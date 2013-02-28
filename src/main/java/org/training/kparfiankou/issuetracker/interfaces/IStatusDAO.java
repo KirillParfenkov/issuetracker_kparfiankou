@@ -43,12 +43,7 @@ public interface IStatusDAO {
 	void removeStatus(long id);
 
 	/**
-	 * @param nameStatus name of status
+	 * @param status name of status
 	 */
 	void insertStatus(Status status);
-
-	/**
-	 * @return max index;
-	 */
-	long getMaxIndex();
 }

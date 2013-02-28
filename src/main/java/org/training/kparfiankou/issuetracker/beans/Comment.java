@@ -1,5 +1,8 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,11 +12,23 @@ import javax.persistence.Table;
  * @author Kiryl_Parfiankou
  *
  */
+@Entity
 public class Comment extends AbstractEntity {
 
+    @ManyToOne
+    @JoinColumn(name = "issue_id")
+    private Issue issue;
+    @ManyToOne
 	private User autor;
 	private Date addDate;
 	private String content;
+
+    /**
+     * Default constructor.
+     */
+    public Comment() {
+        super();
+    }
 
 	/**
 	 * @param id The id to set
@@ -71,4 +86,12 @@ public class Comment extends AbstractEntity {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+    public void setIssue(Issue issue) {
+        this.issue = issue;
+    }
+
+    public Issue getIssue() {
+        return issue;
+    }
 }

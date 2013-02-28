@@ -263,17 +263,17 @@ public final class Constants {
 	/**
 	 * constant link to the controller LoginController.
 	 */
-	public static final String LOGIN_CONTROLLER = "/LoginController";
+	public static final String LOGIN_CONTROLLER = "/LoginController.cont";
 
 	/**
 	 * constant link to the controller LogoutController.
 	 */
-	public static final String LOGOUT_CONTROLLER = "/LogoutController";
+	public static final String LOGOUT_CONTROLLER = "/LogoutController.cont";
 
 	/**
 	 * constant link to the controller MainController.
 	 */
-	public static final String MAIN_CONTROLLER = "/MainController";
+	public static final String MAIN_CONTROLLER = "/MainController.cont";
 
 	/**
 	 * constant link to the controller SubmitIssueController.
@@ -303,12 +303,17 @@ public final class Constants {
 	/**
 	 * constant link to the CreateAdministrationPageController controller.
 	 */
-	public static final String CREATE_ADMINISTRATION_PAGE_CONTROLLER = "/CreateAdministrationPageController";
+	public static final String CREATE_ADMINISTRATION_PAGE_CONTROLLER = "/CreateAdministrationPageController.cont";
 
 	/**
 	 * constant link to the CreateSearchPageController controller.
 	 */
 	public static final String CREATE_SEARCH_PAGE_CONTROLLER = "/CreateSearchPageController";
+
+    /**
+     * constant link to the CreateSearchPageController controller.
+     */
+    public static final String CREATE_ADDING_PROJECT_PAGE_CONTROLLER = "/CreateAddingProjectPageController.cont";
 
 	/**
 	 * constant link to the CreateProfilePageController controller.
@@ -318,7 +323,7 @@ public final class Constants {
 	/**
 	 * constant link to the CreateProjectsListPageController controller.
 	 */
-	public static final String CREATE_PROJECTS_LIST_PAGE_CONTROLLER = "/CreateProjectsListPageController";
+	public static final String CREATE_PROJECTS_LIST_PAGE_CONTROLLER = "/CreateProjectsListPageController.cont";
 
 	/**
 	 * constant link to the CreateUpdateUserController controller.
@@ -333,52 +338,57 @@ public final class Constants {
 	/**
 	 * constant link to the CreateTypesListPageController controller.
 	 */
-	public static final String CREATE_TYPES_LIST_PAGE_CONTROLLER = "/CreateTypesListPageController";
+	public static final String CREATE_TYPES_LIST_PAGE_CONTROLLER = "/CreateTypesListPageController.cont";
 
 	/**
 	 * constant link to the CreateStatusesListPageController controller.
 	 */
-	public static final String CREATE_STATUSES_LIST_PAGE_CONTROLLER = "/CreateStatusesListPageController";
+	public static final String CREATE_STATUSES_LIST_PAGE_CONTROLLER = "/CreateStatusesListPageController.cont";
 
 	/**
 	 * constant link to the CreateResolutionsListPageController controller.
 	 */
-	public static final String CREATE_RESOLUTIONS_LIST_PAGE_CONTROLLER = "/CreateResolutionsListPageController";
+	public static final String CREATE_RESOLUTIONS_LIST_PAGE_CONTROLLER = "/CreateResolutionsListPageController.cont";
 
 	/**
 	 * constant link to the CreatePrioritiesListPageController controller.
 	 */
-	public static final String CREATE_PRIORITIES_LIST_PAGE_CONTROLLER = "/CreatePrioritiesListPageController";
+	public static final String CREATE_PRIORITIES_LIST_PAGE_CONTROLLER = "/CreatePrioritiesListPageController.cont";
 
 	/**
 	 * constant link to the CreateUpdateProjectController controller.
 	 */
-	public static final String CREATE_UPDATE_PROJECT_CONTROLLER = "/CreateUpdateProjectController";
+	public static final String CREATE_UPDATE_PROJECT_CONTROLLER = "/CreateUpdateProjectController.cont";
 
 	/**
 	 * constant link to the CreateUpdateStatusController controller.
 	 */
-	public static final String CREATE_UPDATE_STATUS_CONTROLLER = "/CreateUpdateStatusController";
+	public static final String CREATE_UPDATE_STATUS_CONTROLLER = "/CreateUpdateStatusController.cont";
 
 	/**
 	 * constant link to the CreateUpdateResolutionController controller.
 	 */
-	public static final String CREATE_UPDATE_RESOLUTION_CONTROLLER = "/CreateUpdateResolutionController";
+	public static final String CREATE_UPDATE_RESOLUTION_CONTROLLER = "/CreateUpdateResolutionController.cont";
 
 	/**
 	 * constant link to the CreateUpdatePriorityController controller.
 	 */
-	public static final String CREATE_UPDATE_PRIORITY_CONTROLLER = "/CreateUpdatePriorityController";
+	public static final String CREATE_UPDATE_PRIORITY_CONTROLLER = "/CreateUpdatePriorityController.cont";
 
 	/**
 	 * constant link to the CreateUpdateTypeController controller.
 	 */
-	public static final String CREATE_UPDATE_TYPE_CONTROLLER = "/CreateUpdateTypeController";
+	public static final String CREATE_UPDATE_TYPE_CONTROLLER = "/CreateUpdateTypeController.cont";
 
 	/**
 	 * constant link to the controller InsertAddingUserController.
 	 */
 	public static final String INSERT_ADDING_USER_CONTROLLER = "/InsertAddingUserController";
+
+    /**
+     * constant link to the controller InsertAddingUserController.
+     */
+    public static final String INSERT_ADDING_PROJECT_CONTROLLER = "/InsertAddingProjectController.cont";
 
 	/**
 	 * constant link to the InsertUpdateProjectController controller.
@@ -388,12 +398,12 @@ public final class Constants {
 	/**
 	 * constant link to the InsertUpdateStatusController controller.
 	 */
-	public static final String INSERT_UPDATE_STATUS_CONTROLLER = "/InsertUpdateStatusController";
+	public static final String INSERT_UPDATE_STATUS_CONTROLLER = "/InsertUpdateStatusController.cont";
 
 	/**
 	 * constant link to the InsertUpdateResolutionController controller.
 	 */
-	public static final String INSERT_UPDATE_RESOLUTION_CONTROLLER = "/InsertUpdateResolutionController";
+	public static final String INSERT_UPDATE_RESOLUTION_CONTROLLER = "/InsertUpdateResolutionController.cont";
 
 	/**
 	 * constant link to the InsertUpdatePasswordController controller.
@@ -403,17 +413,17 @@ public final class Constants {
 	/**
 	 * constant link to the InsertUpdatePriorityController controller.
 	 */
-	public static final String INSERT_UPDATE_PRIORITY_CONTROLLER = "/InsertUpdatePriorityController";
+	public static final String INSERT_UPDATE_PRIORITY_CONTROLLER = "/InsertUpdatePriorityController.cont";
 
 	/**
 	 * constant link to the InsertUpdateTypeController controller.
 	 */
-	public static final String INSERT_UPDATE_TYPE_CONTROLLER = "/InsertUpdateTypeController";
+	public static final String INSERT_UPDATE_TYPE_CONTROLLER = "/InsertUpdateTypeController.cont";
 
 	/**
 	 * constant link to the InsertUpdateTypeController controller.
 	 */
-	public static final String INSERT_ADDING_SIMPLE_ENTITY_CONTROLLER = "/InsertAddingSimpleEntityController";
+	public static final String INSERT_ADDING_SIMPLE_ENTITY_CONTROLLER = "/InsertAddingSimpleEntityController.cont";
 
 	/**
 	 * constant link to the page of project update.

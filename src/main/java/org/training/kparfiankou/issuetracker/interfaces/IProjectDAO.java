@@ -2,6 +2,7 @@ package org.training.kparfiankou.issuetracker.interfaces;
 
 import java.util.List;
 
+import org.training.kparfiankou.issuetracker.beans.Build;
 import org.training.kparfiankou.issuetracker.beans.Project;
 
 /**
@@ -27,6 +28,12 @@ public interface IProjectDAO {
 	 */
 	void insertProject(Project project);
 
+    /**
+     *
+     * @param build
+     */
+    void insertBuild(Build build);
+
 	/**
 	 * @param project object of class Project
 	 */
@@ -42,4 +49,9 @@ public interface IProjectDAO {
 	 * Closes DAO.
 	 */
 	void close();
+
+    /**
+     * @return max index.
+     */
+    long getMaxIndex();
 }

@@ -179,14 +179,14 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
-	public Issue getIssue(int id) {
+	public Issue getIssue(long id) {
 
 		final int numId = 1;
 		ResultSet resultSet = null;
 
 		try {
 
-			psSelectIssueById.setInt(numId, id);
+			psSelectIssueById.setLong(numId, id);
 			resultSet = psSelectIssueById.executeQuery();
 
 			if (resultSet.next()) {
@@ -255,13 +255,13 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
-	public void removeIssue(int id) {
+	public void removeIssue(long id) {
 
 		final int numId = 1;
 
 		try {
 
-			psRemoveIssue.setInt(numId, id);
+			psRemoveIssue.setLong(numId, id);
 			psRemoveIssue.executeUpdate();
 
 		} catch (SQLException e) {
@@ -290,7 +290,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
-	public int getMaxIndex() {
+	public long getMaxIndex() {
 
 		int numIdColum = 1;
 		int maxId = 0;
@@ -361,7 +361,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
-	public List<Comment> getCommentList(int issueId) {
+	public List<Comment> getCommentList(long issueId) {
 
 		int numIssueId = 1;
 		String keyId = "id";
@@ -398,7 +398,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
-	public void insertComment(Comment comment, int issueId) {
+	public void insertComment(Comment comment, Issue issue) {
 
 		final int numCommentId = 1;
 		final int numIssueId = 2;
@@ -408,7 +408,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 
 		try {
 			psInsertComment.setLong(numCommentId, comment.getId());
-			psInsertComment.setLong(numIssueId, issueId);
+			psInsertComment.setLong(numIssueId, issue.getId());
 			psInsertComment.setLong(numAutorId, comment.getAutor().getId());
 			psInsertComment.setString(numContent, comment.getContent());
 			psInsertComment.setDate(numDate, new Date(comment.getAddDate().getTime()));
@@ -420,7 +420,7 @@ public class IssueDatabaseDAO extends AbstractDatabaseDAO implements IIssueDAO {
 	}
 
 	@Override
-	public int getMaxCommetnId() {
+	public long getMaxCommetnId() {
 
 		int numIdColum = 1;
 		int maxId = 0;

@@ -1,37 +1,39 @@
 package org.training.kparfiankou.issuetracker.beans;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  * @author Kiryl_Parfiankou
  *
  */
 @Entity
-@Table(name = "Projects")
 public class Project extends AbstractEntity {
 
-	@Column(name = "name")
+    @Column(name = "name")
 	private String name;
-	@Column(name = "description")
+    @Column(name = "description")
 	private String description;
-	@OneToMany(mappedBy="build")
+    @OneToMany(cascade = CascadeType.ALL)
 	private List<Build> builds;
-	@ManyToOne
-	@JoinTable(name = "manager_id")
+    @ManyToOne
+    @JoinTable(name = "project_manager")
 	private User manager;
+
+
+    /**
+     * Default constructor.
+     */
+    public Project() {
+        super();
+        builds = new ArrayList<Build>();
+    }
 
 	/**
 	 * @param id the id to set
 	 */
-	public Project(int id) {
+	public Project(long id) {
 		super(id);
 		builds = new ArrayList<Build>();
 	}
@@ -65,7 +67,7 @@ public class Project extends AbstractEntity {
 	 * @return the build
 	 * @param id the id of build
 	 */
-	public Build getBuild(long id) {
+	public Build getBuild(int id) {
 
 		for (Build build: builds) {
 			if (build.getId() == id) {

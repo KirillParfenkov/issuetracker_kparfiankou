@@ -32,7 +32,7 @@ public interface IUserDAO {
 	 * @param password the password of user.
 	 * @param user object of type User.
 	 */
-	void inserUser(User user, String password);
+	void insertUser(User user, String password);
 
 	/**
 	 * @param user object of class User
