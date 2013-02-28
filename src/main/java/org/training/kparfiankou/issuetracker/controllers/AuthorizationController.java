@@ -10,6 +10,7 @@ import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
 import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -19,7 +20,6 @@ import javax.servlet.http.HttpSession;
  * Time: 4:12 PM
  */
 @Controller
-@SessionAttributes(Constants.KEY_USER)
 public class AuthorizationController {
 
     private static Logger logger = null;
@@ -33,10 +33,12 @@ public class AuthorizationController {
         logger = Logger.getLogger(LoginController.class);
     }
 
-    @RequestMapping(value = "/LoginController.to", method = {RequestMethod.GET, RequestMethod.POST})
-    public String performLogin(@RequestParam(Constants.KEY_INPUT_EMAIL) String emailAddress,
+    @RequestMapping(value = "/LoginController.cont", method = {RequestMethod.GET, RequestMethod.POST})
+    public String performLogin(HttpServletRequest request,
+                               @RequestParam(Constants.KEY_INPUT_EMAIL) String emailAddress,
                                @RequestParam(Constants.KEY_INPUT_PASSWORD) String password,
                                Model uiModel) {
+
 
         IUserDAO userDAO = UserDAOFactory.getClassFromFactory();
         User user = userDAO.authenticate(emailAddress, password);
@@ -47,7 +49,8 @@ public class AuthorizationController {
             logger.info(INFO_USER_CONNECT + " " + INFO_RESULT_FAILURE);
 
         } else {
-            uiModel.addAttribute(Constants.KEY_USER, user);
+
+            request.getSession().setAttribute(Constants.KEY_USER, user);
             logger.info(INFO_USER_CONNECT + " " + INFO_RESULT_SUCCESS);
         }
 
@@ -55,10 +58,10 @@ public class AuthorizationController {
         return Constants.MAIN_CONTROLLER;
     }
 
-    @RequestMapping("/LogoutController.to")
-    public String performLogout(HttpSession session,  Model uiModel) {
+    @RequestMapping(value = "/LogoutController.cont", method = {RequestMethod.GET, RequestMethod.POST})
+    public String performLogout(HttpServletRequest request,  Model uiModel) {
 
-        session.removeAttribute(Constants.KEY_USER);
+        request.getSession().removeAttribute(Constants.KEY_USER);
         return Constants.MAIN_CONTROLLER;
     }
 }

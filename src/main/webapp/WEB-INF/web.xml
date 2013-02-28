@@ -19,7 +19,7 @@
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.to</url-pattern>
+        <url-pattern>*.cont</url-pattern>
     </servlet-mapping>
 
     <servlet>

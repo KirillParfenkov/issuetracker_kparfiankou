@@ -18,7 +18,7 @@ import java.util.List;
  * Date: 2/26/13
  * Time: 3:56 PM
  */
-@RequestMapping("/MainController.to")
+@RequestMapping(Constants.MAIN_CONTROLLER)
 @Controller
 public class MainController {
 
