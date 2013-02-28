@@ -1,4 +1,4 @@
-package org.training.kparfiankou.issuetracker.impl.hibernate.util;
+package org.training.kparfiankou.issuetracker.dao.hibernate.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

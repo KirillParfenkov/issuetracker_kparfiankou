@@ -18,11 +18,11 @@ import org.training.kparfiankou.issuetracker.factories.ProjectDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.StatusDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.TypeDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
-import org.training.kparfiankou.issuetracker.interfaces.IPriorityDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IStatusDAO;
-import org.training.kparfiankou.issuetracker.interfaces.ITypeDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
+import org.training.kparfiankou.issuetracker.dao.IPriorityDAO;
+import org.training.kparfiankou.issuetracker.dao.IProjectDAO;
+import org.training.kparfiankou.issuetracker.dao.IStatusDAO;
+import org.training.kparfiankou.issuetracker.dao.ITypeDAO;
+import org.training.kparfiankou.issuetracker.dao.IUserDAO;
 
 /**
  * Servlet implementation class AddIssueController.

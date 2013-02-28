@@ -11,8 +11,8 @@ import org.training.kparfiankou.issuetracker.beans.Status;
 import org.training.kparfiankou.issuetracker.beans.Type;
 import org.training.kparfiankou.issuetracker.factories.StatusDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.TypeDAOFactory;
-import org.training.kparfiankou.issuetracker.interfaces.IStatusDAO;
-import org.training.kparfiankou.issuetracker.interfaces.ITypeDAO;
+import org.training.kparfiankou.issuetracker.dao.IStatusDAO;
+import org.training.kparfiankou.issuetracker.dao.ITypeDAO;
 
 import javax.annotation.PostConstruct;
 import java.util.List;

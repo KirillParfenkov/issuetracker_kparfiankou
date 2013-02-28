@@ -1,8 +1,7 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.database.UserDatabaseDAO;
-import org.training.kparfiankou.issuetracker.impl.hibernate.UserHibernateDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
+import org.training.kparfiankou.issuetracker.dao.hibernate.UserHibernateDAO;
+import org.training.kparfiankou.issuetracker.dao.IUserDAO;
 
 /**
  *

@@ -10,7 +10,7 @@ import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.beans.Role;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
-import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
+import org.training.kparfiankou.issuetracker.dao.IUserDAO;
 
 /**
  * AbstractController implementation class InsertUpdateUserController.

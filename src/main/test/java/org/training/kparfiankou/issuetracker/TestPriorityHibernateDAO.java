@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.training.kparfiankou.issuetracker.beans.Priority;
-import org.training.kparfiankou.issuetracker.impl.hibernate.PriorityHibernateDAO;
+import org.training.kparfiankou.issuetracker.dao.hibernate.PriorityHibernateDAO;
 
 /**
  * Created with IntelliJ IDEA.

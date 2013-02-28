@@ -13,9 +13,9 @@ import org.training.kparfiankou.issuetracker.beans.Type;
 import org.training.kparfiankou.issuetracker.factories.PriorityDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.ResolutionDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.TypeDAOFactory;
-import org.training.kparfiankou.issuetracker.interfaces.IPriorityDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
-import org.training.kparfiankou.issuetracker.interfaces.ITypeDAO;
+import org.training.kparfiankou.issuetracker.dao.IPriorityDAO;
+import org.training.kparfiankou.issuetracker.dao.IResolutionDAO;
+import org.training.kparfiankou.issuetracker.dao.ITypeDAO;
 
 /**
  * Created with IntelliJ IDEA.

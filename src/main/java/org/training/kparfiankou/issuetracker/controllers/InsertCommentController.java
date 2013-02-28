@@ -12,7 +12,7 @@ import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.beans.Comment;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.factories.IssueDAOFactory;
-import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
+import org.training.kparfiankou.issuetracker.dao.IIssueDAO;
 
 /**
  * AbstractController implementation class InsertCommentController.

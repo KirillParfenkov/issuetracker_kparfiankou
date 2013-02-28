@@ -8,7 +8,7 @@ import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.ConstantsJSP;
 import org.training.kparfiankou.issuetracker.beans.Issue;
 import org.training.kparfiankou.issuetracker.factories.IssueDAOFactory;
-import org.training.kparfiankou.issuetracker.interfaces.IIssueDAO;
+import org.training.kparfiankou.issuetracker.dao.IIssueDAO;
 
 import java.util.List;
 

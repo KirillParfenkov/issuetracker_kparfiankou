@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.training.kparfiankou.issuetracker.beans.Comment;
 import org.training.kparfiankou.issuetracker.beans.Issue;
-import org.training.kparfiankou.issuetracker.impl.hibernate.IssueHibernateDAO;
+import org.training.kparfiankou.issuetracker.dao.hibernate.IssueHibernateDAO;
 
 import java.util.List;
 

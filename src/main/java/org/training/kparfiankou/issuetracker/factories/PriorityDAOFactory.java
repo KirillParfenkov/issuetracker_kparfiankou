@@ -1,8 +1,7 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.database.PriorityDatabaseDAO;
-import org.training.kparfiankou.issuetracker.impl.hibernate.PriorityHibernateDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IPriorityDAO;
+import org.training.kparfiankou.issuetracker.dao.hibernate.PriorityHibernateDAO;
+import org.training.kparfiankou.issuetracker.dao.IPriorityDAO;
 
 /**
  *

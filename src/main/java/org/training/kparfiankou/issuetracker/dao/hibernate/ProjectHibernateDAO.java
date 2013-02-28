@@ -1,12 +1,11 @@
-package org.training.kparfiankou.issuetracker.impl.hibernate;
+package org.training.kparfiankou.issuetracker.dao.hibernate;
 
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.training.kparfiankou.issuetracker.beans.Build;
 import org.training.kparfiankou.issuetracker.beans.Project;
-import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
+import org.training.kparfiankou.issuetracker.dao.IProjectDAO;
 import org.training.kparfiankou.issuetracker.util.HibernateUtil;
 
 /**

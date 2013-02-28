@@ -1,4 +1,4 @@
-package org.training.kparfiankou.issuetracker.interfaces;
+package org.training.kparfiankou.issuetracker.dao;
 
 import java.util.List;
 import java.util.Map;

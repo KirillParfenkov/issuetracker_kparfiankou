@@ -49,7 +49,7 @@
     
     <context:annotation-config/>
 
-	<jpa:repositories base-package="org.training.kparfiankou.issuetracker.impl.hibernate" 
+	<jpa:repositories base-package="org.training.kparfiankou.issuetracker.dao.hibernate"
 					  entity-manager-factory-ref="emf" 
 					  transaction-manager-ref="transactionManager"/>
 

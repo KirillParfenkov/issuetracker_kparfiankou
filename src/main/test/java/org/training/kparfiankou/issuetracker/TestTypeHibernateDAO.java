@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.training.kparfiankou.issuetracker.beans.Type;
-import org.training.kparfiankou.issuetracker.impl.hibernate.TypeHibernateDAO;
+import org.training.kparfiankou.issuetracker.dao.hibernate.TypeHibernateDAO;
 
 /**
  * Created with IntelliJ IDEA.

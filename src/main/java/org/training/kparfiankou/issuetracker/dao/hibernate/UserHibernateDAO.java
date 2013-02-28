@@ -1,4 +1,4 @@
-package org.training.kparfiankou.issuetracker.impl.hibernate;
+package org.training.kparfiankou.issuetracker.dao.hibernate;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.hibernate.Session;
 import org.training.kparfiankou.issuetracker.beans.Role;
 import org.training.kparfiankou.issuetracker.beans.User;
-import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
+import org.training.kparfiankou.issuetracker.dao.IUserDAO;
 import org.training.kparfiankou.issuetracker.util.HibernateUtil;
 
 /**

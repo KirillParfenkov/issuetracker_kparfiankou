@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.training.kparfiankou.issuetracker.Constants;
 import org.training.kparfiankou.issuetracker.beans.Priority;
-import org.training.kparfiankou.issuetracker.beans.Resolution;
 import org.training.kparfiankou.issuetracker.factories.PriorityDAOFactory;
-import org.training.kparfiankou.issuetracker.factories.ResolutionDAOFactory;
-import org.training.kparfiankou.issuetracker.interfaces.IPriorityDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
+import org.training.kparfiankou.issuetracker.dao.IPriorityDAO;
 
 import javax.annotation.PostConstruct;
 import java.util.List;

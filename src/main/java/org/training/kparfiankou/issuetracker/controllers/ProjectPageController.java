@@ -11,8 +11,8 @@ import org.training.kparfiankou.issuetracker.beans.Project;
 import org.training.kparfiankou.issuetracker.beans.User;
 import org.training.kparfiankou.issuetracker.factories.ProjectDAOFactory;
 import org.training.kparfiankou.issuetracker.factories.UserDAOFactory;
-import org.training.kparfiankou.issuetracker.interfaces.IProjectDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IUserDAO;
+import org.training.kparfiankou.issuetracker.dao.IProjectDAO;
+import org.training.kparfiankou.issuetracker.dao.IUserDAO;
 
 import java.util.List;
 

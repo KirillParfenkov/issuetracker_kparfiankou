@@ -1,8 +1,7 @@
 package org.training.kparfiankou.issuetracker.factories;
 
-import org.training.kparfiankou.issuetracker.impl.database.ResolutionDatabaseDAO;
-import org.training.kparfiankou.issuetracker.impl.hibernate.ResolutionHibernateDAO;
-import org.training.kparfiankou.issuetracker.interfaces.IResolutionDAO;
+import org.training.kparfiankou.issuetracker.dao.hibernate.ResolutionHibernateDAO;
+import org.training.kparfiankou.issuetracker.dao.IResolutionDAO;
 
 /**
  *
